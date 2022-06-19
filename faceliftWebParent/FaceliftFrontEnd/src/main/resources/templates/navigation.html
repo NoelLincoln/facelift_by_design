@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+		xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<body>
+<div th:fragment="header_menu">
+
+		<header>
+			<div class="sticky">
+				<div class="container">
+
+					<!-- Logo -->
+					<div class="logo"> <a th:href="@{/}"><img class="img-responsive" th:src="@{/logo.png}" alt="" width="150" height="25"></a> </div>
+					<nav class="navbar ownmenu">
+					<nav class="navbar ownmenu">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-open-btn" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"><i class="fa fa-navicon"></i></i></span> </button>
+						</div>
+
+						<!-- NAV -->
+						<div class="collapse navbar-collapse" id="nav-open-btn">
+							<ul class="nav">
+								<li class="dropdown active"> <a th:href="@{/}" class="dropdown-toggle" data-toggle="dropdown">Home</a>
+
+
+								</li>
+<!--								<li class="dropdown"> <a href="#." class="dropdown-toggle" data-toggle="dropdown">Pages</a>-->
+<!--									<ul class="dropdown-menu">-->
+
+<!--										<li> <a th:href="@{/checkout}">Checkout</a> </li>-->
+<!--										<li> <a href="about-us_01.html">About 01</a> </li>-->
+<!--										<li> <a th:href="@{/contact}">Contact</a> </li>-->
+
+<!--									</ul>-->
+<!--								</li>-->
+								<li> <a th:href="@{/about}">About </a> </li>
+
+								<!-- Two Link Option -->
+								<li class="dropdown"> <a th:href="@{/gallery}" class="dropdown-toggle" data-toggle="dropdown">Gallery</a>
+
+								</li>
+
+								<!-- MEGA MENU -->
+								<li class="dropdown megamenu"> <a href="#." class="dropdown-toggle" data-toggle="dropdown">store</a>
+									<div class="dropdown-menu">
+										<div class="row">
+
+											<!-- Shop Pages -->
+											<div class="col-md-3">
+												<h6>Shop Pages</h6>
+												<ul>
+													<li> <a th:href="@{/products}">Products </a> </li>
+
+													<li> <a th:href="@{/checkout}">Checkout</a> </li>
+												</ul>
+											</div>
+
+											<!-- TOp Rate Products -->
+											<div class="col-md-4">
+												<h6>TOp Rate Products</h6>
+												<div class="top-rated">
+													<ul>
+														<li>
+															<div class="media-left">
+																<div class="cart-img"> <a href="#"> <img class="media-object img-responsive" src="images/cart-img-1.jpg" alt="..."> </a> </div>
+															</div>
+															<div class="media-body">
+																<h6 class="media-heading">WOOD CHAIR</h6>
+																<div class="stars"> <i class="fa fa-star"></i> <i class="fas fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+																<span class="price">129.00 USD</span> </div>
+														</li>
+														<li>
+															<div class="media-left">
+																<div class="cart-img"> <a href="#"> <img class="media-object img-responsive" src="images/shopme/img15.jpg" alt="..."> </a> </div>
+															</div>
+															<div class="media-body">
+																<h6 class="media-heading">STOOL</h6>
+																<div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+																<span class="price">129.00 USD</span> </div>
+														</li>
+														<li>
+															<div class="media-left">
+																<div class="cart-img"> <a href="#"> <img class="media-object img-responsive" src="images/cart-img-3.jpg" alt="..."> </a> </div>
+															</div>
+															<div class="media-body">
+																<h6 class="media-heading">WOOD SPOON</h6>
+																<div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+																<span class="price">129.00 USD</span> </div>
+														</li>
+													</ul>
+												</div>
+											</div>
+
+											<!-- New Arrival -->
+											<div class="col-md-5">
+												<h5>NEW ARRIVAL 2016 <span>(Best Collection)</span></h5>
+												<img class="nav-img" src="images/nav-img.png" alt="" >
+												<p>Lorem ipsum dolor sit amet,<br>
+													consectetur adipiscing elit. <br>
+													Donec faucibus maximus<br>
+													vehicula.</p>
+												<a href="#." class="btn btn-small btn-round">SHOP NOW</a> </div>
+										</div>
+									</div>
+								</li>
+								<li> <a th:href="@{/contact}"> contact</a> </li>
+							</ul>
+						</div>
+
+						<!-- Nav Right -->
+						<div class="nav-right">
+							<ul class="navbar-right">
+
+								<!-- USER INFO -->
+								<li class="dropdown user-acc"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" ><i class="icon-user "></i> </a>
+									<ul class="dropdown-menu">
+										<li sec:authorize="isAuthenticated()">
+											<h6>HELLO! <span sec:authentication="name" ></span></h6>
+										</li>
+										<li ><a  sec:authorize="isAuthenticated()" th:href="@{/cart}">MY CART</a></li>
+										<li ><a sec:authorize="isAuthenticated()" th:href="@{/account_details}">My Account</a></li>
+										<li th:classappend="${#httpServletRequest.getRequestURI() == '/wishlist' ? 'active':''}"><a sec:authorize="isAuthenticated()" th:href="@{/wishlist}"><i class="icon-heart"></i>My Wishlist <span>(3)</span></a></li>
+
+										<li th:classappend="${#httpServletRequest.getRequestURI() == '/login' ? 'active':''}"><a sec:authorize="isAnonymous()" th:href="@{/login}" >Login</a>
+										<li><a sec:authorize="isAuthenticated()" href="javascript:document.LogoutForm.submit()">Logout</a></li>
+										<th:block sec:authorize="isAuthenticated()" >
+											<form th:action="@{/logout}" method="post" th:hidden="true" name="LogoutForm">
+												<input type="submit" th:value="Logout">
+											</form>
+
+
+										</th:block>
+
+
+
+									</ul>
+								</li>
+
+								<!-- USER BASKET -->
+								<li class="dropdown user-basket"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><i class="icon-basket "></i> </a>
+
+                                    <ul class="dropdown-menu">
+										<li>
+                                            <th:block th:each="item, status : ${cartItems}">
+                                                <div th:with="product = ${item.product}" th:id="'row' + ${status.count}">
+
+                                            <div class="media-left" >
+												<div class="cart-img"> <a href="#"> <img class="media-object img-responsive" src="images/cart-img-1.jpg" alt="..."> </a> </div>
+											</div>
+											<div class="media-body">
+												<h6 class="media-heading"><p><strong><b>[[${product.shortName}]]</b></strong></p></h6>
+												<th:block th:if="${product.discountPercent &lt;= 0}">
+													<span class="price" th:text="${product.price}"></span>
+												</th:block>
+												<th:block th:if="${product.discountPercent > 0}">
+                                                      <span class="price" th:text="${product.discountPrice}"></span>
+												</th:block>
+												</span>
+												 <span class="qty" th:text="'Qty ' + ' ' +  ${item.quantity}"></span>
+												</div>
+                                                </div>
+
+											</th:block>
+										</li>
+
+										<li>
+											<h5 class="text-center">SUBTOTAL:
+												<span th:if="${CURRENCY_SYMBOL_POSITION == 'Before price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span><span id="total" class="h2">[[${#numbers.formatDecimal(estimatedTotal, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]]</span><span th:if="${CURRENCY_SYMBOL_POSITION == 'After price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>											</h5>
+										</li>
+
+										<li class="margin-0">
+											<div class="row">
+												<div class="col-xs-6"> <a th:href="@{/cart}" class="btn">VIEW CART</a></div>
+												<div class="col-xs-6 "> <a th:href="@{/checkout}" class="btn">CHECK OUT</a></div>
+											</div>
+										</li>
+									</ul>
+								</li>
+
+								<!-- SEARCH BAR -->
+								<li class="dropdown"> <a href="javascript:void(0);" class="search-open"><i class="icon-magnifier"></i></a>
+									<div class="search-inside animated bounceInUp"> <i class="icon-close search-close"></i>
+										<div class="search-overlay"></div>
+										<div class="position-center-center">
+											<div class="search">
+												<form>
+													<input type="search" placeholder="Search Shop">
+													<button type="submit"><i class="icon-check"></i></button>
+												</form>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</header>
+
+</div>
+
+<div th:fragment="search_nav" class="row">
+	<div class="col-md">
+		
+		<th:block sec:authorize="isAuthenticated()">	
+		<form th:action="@{/logout}" method="post" th:hidden="true" name="logoutForm">
+			<input type="submit" value="Logout" />
+		</form>
+		</th:block>
+		
+		<nav class="navbar navbar-expand-sm bg-light">
+			<div class="collapse navbar-collapse" id="searchNavbar">
+				<form class="form-inline" th:action="@{/search}" method="get">
+					<input type="search" name="keyword" class="form-control mr-sm-2"
+						th:value="${searchKeyword}" 
+						placeholder="keyword" required />
+					<input type="submit" value="Search" class="btn btn-outline-success" />
+				</form>
+				<ul class="navbar-nav">						
+					<th:block sec:authorize="isAuthenticated()">
+					<li class="nav-item">
+						<b><a class="nav-link" th:href="@{/account_details}" 
+								sec:authentication="principal.fullName"></a></b>
+					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/address_book}">Address Book</a>
+					</li>
+										
+					<li class="nav-item">
+						<a class="nav-link" href="">Questions</a>
+					</li>
+															
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/reviews}">Reviews</a>
+					</li>
+																				
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/orders}">Orders</a>
+					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link fas fa-shopping-cart fa-2x" th:href="@{/cart}"></a>
+					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link" href="javascript: document.logoutForm.submit()">Logout</a>
+					</li>					
+					</th:block>						
+				</ul>				
+			</div>
+		</nav>
+	</div>
+</div>
+
+<div th:fragment="footer_menu">
+	<div>
+		<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bottomNavbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="bottomNavbar">
+				<ul class="navbar-nav">				
+					<li class="nav-item">
+						<a class="nav-link" href="">About Us</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="">Privacy Notice</a>
+					</li>				
+					<li class="nav-item">
+						<a class="nav-link" href="">Returns &amp; Refunds</a>
+					</li>
+				</ul>
+			</div>		
+		</nav>
+	</div>
+	<div th:fragment="footer" class="text-center m-3">
+		<p>[[${COPYRIGHT}]]</p>
+	</div>	
+</div>
+</body>
+</html>

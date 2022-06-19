@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="fragments :: page_head('Shopme', 'none')" />
+
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+
+    <link th:href="@{/css/cart.css}" rel="stylesheet">
+
+
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+    <div class="position-center-center">
+        <div class="ldr"></div>
+    </div>
+</div>
+
+<!-- Wrap -->
+<div id="wrap">
+
+    <!-- header -->
+    <div th:replace="navigation :: header_menu"></div>
+
+
+    <!--======= SUB BANNER =========-->
+    <section class="sub-bnr" data-stellar-background-ratio="0.5">
+        <div class="position-center-center">
+            <div class="container">
+                <h4>SHOPPING CART</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
+                    Sed feugiat, tellus vel tristique posuere, diam</p>
+                <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">SHOP</a></li>
+                    <li class="active">SHOPPING CART</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <div id="content">
+
+        <!--======= PAGES INNER =========-->
+        <section class="padding-top-100 padding-bottom-100 pages-in chart-page">
+            <div class="container">
+
+                <main>
+                    <div class="basket">
+                        <div class="summary-total-items"><span class="total-items"></span> Items in your Bag</div>
+
+                        <div class="basket-labels">
+                            <ul>
+                                <li class="item item-heading">Item</li>
+                                <li class="price">Price</li>
+                                <li class="quantity">Quantity</li>
+                                <li class="subtotal">Subtotal</li>
+                            </ul>
+                        </div>
+
+                        <th:block th:each="item, status : ${cartItems}">
+
+                        <div class="basket-product" th:with="product = ${item.product}" th:id="'row' + ${status.count}">
+
+                            <div class="item">
+                                <div class="product-image">
+                                    <img id="cart-img" th:src="@{/logo.png}" alt="Placholder Image 2" class="product-frame">
+                                </div>
+                                <div class="product-details">
+                                    <span th:text="${item.quantity}" class="item-quantity"></span> x <a th:href="@{'/p/' + ${product.alias}}" target="_blank"
+                                                                              th:title="${product.name}">
+                                </a>
+                                    <p><strong><b>[[${product.shortName}]]</b></strong></p>
+<!--                                    <p>Product Code - 232321939</p>-->
+                                </div>
+                            </div>
+                            <div  class="price" >
+                                <th:block th:if="${product.discountPercent &lt;= 0}">
+                                    <span th:text="${product.price}"></span>
+                                </th:block>
+                                <th:block th:if="${product.discountPercent > 0}">
+                                    <span th:text="${product.discountPrice}"></span>
+                                </th:block>
+
+                            </div>
+                            <div class="quantity">
+                                <div th:replace="cart/quantity_control :: quantity_control(${item.quantity}, ${product.id})"></div>
+                            </div>
+                            <div class="">
+                                <span th:id="'subtotal' + ${product.id}" class="h4 subtotal">[[${#numbers.formatDecimal(item.subtotal, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]]</span>
+                            </div>
+                            <div class="remove">
+                                <p class="icon-trash"></p>
+                            </div>
+                        </div>
+                        </th:block>
+
+                    </div>
+
+                </main>
+            </div>
+        </section>
+
+        <!--======= PAGES INNER =========-->
+        <section class="padding-top-100 padding-bottom-100 light-gray-bg shopping-cart small-cart">
+            <div class="container">
+
+                <!-- SHOPPING INFORMATION -->
+                <div class="cart-ship-info margin-top-0">
+                    <div class="row">
+
+
+
+                        <!-- SUB TOTAL -->
+                        <div class="col-sm-5">
+                            <h6>grand total</h6>
+                            <div class="grand-total">
+                                <div class="summary-total-items"><span class="total-items"></span> Items in your Bag</div>
+
+                                <th:block th:each="item, status : ${cartItems}">
+
+                                <div class="order-detail" th:with="product = ${item.product}" th:id="'row' + ${status.count}">
+
+
+
+
+
+                                </div>
+                                </th:block>
+                                <div class="summary-delivery">
+                                    <select name="delivery-collection" class="summary-delivery-selection">
+                                        <option value="0" selected="selected">Select Collection or Delivery</option>
+                                        <option value="collection">Collection</option>
+                                        <option value="first-class">Royal Mail 1st Class</option>
+                                        <option value="second-class">Royal Mail 2nd Class</option>
+                                        <option value="signed-for">Royal Mail Special Delivery</option>
+                                    </select>
+                                </div>
+                                <!-- SUB TOTAL -->
+                                <p class="all-total">TOTAL COST  <span th:if="${CURRENCY_SYMBOL_POSITION == 'Before price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span><span id="total" class="h2">[[${#numbers.formatDecimal(estimatedTotal, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]]</span><span th:if="${CURRENCY_SYMBOL_POSITION == 'After price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
+                                </p>
+                                <div class="coupn-btn"> <a th:href="@{/checkout}" class="btn">Checkout</a>  </div>
+
+                            </div>
+                        </div>
+                        <!-- DISCOUNT CODE -->
+                        <div class="col-sm-7">
+
+                            <div class="coupn-btn"> <a href="#." class="btn">continue shopping</a>  </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section class="small-about padding-top-150 padding-bottom-150">
+            <div class="container">
+
+                <!-- Main Heading -->
+                <div class="heading text-center">
+                    <h4>about PAVSHOP</h4>
+                    <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsumien lacus, eu posuere odio luctus non. Nulla lacinia,
+                        eros vel fermentum consectetur, risus purus tempc, et iaculis odio dolor in ex. </p>
+                </div>
+
+                <!-- Social Icons -->
+                <ul class="social_icons">
+                    <li><a href="#."><i class="icon-social-facebook"></i></a></li>
+                    <li><a href="#."><i class="icon-social-twitter"></i></a></li>
+                    <li><a href="#."><i class="icon-social-tumblr"></i></a></li>
+                    <li><a href="#."><i class="icon-social-youtube"></i></a></li>
+                    <li><a href="#."><i class="icon-social-dribbble"></i></a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- News Letter -->
+        <section class="news-letter padding-top-150 padding-bottom-150">
+            <div class="container">
+                <div class="heading light-head text-center margin-bottom-30">
+                    <h4>NEWSLETTER</h4>
+                    <span>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsumien lacus, eu posuere odi </span> </div>
+                <form>
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit">SEND ME</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!--======= FOOTER =========-->
+    <footer>
+        <div class="container">
+
+            <!-- ABOUT Location -->
+            <div class="col-md-3">
+                <div class="about-footer"> <img class="margin-bottom-30" src="images/logo-foot.png" alt="" >
+                    <p><i class="icon-pointer"></i> Street No. 12, Newyork 12, <br>
+                        MD - 123, USA.</p>
+                    <p><i class="icon-call-end"></i> 1.800.123.456789</p>
+                    <p><i class="icon-envelope"></i> info@PAVSHOP.com</p>
+                </div>
+            </div>
+
+            <!-- HELPFUL LINKS -->
+            <div class="col-md-3">
+                <h6>HELPFUL LINKS</h6>
+                <ul class="link">
+                    <li><a href="#."> Products</a></li>
+                    <li><a href="#."> Find a Store</a></li>
+                    <li><a href="#."> Features</a></li>
+                    <li><a href="#."> Privacy Policy</a></li>
+                    <li><a href="#."> Blog</a></li>
+                    <li><a href="#."> Press Kit </a></li>
+                </ul>
+            </div>
+
+            <!-- SHOP -->
+            <div class="col-md-3">
+                <h6>SHOP</h6>
+                <ul class="link">
+                    <li><a href="#."> About Us</a></li>
+                    <li><a href="#."> Career</a></li>
+                    <li><a href="#."> Shipping Methods</a></li>
+                    <li><a href="#."> Contact</a></li>
+                    <li><a href="#."> Support</a></li>
+                    <li><a href="#."> Retailer</a></li>
+                </ul>
+            </div>
+
+            <!-- MY ACCOUNT -->
+            <div class="col-md-3">
+                <h6>MY ACCOUNT</h6>
+                <ul class="link">
+                    <li><a href="#."> Login</a></li>
+                    <li><a href="#."> My Account</a></li>
+                    <li><a href="#."> My Cart</a></li>
+                    <li><a href="#."> Wishlist</a></li>
+                    <li><a href="#."> Checkout</a></li>
+                </ul>
+            </div>
+
+            <!-- Rights -->
+
+            <div class="rights">
+                <p>©  2017 PAVSHOP All right reserved. </p>
+                <div class="scroll"> <a href="#wrap" class="go-up"><i class="lnr lnr-arrow-up"></i></a> </div>
+            </div>
+        </div>
+    </footer>
+
+    <!--======= RIGHTS =========-->
+
+</div>
+<script th:src="@{/js/jquery-1.11.3.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/own-menu.js}"></script>
+<script th:src="@{/js/jquery.lighter.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/cart.js}"></script>
+<script type="text/javascript">
+    contextPath = "[[@{/}]]";
+    var csrfHeaderName = "[[${_csrf.headerName}]]";
+    var csrfValue = "[[${_csrf.token}]]";
+
+    decimalDigits = [[${DECIMAL_DIGITS}]];
+    decimalPointType = "[[${DECIMAL_POINT_TYPE}]]";
+    thousandsPointType = "[[${THOUSANDS_POINT_TYPE}]]";
+</script>
+<script  th:src="@{/js/shoppingcart.js}"></script>
+<script  th:src="@{/js/commonmodal.js}"></script>
+
+<script  th:src="@{/rs-plugin/js/jquery.tp.t.min.js}"></script>
+<script th:src="@{/rs-plugin/js/jquery.tp.min.js}"></script>
+<script  th:src="@{/js/main.js}"></script>
+
+</body>
+</html>

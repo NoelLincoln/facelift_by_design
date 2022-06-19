@@ -1,0 +1,50 @@
+server:
+  port: 81
+  servlet:
+    context-path: /facelift
+
+spring:
+
+  boot:
+    admin:
+      mail:
+    host: smtp.gmail.com
+    username: facelift.ke@gmail.com
+    password: 02032019judy
+    port: 465
+    protocol: smtp
+    properties:
+      "mail.transport.protocol": smtp
+      "mail.smtp.auth": true
+      "mail.smtp.starttls.enable": true
+      "mail.smtp.ssl.enable": true
+  datasource:
+    password: password
+    url: jdbc:mysql://localhost:3306/shopmedb
+    username: shopmedb
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+    show-sql: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 1018464701117-fnog3ovvb0kfhj448f51vjsaf5adl65p.apps.googleusercontent.com
+            client-secret: AdVhWyg9_3Rfn49Hwgsd2gjx
+            scope:
+              - email
+              - profile
+          facebook:
+            client-id: 385247526176612
+            client-secret: 690eed41082352ee7b0e1de7b72975d9
+            scope:
+              - email
+              - public_profile
+

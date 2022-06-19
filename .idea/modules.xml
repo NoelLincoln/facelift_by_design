@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/FaceliftBackEnd.iml" filepath="$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/FaceliftBackEnd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/faceliftCommon/FaceliftCommon.iml" filepath="$PROJECT_DIR$/faceliftCommon/FaceliftCommon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/FaceliftFrontEnd.iml" filepath="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/FaceliftFrontEnd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/faceliftWebParent/FaceliftWebParent.iml" filepath="$PROJECT_DIR$/faceliftWebParent/FaceliftWebParent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/facelift.iml" filepath="$PROJECT_DIR$/.idea/facelift.iml" />
+    </modules>
+  </component>
+</project>
