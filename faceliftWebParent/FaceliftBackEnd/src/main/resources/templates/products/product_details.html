@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html  xmlns:th="http://www.thymeleaf.org">
-<body>
+<body class="hold-transition dark-mode sidebar-mini layout-fixed">
+<section class="sub-bnr" data-stellar-background-ratio="0.5">
+	<div class="position-center-center">
+		<div class="container">
+			<h4>WOOD CHAIR</h4>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
+				Sed feugiat, tellus vel tristique posuere, diam</p>
+			<ol class="breadcrumb">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">SHOP</a></li>
+				<li class="active">tshirt</li>
+			</ol>
+		</div>
+	</div>
+</section>
+
 <div th:fragment="content" id="divProductDetails">
 	<th:block th:each="detail, status : ${product.details}">
 	<div class="form-inline" th:id="'divDetail' + ${status.index}">
@@ -12,8 +27,8 @@
 		<input type="text" class="form-control w-25" name="detailValues" maxlength="255"
 			th:value="${detail.value}" />
 		<a name="linkRemoveDetail" class="btn fas fa-times-circle fa-2x icon-dark"
-			title="Remove this detail"></a>			
-	</div>	
+			title="Remove this detail"></a>
+	</div>
 	</th:block>
 	
 	<div class="form-inline" th:id="'divDetail' + ${#lists.size(product.details)}">

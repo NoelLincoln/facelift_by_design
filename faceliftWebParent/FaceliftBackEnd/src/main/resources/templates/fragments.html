@@ -1,31 +1,77 @@
 <!DOCTYPE html>
 <html  xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="page_head(title, remove)" th:remove="${remove}">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Facelift By Design | Dashboard</title>
 
-	<title>[[${title}]]</title>
-	
-	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
-	<link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}" />
-	<link rel="stylesheet" type="text/css" th:href="@{/style.css}" />		
-	<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}" ></script>
-	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" ></script>
-	<script type="text/javascript" th:src="@{/js/common.js}" ></script>
-</head>
+		<!-- Google Font: Source Sans Pro -->
+		<link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback}">
+		<!-- Font Awesome -->
+		<link rel="stylesheet" th:href="@{/css/plugins/fontawesome-free/css/all.min.css}">
+		<!-- Ionicons -->
+		<link rel="stylesheet" th:href="@{https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css}">
+		<!-- Tempusdominus Bootstrap 4 -->
+		<link rel="stylesheet" th:href="@{/css/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css}">
+		<!-- iCheck -->
+		<link rel="stylesheet" th:href="@{/css/plugins/icheck-bootstrap/icheck-bootstrap.min.css}">
+		<!-- JQVMap -->
+		<link rel="stylesheet" th:href="@{/css/plugins/jqvmap/jqvmap.min.css}">
+		<!-- DataTables -->
+		<link rel="stylesheet" th:href="@{/css/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css}">
+		<link rel="stylesheet" th:href="@{/css/plugins/datatables-responsive/css/responsive.bootstrap4.min.css}">
+		<link rel="stylesheet" th:href="@{/css/plugins/datatables-buttons/css/buttons.bootstrap4.min.css}">
+		<!-- Theme style -->
+		<link rel="stylesheet" th:href="@{/css/dist/css/adminlte.min.css}">
+		<!-- overlayScrollbars -->
+		<link rel="stylesheet" th:href="@{/css/plugins/overlayScrollbars/css/OverlayScrollbars.min.css}">
+		<!-- Daterange picker -->
+		<link rel="stylesheet" th:href="@{/css/plugins/daterangepicker/daterangepicker.css}">
+		<!-- summernote -->
+		<link rel="stylesheet" th:href="@{/css/plugins/summernote/summernote-bs4.min.css}">
+
+	</head>
+
 <body>
 
 	<div th:fragment="footer" class="text-center m-3">
-		<p>Facelift Control Panel - Copyright &copy; Facelift</p>
+        <footer class="content-footer footer bg-footer-theme">
+            <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                <div class="mb-2 mb-md-0">
+                    ©
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script>
+                    , made with ❤️ by
+                    <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
+                </div>
+                <div>
+                    <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
+                    <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
+
+                    <a
+                            href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                            target="_blank"
+                            class="footer-link me-4"
+                    >Documentation</a
+                    >
+
+                    <a
+                            href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                            target="_blank"
+                            class="footer-link me-4"
+                    >Support</a
+                    >
+                </div>
+            </div>
+        </footer>
 	</div>
 	
 	<th th:fragment="column_link(fieldName, columnLabel, removeTag)" th:remove="${removeTag}">
-		<a class="text-white"
-			th:href="@{${moduleURL} + '/page/' + ${currentPage} + '?sortField=' + ${fieldName}  +'&sortDir=' + ${sortField != fieldName ? sortDir : reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''} + ${categoryId != null ? '&categoryId=' + categoryId : ''}}">
+
 			[[${columnLabel}]]
-		</a>								
-		<span th:if="${sortField == fieldName}"
-			th:class="${sortDir == 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}" ></span>					
+
 	</th>
 						
 	<a th:fragment="page_link(pageNum, label)"

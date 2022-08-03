@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import com.facelift.admin.AmazonS3Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -76,26 +77,26 @@ public class CategoryController {
 	}
 	
 	@PostMapping("/categories/save")
-	public String saveCategory(Category category, 
-			@RequestParam("fileImage") MultipartFile multipartFile,
-			RedirectAttributes ra) throws IOException {
+	public String saveCategory(Category category,
+							   @RequestParam("fileImage") MultipartFile multipartFile,
+							   RedirectAttributes ra) throws IOException {
 		if (!multipartFile.isEmpty()) {
 			String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 			category.setImage(fileName);
 
 			Category savedCategory = service.save(category);
-			String uploadDir = "../category-images/" + savedCategory.getId();
-			
-			FileUploadUtil.cleanDir(uploadDir);
-			FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+			String uploadDir = "category-images/" + savedCategory.getId();
+
+			AmazonS3Util.removeFolder(uploadDir);
+			AmazonS3Util.uploadFile(uploadDir, fileName, multipartFile.getInputStream());
 		} else {
 			service.save(category);
 		}
-		
+
 		ra.addFlashAttribute("message", "The category has been saved successfully.");
 		return "redirect:/categories";
 	}
-	
+
 	@GetMapping("/categories/edit/{id}")
 	public String editCategory(@PathVariable(name = "id") Integer id, Model model,
 			RedirectAttributes ra) {

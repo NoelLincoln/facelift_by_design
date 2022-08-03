@@ -1,126 +1,198 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments :: page_head('Customers - Shopme Admin', 'none')" />
-<body>
-<div class="container-fluid">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments :: page_head('Home - Facelift By Design Admin', 'none')" />
+
+<body class="hold-transition dark-mode sidebar-mini layout-fixed">
+<div class="wrapper">
+
+	<!-- Preloader -->
+	<div class="preloader flex-column justify-content-center align-items-center">
+		<img class="animation__shake" th:src="@{/images/faceliftlogo.png}" alt="AdminLTELogo" height="130px" width="100px">
+	</div>
+
+	<!-- Navbar -->
 	<div th:replace="navigation :: menu"></div>
-	<div>
-		<h2>Manage Customers</h2>	
-		
-		<a th:href="@{/customers/export/csv}" class="fas fa-file-csv fa-2x icon-dark mr-2"></a>
-	</div>
-		
-	<div th:replace="fragments :: search_form_and_message" />
-	
-	<div class="full-details">
-		<table class="table table-bordered table-striped table-hover table-responsive-xl">
-			<thead class="thead-dark">
-				<tr>
-					<th th:replace="fragments :: column_link('id', 'ID', 'none')" />
-					<th th:replace="fragments :: column_link('firstName', 'First Name', 'none')" />
-					<th th:replace="fragments :: column_link('lastName', 'Last Name', 'none')" />
-					
-					<th class="hideable-column">
-					<th th:replace="fragments :: column_link('email', 'E-mail', 'tag')" />
-					</th>
-					
-					<th class="hideable-column">
-					<th th:replace="fragments :: column_link('city', 'City', 'tag')" />
-					</th>
-					
-					<th class="hideable-column">
-					<th th:replace="fragments :: column_link('state', 'State', 'tag')" />
-					</th>
-					
-					<th th:replace="fragments :: column_link('country', 'Country', 'none')" />
-					<th th:replace="fragments :: column_link('enabled', 'Enabled', 'none')" />
-					<th></th>
-				</tr>								
-			</thead>
-			<tbody>
-				<tr th:each="customer : ${listCustomers}">
-					<td>[[${customer.id}]]</td>
-					<td>[[${customer.firstName}]]</td>
-					<td>[[${customer.lastName}]]</td>
-					<td class="hideable-column">[[${customer.email}]]</td>
-					<td class="hideable-column">[[${customer.city}]]</td>
-					<td class="hideable-column">[[${customer.state}]]</td>
-					<td class="hideable-column">[[${customer.country}]]</td>
 
 
-					<td>
-						<div th:replace="fragments :: status(${customer.enabled}, 'customer', '/customers/' + ${customer.id})" />
-					</td>
-					<td>
-						<a class="fas fa-file-alt fa-2x icon-green link-detail"
-							th:href="@{'/customers/detail/' + ${customer.id}}"
-							title="View details of this customer"
-							></a>					
-						&nbsp; 
-						<div th:replace="fragments :: edit('customer', '/customers/edit/' + ${customer.id})" />
-						&nbsp; 
-						<div th:replace="fragments :: delete('customer', ${customer.id}, '/customers/delete/' + ${customer.id}, true)" />						
-					</td>					
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	
-	<div class="less-details">
-		<div th:each="customer : ${listCustomers}" class="row m-1">
-			<div class="col-4">
-				<span><b>[[${customer.fullName}]]</b></span>
-			</div>
-			<div class="col-8">
-				<div class="mb-1">
-				</div>
-				<div>
-					<div th:replace="fragments :: status(${customer.enabled}, 'customer', '/customers/' + ${customer.id})" />
-					&nbsp;
-					<a class="fas fa-file-alt fa-2x icon-green link-detail"
-						th:href="@{'/customers/detail/' + ${customer.id}}"
-						title="View details of this customer"
-						></a>					
-					&nbsp; 
-					<div th:replace="fragments :: edit('customer', '/customers/edit/' + ${customer.id})" />
-					&nbsp; 
-					<div th:replace="fragments :: delete('customer', ${customer.id}, '/customers/delete/' + ${customer.id}, true)" />
-				</div>
-			</div>
-			<div>&nbsp;</div>
-		</div>	
-	</div>		
-	
-	<div th:replace="fragments :: pagination('customers')"></div>
-	
-	<div th:replace="modal_fragments :: confirm_modal" />
-	
-	<div class="modal fade" id="detailModal">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-			</div>
+	<!-- Content Wrapper. Contains page content -->
+	<div class="content-wrapper">
+		<div style="margin-left: 20px">
+			<h2>Manage Customers</h2>
+
+			<a th:href="@{/customers/export/csv}" class="fas fa-file-csv fa-2x icon-dark mr-2"></a>
 		</div>
-	</div>	
-	
-	<div th:replace="fragments :: footer"></div>
-	
-</div>
-<script th:src="@{/js/common_list.js}"></script>
-<script type="text/javascript">
-	moduleURL = "[[@{/customers}]]";
+		<!-- Content Header (Page header) -->
+		<div class="content-header">
+			<div class="container-fluid">
+				<div class="row mb-2">
+					<div class="col-sm-6">
+						<h1 class="m-0">Customers</h1>
+					</div><!-- /.col -->
+					<div class="col-sm-6">
+						<ol class="breadcrumb float-sm-right">
+							<li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+							<li class="breadcrumb-item active">Customers</li>
+						</ol>
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+			</div><!-- /.container-fluid -->
+		</div>
+		<!-- /.content-header -->
 
-	$(document).ready(function() {
-		$(".link-delete").on("click", function(e) {
-			e.preventDefault();
-			showDeleteConfirmModal($(this), 'customer');
-		});
-		
-		$(".link-detail").on("click", function(e) {
-			e.preventDefault();
-			linkDetailURL = $(this).attr("href");
-			$("#detailModal").modal("show").find(".modal-content").load(linkDetailURL);
-		});		
-	});
+		<!-- Main content -->
+		<!-- Main content -->
+		<section class="content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<div class="card">
+							<div class="card-header">
+								<h3 class="card-title">DataTable with default features</h3>
+							</div>
+							<!-- /.card-header -->
+							<div class="card-body">
+								<table id="example1" class="table table-bordered table-striped">
+									<thead>
+									<tr >
+										<th>User Id</th>
+										<th>First Name</th>
+										<th>Last Name</th>
+										<th>E-mail</th>
+										<th>City</th>
+										<th>Country</th>
+										<th>Enabled</th>
+										<th></th>
+
+									</tr>
+									</thead>
+									<tbody>
+									<tr th:each="customer : ${listCustomers}">
+										<td>[[${customer.id}]]</td>
+
+
+										<td>[[${customer.firstName}]]</td>
+										<td>[[${customer.lastName}]]</td>
+										<td class="hideable-column">[[${customer.email}]]</td>
+										<td>[[${customer.city}]]</td>
+										<td>Country name</td>
+										<td>
+											<div th:replace="fragments :: status(${customer.enabled}, 'customer', '/users/' + ${customer.id})" />
+										</td>
+
+										<td>
+											<div th:replace="fragments :: edit('customer', '/customers/edit/' + ${customer.id})" />
+											&nbsp;&nbsp;
+											<div th:replace="fragments :: delete('customer', ${customer.id}, '/users/delete/' + ${customer.id}, true)" />
+										</td>
+									</tr>
+									</tbody>
+									<tfoot>
+									<tr>
+										<th>User Id</th>
+										<th>First Name</th>
+										<th>Last Name</th>
+										<th>E-mail</th>
+										<th>City</th>
+										<th>Country</th>
+										<th>Enabled</th>
+										<th></th>
+									</tr>
+									</tfoot>
+								</table>
+							</div>
+							<!-- /.card-body -->
+						</div>
+						<!-- /.card -->
+					</div>
+					<!-- /.col -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /.container-fluid -->
+		</section>
+		<!-- /.content -->
+	</div>
+	<!-- /.content-wrapper -->
+	<footer class="main-footer">
+		<strong>Copyright &copy; 2022-2023 <a href="https://adminlte.io">Facelift By Design</a>.</strong>
+		All rights reserved.
+		<div class="float-right d-none d-sm-inline-block">
+			<b>Version</b> 3.2.0
+		</div>
+	</footer>
+
+	<!-- Control Sidebar -->
+	<aside class="control-sidebar control-sidebar-dark">
+		<!-- Control sidebar content goes here -->
+	</aside>
+	<!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script th:src="@{/css/plugins/jquery/jquery.min.js}"></script>
+<!-- jQuery UI 1.11.4 -->
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+	$.widget.bridge('uibutton', $.ui.button)
 </script>
+<!-- Bootstrap 4 -->
+<script  th:src="@{/js/common.js}" ></script>
+
+<script th:src="@{/css/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+<!-- overlayScrollbars -->
+<!-- AdminLTE App -->
+<!-- DataTables  & Plugins -->
+<script th:src="@{/css/plugins/datatables/jquery.dataTables.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-responsive/js/dataTables.responsive.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-responsive/js/responsive.bootstrap4.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/dataTables.buttons.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.bootstrap4.min.js}"></script>
+<script th:src="@{/css/plugins/jszip/jszip.min.js}"></script>
+<script th:src="@{/css/plugins/pdfmake/pdfmake.min.js}"></script>
+<script th:src="@{/css/plugins/pdfmake/vfs_fonts.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.html5.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.print.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.colVis.min.js}"></script>
+<script th:src="@{/css/dist/js/adminlte.js}"></script>
+
+<script>
+	$(document).ready(function() {
+		$("#logoutLink").on("click", function(e) {
+			e.preventDefault();
+			document.logoutForm.submit();
+		});
+
+		// customizeDropDownMenu();
+		// customizeTabs();
+	});
+
+
+
+
+	$(function () {
+		$("#example1").DataTable({
+			"responsive": true, "lengthChange": false, "autoWidth": false,
+			"buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+		}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+		$('#example2').DataTable({
+			"paging": true,
+			"lengthChange": false,
+			"searching": false,
+			"ordering": true,
+			"info": true,
+			"autoWidth": false,
+			"responsive": true,
+		});
+	});
+
+</script>
+
+<!-- AdminLTE for demo purposes -->
+<!--<script th:src="@{/css/dist/js/demo.js}"></script>-->
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 </body>
 </html>

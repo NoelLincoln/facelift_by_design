@@ -16,6 +16,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import com.facelift.security.oauth.CustomerOAuth2UserService;
 import com.facelift.security.oauth.OAuth2LoginSuccessHandler;
 
+import javax.servlet.http.HttpSessionEvent;
+import javax.servlet.http.HttpSessionListener;
+import java.util.concurrent.TimeUnit;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -49,6 +53,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			"/searchByCategory",
 			"/searchBook"
 	};
+
+	@Configuration
+	public class MyHttpSessionListener implements HttpSessionListener {
+		@Override
+		public void sessionCreated(HttpSessionEvent event) {
+			event.getSession().setMaxInactiveInterval(30000000);
+		}
+	}
+
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

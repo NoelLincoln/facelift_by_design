@@ -1,112 +1,213 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<head th:replace="fragments :: page_head(${pageTitle}, 'tag')" />
-	<link rel="stylesheet" th:href="@{/richtext/richtext.min.css}" />
-	<script th:src="@{/richtext/jquery.richtext.min.js}"></script>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments :: page_head('Home - Facelift By Design Admin', 'none')"/>
+<head>	<link rel="stylesheet" th:href="@{/css/plugins/richtext/richtext.min.css}" />
 </head>
-<body>
-<div class="container-fluid">
+
+<body class="hold-transition dark-mode sidebar-mini layout-fixed">
+<div class="wrapper">
+
+	<!-- Preloader -->
+	<div class="preloader flex-column justify-content-center align-items-center">
+		<img class="animation__shake" th:src="@{/images/faceliftlogo.png}" alt="AdminLTELogo" height="130px" width="100px">
+	</div>
+
+	<!-- Navbar -->
 	<div th:replace="navigation :: menu"></div>
-	<div>
-		<h2>Manage Products | [[${pageTitle}]]</h2>	
+
+
+	<!-- Content Wrapper. Contains page content -->
+	<div class="content-wrapper">
+		<div class="container-fluid">
+			<div>
+				<h2>Manage Products | [[${pageTitle}]]</h2>
+			</div>
+
+			<form th:action="@{/products/save}" method="post" onsubmit="return checkUnique(this)"
+				  enctype="multipart/form-data"
+				  th:object="${product}">
+				<input type="hidden" th:field="*{id}" />
+				<input th:if="${product.category != null}" type="hidden"
+					   id="categoryId" th:value="${product.category.id}" />
+				<div>
+					<ul class="nav nav-tabs" id="myTab" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" data-toggle="tab" href="#overview" role="tab">Overview</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" data-toggle="tab" href="#description" role="tab">Description</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" data-toggle="tab" href="#images" role="tab">Images</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" data-toggle="tab" href="#details" role="tab">Details</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" data-toggle="tab" href="#shipping" role="tab">Shipping</a>
+						</li>
+					</ul>
+
+					<div class="tab-content">
+						<div class="tab-pane active p-3" id="overview" role="tabpanel">
+							<div th:replace="products/product_overview :: content"></div>
+						</div>
+						<div class="tab-pane" id="description" role="tabpanel">
+							<th:block th:if="${isReadOnlyForSalesperson}">
+								<div th:replace="products/product_description_read_only :: content"></div>
+							</th:block>
+
+							<th:block th:unless="${isReadOnlyForSalesperson}">
+								<div th:replace="products/product_description :: content"></div>
+							</th:block>
+						</div>
+						<div class="tab-pane" id="images" role="tabpanel">
+							<th:block th:if="${isReadOnlyForSalesperson}">
+								<div th:replace="products/product_images_read_only :: content"></div>
+							</th:block>
+
+							<th:block th:unless="${isReadOnlyForSalesperson}">
+								<div th:replace="products/product_images :: content"></div>
+							</th:block>
+						</div>
+						<div class="tab-pane p-3" id="details" role="tabpanel">
+							<th:block th:if="${isReadOnlyForSalesperson}">
+								<div th:replace="products/product_details_read_only :: content"></div>
+							</th:block>
+
+							<th:block th:unless="${isReadOnlyForSalesperson}">
+								<div th:replace="products/product_details :: content"></div>
+								<div>
+									<input type="button" class="btn btn-secondary" value="Add More Detail"
+										   onclick="addNextDetailSection()" />
+								</div>
+							</th:block>
+
+						</div>
+						<div class="tab-pane p-3" id="shipping" role="tabpanel">
+							<th:block th:if="${isReadOnlyForSalesperson}">
+								<div th:replace="products/product_shipping_read_only :: content"></div>
+							</th:block>
+
+							<th:block th:unless="${isReadOnlyForSalesperson}">
+								<div th:replace="products/product_shipping :: content"></div>
+							</th:block>
+						</div>
+					</div>
+				</div>
+				<div class="text-center">
+					<input type="submit" value="Save" class="btn btn-primary m-3" />
+					<input type="button" value="Cancel" class="btn btn-secondary" id="buttonCancel" />
+				</div>
+			</form>
+
+			<div th:replace="modal_fragments :: modal_dialog"></div>
+
+			<div th:replace="fragments :: footer"></div>
+
+		</div>
+
 	</div>
-			
-	<form th:action="@{/products/save}" method="post" onsubmit="return checkUnique(this)"
-		enctype="multipart/form-data"
-		th:object="${product}">
-		<input type="hidden" th:field="*{id}" />
-		<input th:if="${product.category != null}" type="hidden" 
-			id="categoryId" th:value="${product.category.id}" />
-	<div>
-		<ul class="nav nav-tabs" id="myTab" role="tablist">
-		  <li class="nav-item">
-		    <a class="nav-link active" data-toggle="tab" href="#overview" role="tab">Overview</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" data-toggle="tab" href="#description" role="tab">Description</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" data-toggle="tab" href="#images" role="tab">Images</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" data-toggle="tab" href="#details" role="tab">Details</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" data-toggle="tab" href="#shipping" role="tab">Shipping</a>
-		  </li>		  
-		</ul>
-		
-		<div class="tab-content">
-		  <div class="tab-pane active p-3" id="overview" role="tabpanel">
-		  	<div th:replace="products/product_overview :: content"></div>
-		  </div>
-		  <div class="tab-pane" id="description" role="tabpanel">
-			<th:block th:if="${isReadOnlyForSalesperson}">		  	
-		  			<div th:replace="products/product_description_read_only :: content"></div>
-		  	</th:block>
-		  	
-		  	<th:block th:unless="${isReadOnlyForSalesperson}">
-		  	<div th:replace="products/product_description :: content"></div>
-		  	</th:block>
-		  </div>
-		  <div class="tab-pane" id="images" role="tabpanel">
-		  	<th:block th:if="${isReadOnlyForSalesperson}">
-		  			<div th:replace="products/product_images_read_only :: content"></div>
-		  	</th:block>		  
-		  
-		  	<th:block th:unless="${isReadOnlyForSalesperson}">
-		  	<div th:replace="products/product_images :: content"></div>
-		  	</th:block>
-		  </div>
-		  <div class="tab-pane p-3" id="details" role="tabpanel">
-		  	<th:block th:if="${isReadOnlyForSalesperson}">
-		  			<div th:replace="products/product_details_read_only :: content"></div>
-		  	</th:block>		  	
-		  	
-			<th:block th:unless="${isReadOnlyForSalesperson}">
-		  	<div th:replace="products/product_details :: content"></div>
-		  	<div>
-		  		<input type="button" class="btn btn-secondary" value="Add More Detail"
-		  			onclick="addNextDetailSection()" />
-		  	</div>
-		  	</th:block>
-		  		
-		  </div>
-		  <div class="tab-pane p-3" id="shipping" role="tabpanel">
-		  	<th:block th:if="${isReadOnlyForSalesperson}">
-		  			<div th:replace="products/product_shipping_read_only :: content"></div>
-		  	</th:block>		  
-		  
-		  	<th:block th:unless="${isReadOnlyForSalesperson}">
-		  	<div th:replace="products/product_shipping :: content"></div>
-		  	</th:block>
-		  </div>
-		</div>	
-	</div>
-	<div class="text-center">
-		<input type="submit" value="Save" class="btn btn-primary m-3" />
-		<input type="button" value="Cancel" class="btn btn-secondary" id="buttonCancel" />
-	</div>
-	</form>
-	
-	<div th:replace="modal_fragments :: modal_dialog"></div>
-	
-	<div th:replace="fragments :: footer"></div>
-	
+	<!-- /.content-wrapper -->
+	<footer class="main-footer">
+		<strong>Copyright &copy; 2022-2023 <a href="https://adminlte.io">Facelift By Design</a>.</strong>
+		All rights reserved.
+		<div class="float-right d-none d-sm-inline-block">
+			<b>Version</b> 3.2.0
+		</div>
+	</footer>
+
+	<!-- Control Sidebar -->
+	<aside class="control-sidebar control-sidebar-dark">
+		<!-- Control sidebar content goes here -->
+	</aside>
+	<!-- /.control-sidebar -->
 </div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script th:src="@{/css/plugins/jquery/jquery.min.js}"></script>
+<!-- jQuery UI 1.11.4 -->
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+	$.widget.bridge('uibutton', $.ui.button)
+</script>
+
+
+<script th:src="@{/css/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+<!-- overlayScrollbars -->
+<!-- AdminLTE App -->
+<!-- DataTables  & Plugins -->
+<script th:src="@{/css/plugins/datatables/jquery.dataTables.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-responsive/js/dataTables.responsive.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-responsive/js/responsive.bootstrap4.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/dataTables.buttons.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.bootstrap4.min.js}"></script>
+<script th:src="@{/css/plugins/jszip/jszip.min.js}"></script>
+<script th:src="@{/css/plugins/pdfmake/pdfmake.min.js}"></script>
+<script th:src="@{/css/plugins/pdfmake/vfs_fonts.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.html5.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.print.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.colVis.min.js}"></script>
+<script th:src="@{/css/plugins/richtext/jquery.richtext.min.js}"></script>
+
+<script th:src="@{/css/dist/js/adminlte.js}"></script>
+
+<script>
+	$(document).ready(function() {
+		$("#logoutLink").on("click", function(e) {
+			e.preventDefault();
+			document.logoutForm.submit();
+		});
+
+		// customizeDropDownMenu();
+		// customizeTabs();
+	});
+
+
+
+
+
+
+</script>
+<script th:src="@{/js/common_list.js}"></script>
+<script type="text/javascript">
+	moduleURL = "[[@{/products}]]";
+
+	$(document).ready(function() {
+		$(".link-delete").on("click", function(e) {
+			e.preventDefault();
+			showDeleteConfirmModal($(this), 'product');
+		});
+
+		$(".link-detail").on("click", function(e) {
+			e.preventDefault();
+			linkDetailURL = $(this).attr("href");
+			$("#detailModal").modal("show").find(".modal-content").load(linkDetailURL);
+		});
+
+		$("#dropdownCategory").on("change", function() {
+			$("#searchForm").submit();
+		});
+
+	});
+</script>
 <script type="text/javascript">
 	MAX_FILE_SIZE = 502400; // 500KB
-	
+
 	moduleURL = "[[@{/products}]]";
 	brandModuleURL = "[[@{/brands}]]";
 	defaultImageThumbnailSrc = "[[@{/images/image-thumbnail.png}]]";
 	checkUniqueUrl = "[[@{/products/check_unique}]]";
-	
+
 </script>
 <script th:src="@{/js/common_form.js}"></script>
 <script th:src="@{/js/product_form_overview.js}"></script>
 <script th:src="@{/js/product_form_images.js}"></script>
 <script th:src="@{/js/product_form_details.js}"></script>
+
 </body>
 </html>

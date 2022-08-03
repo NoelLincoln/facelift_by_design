@@ -3,6 +3,7 @@ package com.facelift.admin.brand;
 import java.io.IOException;
 import java.util.List;
 
+import com.facelift.admin.AmazonS3Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,23 +55,22 @@ public class BrandController {
 	
 	@PostMapping("/brands/save")
 	public String saveBrand(Brand brand, @RequestParam("fileImage") MultipartFile multipartFile,
-			RedirectAttributes ra) throws IOException {
+							RedirectAttributes ra) throws IOException {
 		if (!multipartFile.isEmpty()) {
 			String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 			brand.setLogo(fileName);
-			
+
 			Brand savedBrand = brandService.save(brand);
-			String uploadDir = "../brand-logos/" + savedBrand.getId();
-			
-			FileUploadUtil.cleanDir(uploadDir);
-			FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-			
+			String uploadDir = "brand-logos/" + savedBrand.getId();
+
+			AmazonS3Util.removeFolder(uploadDir);
+			AmazonS3Util.uploadFile(uploadDir, fileName, multipartFile.getInputStream());
 		} else {
 			brandService.save(brand);
 		}
-		
+
 		ra.addFlashAttribute("message", "The brand has been saved successfully.");
-		return defaultRedirectURL;		
+		return defaultRedirectURL;
 	}
 	
 	@GetMapping("/brands/edit/{id}")

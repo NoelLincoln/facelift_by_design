@@ -1,90 +1,205 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<head th:replace="fragments :: page_head('Settings - Facelift Admin', 'tag')" />
-	<link rel="stylesheet" th:href="@{/richtext/richtext.min.css}" />
-	<script th:src="@{/richtext/jquery.richtext.min.js}"></script>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments :: page_head('Settings - Facelift By Design Admin', 'none')"/>
+<head>	<link rel="stylesheet" th:href="@{/css/plugins/richtext/richtext.min.css}" />
 </head>
-<body>
-<div class="container-fluid">
-	<div th:replace="navigation :: menu"></div>
-	<div>
-		<h2>Site Settings</h2>	
-	</div>
-			
-	<div th:if="${message != null}" class="alert alert-success text-center">
-		[[${message}]]
-	</div>
-					
-	<div>
-		<ul class="nav nav-tabs" id="settingTab" role="tablist">
-		  <li class="nav-item">
-		    <a class="nav-link active" data-toggle="tab" href="#general" role="tab">General</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" data-toggle="tab" href="#countries" role="tab">Countries</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" data-toggle="tab" href="#states" role="tab">States</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" data-toggle="tab" href="#mailServer" role="tab">Mail Server</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" data-toggle="tab" href="#mailTemplates" role="tab">Mail Templates</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" data-toggle="tab" href="#payment" role="tab">Payment</a>
-		  </li>		  		  
-		</ul>
-		
-		<div class="tab-content">
-		  <div class="tab-pane active p-3" id="general" role="tabpanel">
-		  	<div th:replace="settings/general :: content"></div>
-		  </div>
-		  <div class="tab-pane p-3" id="countries" role="tabpanel">
-			<div th:replace="settings/countries :: content"></div>
-		  </div>
-		  <div class="tab-pane p-3" id="states" role="tabpanel">
-			<div th:replace="settings/states :: content"></div>
-		  </div>
-		  <div class="tab-pane p-3" id="mailServer" role="tabpanel">
-			<div th:replace="settings/mail_server :: content"></div>
-		  </div>
-		  <div class="tab-pane p-3" id="mailTemplates" role="tabpanel">
-			<div th:replace="settings/mail_templates/mail_templates :: content"></div>
-		  </div>
-		  <div class="tab-pane p-3" id="payment" role="tabpanel">
-			<div th:replace="settings/payment :: content"></div>
-		  </div>		  	
-		 </div>
+
+<body class="hold-transition dark-mode sidebar-mini layout-fixed">
+<div class="wrapper">
+
+	<!-- Preloader -->
+	<div class="preloader flex-column justify-content-center align-items-center">
+		<img class="animation__shake" th:src="@{/images/faceliftlogo.png}" alt="logo" height="130px" width="100px">
 	</div>
 
-	<div class="toast justify-content-center d-flex" role="alert" aria-live="polite" aria-atomic="true" data-delay="3000">
-	  <div role="alert" aria-live="assertive" aria-atomic="true">
-	  	<div class="toast-body">
-	  		<span id="toastMessage"></span>
-	  	</div>
-	  </div>
+	<!-- Navbar -->
+	<div th:replace="navigation :: menu"></div>
+
+
+	<!-- Content Wrapper. Contains page content -->
+	<div class="content-wrapper">
+		<div class="container-fluid">
+			<div>
+				<h2>Site Settings | [[${pageTitle}]]</h2>
+			</div>
+			<div th:if="${message != null}" class="alert alert-success text-center">
+				[[${message}]]
+			</div>
+
+			<div>
+				<ul class="nav nav-tabs" id="settingTab" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link active" data-toggle="tab" href="#general" role="tab">General</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-toggle="tab" href="#countries" role="tab">Countries</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-toggle="tab" href="#states" role="tab">States</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-toggle="tab" href="#mailServer" role="tab">Mail Server</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-toggle="tab" href="#mailTemplates" role="tab">Mail Templates</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-toggle="tab" href="#payment" role="tab">Payment</a>
+					</li>
+				</ul>
+
+				<div class="tab-content">
+					<div class="tab-pane active p-3" id="general" role="tabpanel">
+						<div th:replace="settings/general :: content"></div>
+					</div>
+					<div class="tab-pane p-3" id="countries" role="tabpanel">
+						<div th:replace="settings/countries :: content"></div>
+					</div>
+					<div class="tab-pane p-3" id="states" role="tabpanel">
+						<div th:replace="settings/states :: content"></div>
+					</div>
+					<div class="tab-pane p-3" id="mailServer" role="tabpanel">
+						<div th:replace="settings/mail_server :: content"></div>
+					</div>
+					<div class="tab-pane p-3" id="mailTemplates" role="tabpanel">
+						<div th:replace="settings/mail_templates/mail_templates :: content"></div>
+					</div>
+					<div class="tab-pane p-3" id="payment" role="tabpanel">
+						<div th:replace="settings/payment :: content"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="toast justify-content-center d-flex" role="alert" aria-live="polite" aria-atomic="true" data-delay="3000">
+				<div role="alert" aria-live="assertive" aria-atomic="true">
+					<div class="toast-body">
+						<span id="toastMessage"></span>
+					</div>
+				</div>
+			</div>
+
+
+			<div th:replace="modal_fragments :: modal_dialog"></div>
+
+			<div th:replace="fragments :: footer"></div>
+
+		</div>
+
 	</div>
-	
-	<div th:replace="fragments :: footer"></div>
-	
+	<!-- /.content-wrapper -->
+	<footer class="main-footer">
+		<strong>Copyright &copy; 2022-2023 <a href="https://adminlte.io">Facelift By Design</a>.</strong>
+		All rights reserved.
+		<div class="float-right d-none d-sm-inline-block">
+			<b>Version</b> 1.0.0
+		</div>
+	</footer>
+
+	<!-- Control Sidebar -->
+	<aside class="control-sidebar control-sidebar-dark">
+		<!-- Control sidebar content goes here -->
+	</aside>
+	<!-- /.control-sidebar -->
 </div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script th:src="@{/css/plugins/jquery/jquery.min.js}"></script>
+<!-- jQuery UI 1.11.4 -->
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+	$.widget.bridge('uibutton', $.ui.button)
+</script>
+
+
+<script th:src="@{/css/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+<!-- overlayScrollbars -->
+<!-- AdminLTE App -->
+<!-- DataTables  & Plugins -->
+<script th:src="@{/css/plugins/datatables/jquery.dataTables.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-responsive/js/dataTables.responsive.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-responsive/js/responsive.bootstrap4.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/dataTables.buttons.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.bootstrap4.min.js}"></script>
+<script th:src="@{/css/plugins/jszip/jszip.min.js}"></script>
+<script th:src="@{/css/plugins/pdfmake/pdfmake.min.js}"></script>
+<script th:src="@{/css/plugins/pdfmake/vfs_fonts.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.html5.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.print.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.colVis.min.js}"></script>
+<script th:src="@{/css/plugins/richtext/jquery.richtext.min.js}"></script>
+
+<script th:src="@{/css/dist/js/adminlte.js}"></script>
 <script type="text/javascript">
 	MAX_FILE_SIZE = 102400; // 100KB
 	contextPath = "[[@{/}]]";
 	var csrfHeaderName = "[[${_csrf.headerName}]]";
 	var csrfValue = "[[${_csrf.token}]]";
-	
+
 	$(document).ready(function() {
 		$("#customerVerificationContent").richText();
 		$("#orderConfirmationContent").richText({height: 400});
 	});
-	
+
+</script>
+<script th:src="@{/css/plugins/common_form.js}"></script>
+<script th:src="@{/css/plugins/countries_setting.js}"></script>
+<script th:src="@{/css/plugins/states_setting.js}"></script>
+<script>
+	$(document).ready(function() {
+		$("#logoutLink").on("click", function(e) {
+			e.preventDefault();
+			document.logoutForm.submit();
+		});
+
+		// customizeDropDownMenu();
+		// customizeTabs();
+	});
+
+
+
+
+
+
+</script>
+<script th:src="@{/js/common_list.js}"></script>
+<script type="text/javascript">
+	moduleURL = "[[@{/products}]]";
+
+	$(document).ready(function() {
+		$(".link-delete").on("click", function(e) {
+			e.preventDefault();
+			showDeleteConfirmModal($(this), 'product');
+		});
+
+		$(".link-detail").on("click", function(e) {
+			e.preventDefault();
+			linkDetailURL = $(this).attr("href");
+			$("#detailModal").modal("show").find(".modal-content").load(linkDetailURL);
+		});
+
+		$("#dropdownCategory").on("change", function() {
+			$("#searchForm").submit();
+		});
+
+	});
+</script>
+<script type="text/javascript">
+	MAX_FILE_SIZE = 502400; // 500KB
+
+	moduleURL = "[[@{/products}]]";
+	brandModuleURL = "[[@{/brands}]]";
+	defaultImageThumbnailSrc = "[[@{/images/image-thumbnail.png}]]";
+	checkUniqueUrl = "[[@{/products/check_unique}]]";
+
 </script>
 <script th:src="@{/js/common_form.js}"></script>
-<script th:src="@{/js/countries_setting.js}"></script>
-<script th:src="@{/js/states_setting.js}"></script>
+<script th:src="@{/js/product_form_overview.js}"></script>
+<script th:src="@{/js/product_form_images.js}"></script>
+<script th:src="@{/js/product_form_details.js}"></script>
+
 </body>
 </html>

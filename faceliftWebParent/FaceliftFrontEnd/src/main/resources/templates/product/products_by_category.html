@@ -12,30 +12,114 @@
 	<div th:replace="navigation :: header_menu"></div>
 	<div th:replace="navigation :: search_nav"></div>
 	<div th:replace="breadcrumb :: content"></div>
-	
-	<div class="row text-center">
-		<th:block th:each="cat : ${category.children}">
-		<div class="col" th:if="${cat.enabled == true}">
-		<a th:href="@{'/c/' + ${cat.alias}}">
-			<img th:src="@{${cat.imagePath}}" height="100" />
-			<br/>
-			<b>[[${cat.name}]]</b>
-		</a>
-		</div>
-		</th:block>
+
+	<!-- Content -->
+	<div id="content">
+
+		<!-- Popular Products -->
+		<section class="shop-page padding-top-100 padding-bottom-100">
+			<div class="container">
+				<div class="item-display">
+					<div class="row">
+						<div class="col-xs-6"> <span class="product-num">Showing 1 - 10 of 30 products</span> </div>
+
+						<!-- Products Select -->
+						<div class="col-xs-6">
+							<div class="pull-right">
+
+								<!-- Short By -->
+								<select class="selectpicker">
+									<option>Short By</option>
+									<option>Short By</option>
+									<option>Short By</option>
+								</select>
+								<!-- Filter By -->
+								<select class="selectpicker">
+									<option>Filter By</option>
+									<option>Short By</option>
+									<option>Short By</option>
+								</select>
+
+								<!-- GRID & LIST -->
+								<a href="#." class="grid-style"><i class="icon-grid"></i></a> <a href="#." class="list-style"><i class="icon-list"></i></a> </div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Popular Item Slide -->
+				<div class="shop-items row">
+					<!-- Item -->
+					<th:block th:each="product : ${listProducts}">
+						<div th:replace="product/product_fragment :: content"></div>
+					</th:block>
+
+
+					</div>
+
+				<div th:replace="fragments :: pagination('/c/' + ${category.alias}, 'product')"></div>
+
+				<!-- Pagination -->
+				<ul class="pagination in-center">
+					<li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+					<li class="active"><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+				</ul>
+			</div>
+
+		</section>
+
+
+		<!-- About -->
+		<section class="small-about padding-top-150 padding-bottom-150">
+			<div class="container">
+
+				<!-- Main Heading -->
+				<div class="heading text-center">
+					<h4>about facelift by design</h4>
+					<p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsumien lacus, eu posuere odio luctus non. Nulla lacinia,
+						eros vel fermentum consectetur, risus purus tempc, et iaculis odio dolor in ex. </p>
+				</div>
+
+				<!-- Social Icons -->
+				<ul class="social_icons">
+					<li><a href="#."><i class="icon-social-facebook"></i></a></li>
+					<li><a href="#."><i class="icon-social-twitter"></i></a></li>
+					<li><a href="#."><i class="icon-social-tumblr"></i></a></li>
+					<li><a href="#."><i class="icon-social-youtube"></i></a></li>
+					<li><a href="#."><i class="icon-social-dribbble"></i></a></li>
+				</ul>
+			</div>
+		</section>
+
+		<!-- News Letter -->
+		<section class="news-letter padding-top-150 padding-bottom-150">
+			<div class="container">
+				<div class="heading light-head text-center margin-bottom-30">
+					<h4>NEWSLETTER</h4>
+					<span>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsumien lacus, eu posuere odi </span> </div>
+				<form>
+					<input type="email" placeholder="Enter your email address" required>
+					<button type="submit">SEND</button>
+				</form>
+			</div>
+		</section>
 	</div>
 	
-	<div class="row">&nbsp;</div>
-	<div class="row">
-		<th:block th:each="product : ${listProducts}">
-		<div th:replace="product/product_fragment :: content"></div>
-		</th:block>
-	</div>
-	
-	<div th:replace="fragments :: pagination('/c/' + ${category.alias}, 'product')"></div>
-	
+
 	<div th:replace="navigation :: footer_menu"></div>
-</div>	
+</div>
+<script th:src="@{/js/jquery-1.11.3.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/own-menu.js}"></script>
+<script th:src="@{/js/jquery.lighter.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+
+<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+<script type="text/javascript" th:src="@{/rs-plugin/js/jquery.tp.t.min.js}"></script>
+<script type="text/javascript" th:src="@{/rs-plugin/js/jquery.tp.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
 <script type="text/javascript">	
 	$(".product-detail-rating-star").rating({
 		displayOnly: true,
