@@ -1,7 +1,7 @@
 server:
-  port: 8087
-  servlet:
-    context-path: /facelift
+  port: 80
+#  servlet:
+#    context-path: /facelift
 
 
 spring:
@@ -23,6 +23,9 @@ spring:
     password: password
     url: jdbc:mysql://localhost:3306/shopmedb
     username: shopmedb
+    hikari:
+      minimum-idle: 1
+      maximum-pool-size: 2
   jpa:
     hibernate:
       ddl-auto: update
