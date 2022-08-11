@@ -60,10 +60,10 @@
 	th:href="@{${moduleURL} + '/page/' + ${pageNum} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">[[${label}]]</a>
 		
 <div th:fragment="pagination(moduleURL, entityName)" th:remove="tag">
-	<div class="text-center m-1" th:if="${totalItems > 0}">
-		<span>Showing [[${entityName}]] # [[${startCount}]] to [[${endCount}]] of [[${totalItems}]]</span>
+	<div class="text-center m-1 " th:if="${totalItems > 0}">
+		<span class="product-num">Showing [[${entityName}]] # [[${startCount}]] to [[${endCount}]] of [[${totalItems}]]</span>
 	</div>
-	<div class="text-center m-1" th:unless="${totalItems > 0}">
+	<div class="text-center m-1 " th:unless="${totalItems > 0}">
 		<span>No [[${entityName}]] found</span>
 	</div>
 	

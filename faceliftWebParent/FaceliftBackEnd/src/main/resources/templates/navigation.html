@@ -180,16 +180,24 @@
 						</a>
 
 					</li>
+					<th:block sec:authorize="hasAuthority('Admin')">
+
 					<li class="nav-item menu-open">
-						<a th:href="@{/users}" class="nav-link ">
+						<a th:href="@{/users}" class="nav-link dropdown-toggle" data-toggle="dropdown" >
 							<i class="nav-icon fas fa-tachometer-alt"></i>
 							<p>
 								Users
 								<i class="right fas "></i>
 							</p>
 						</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" th:href="@{/users/new}">Create New</a>
+							<a class="dropdown-item" th:href="@{/users}">View All</a>
+						</div>
 
 					</li>
+					</th:block>
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson')">
 					<li class="nav-item menu-open">
 						<a th:href="@{/customers}" class="nav-link ">
 							<i class="nav-icon fas fa-tachometer-alt"></i>
@@ -200,6 +208,9 @@
 						</a>
 
 					</li>
+					</th:block>
+
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson', 'Shipper')">
 					<li class="nav-item menu-open">
 						<a th:href="@{/orders}" class="nav-link ">
 							<i class="nav-icon fas fa-tachometer-alt"></i>
@@ -210,6 +221,7 @@
 						</a>
 
 					</li>
+					</th:block>
 					<li class="nav-item">
 						<a th:href="@{/settings}" class="nav-link">
 							<i class="nav-icon fas fa-gears"></i>
@@ -218,29 +230,56 @@
 							</p>
 						</a>
 					</li>
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+
 					<li class="nav-item">
-						<a th:href="@{/categories}" class="nav-link">
+						<a th:href="@{/categories}" class="nav-link  dropdown-toggle" data-toggle="dropdown">
 							<i class="nav-icon fas fa-gears"></i>
 							<p>
 								Categories
 							</p>
 						</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" th:href="@{/categories/new}">Create New</a>
+							<a class="dropdown-item" th:href="@{/categories}">View All</a>
+						</div>
 					</li>
+					</th:block>
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson', 'Editor', 'Shipper')">
+
 					<li class="nav-item">
-						<a th:href="@{/products}" class="nav-link">
+						<a th:href="@{/products}" class="nav-link dropdown-toggle" data-toggle="dropdown">
 							<i class="nav-icon fas fa-gears"></i>
 							<p>
 								Products
 							</p>
 						</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" th:href="@{/products/new}"
+							   sec:authorize="hasAnyAuthority('Admin', 'Editor')">Create New</a>
+							<a class="dropdown-item" th:href="@{/products}">View All</a>
+
+							<a class="dropdown-item" sec:authorize="hasAuthority('Admin')"
+							   th:href="@{/reviews}">Reviews</a>
+						</div>
 					</li>
+					</th:block>
+					<th:block sec:authorize="hasAuthority('Assistant')">
+						<li class="nav-item">
+							<a class="nav-link" th:href="@{/reviews}">Reviews</a>
+						</li>
+					</th:block>
 					<li class="nav-item">
-						<a th:href="@{/brands}" class="nav-link">
+						<a th:href="@{/brands}" class="nav-link dropdown-toggle" data-toggle="dropdown">
 							<i class="nav-icon fas fa-gears"></i>
 							<p>
 								Brands
 							</p>
 						</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" th:href="@{/brands/new}">Create New</a>
+							<a class="dropdown-item" th:href="@{/brands}">View All</a>
+						</div>
 					</li>
 					<li class="nav-item">
 						<a th:href="@{/shipping_rates}" class="nav-link">
@@ -250,6 +289,19 @@
 							</p>
 						</a>
 					</li>
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson')">
+
+					<li class="nav-item">
+						<a th:href="@{/reports}" class="nav-link">
+							<i class="nav-icon fas fa-gears"></i>
+							<p>
+								Sales Report
+							</p>
+						</a>
+					</li>
+					</th:block>
+
+
 
 					<form th:action="@{/logout}" method="post" th:hidden="true" name="logoutForm">
 						<input type="submit" />

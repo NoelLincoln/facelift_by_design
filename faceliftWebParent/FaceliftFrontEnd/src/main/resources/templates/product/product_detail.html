@@ -1,481 +1,361 @@
 <!DOCTYPE html>
+<html lang="en">
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-<head th:replace="fragments :: page_head('Facelift By Design', 'none')" />
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+
+    <head th:replace="fragments :: page_head('Facelift By Design', 'none')" />
+    <link th:href="@{/star-rating/css/star-rating.css}" media="all" rel="stylesheet" type="text/css" />
+    <link th:href="@{/star-rating/themes/krajee-svg/theme.css}" media="all" rel="stylesheet" type="text/css" />
+</head>
 <body>
 
 <!-- LOADER -->
 <div id="loader">
-	<div class="position-center-center">
-		<div class="ldr"></div>
-	</div>
+    <div class="position-center-center">
+        <div class="ldr"></div>
+    </div>
 </div>
 
 <!-- Wrap -->
 <div id="wrap">
 
-	<!-- header -->
-	<div th:replace="navigation :: header_menu"></div>
-
-	<!--======= SUB BANNER =========-->
-	<section class="sub-bnr" data-stellar-background-ratio="0.5">
-		<div class="position-center-center" >
-			<div class="container">
-				<h4>[[${product.shortName}]]</h4>
-				<p th:utext="${product.shortDescription}"></p>
-
-				<div th:replace="breadcrumb :: content"></div>
-
-			</div>
-		</div>
-	</section>
-
-	<!-- Content -->
-	<div id="content">
-
-		<!-- Popular Products -->
-		<section class="padding-top-100 padding-bottom-100">
-			<div class="container">
-
-				<!-- SHOP DETAIL -->
-				<div class="shop-detail">
-					<div class="row">
-
-						<!-- Popular Images Slider -->
-						<div class="col-md-7">
-
-							<!-- Place somewhere in the <body> of your page -->
-							<div id="slider-shop" class="flexslider">
-								<ul class="slides">
-									<li> <img class="img-responsive" th:src="@{${product.mainImagePath}}" alt=""> </li>
-
-								</ul>
-							</div>
-							<th:block th:each="extraImage, status : ${product.images}">
-							<div id="shop-thumb" class="flexslider">
-								<ul class="slides">
-									<li> <img class="img-responsive" th:src="@{${extraImage.imagePath}}"  alt=""> </li>
-
-								</ul>
-							</div>
-							</th:block>
-						</div>
-
-						<!-- COntent -->
-						<div class="col-md-5">
-							<h4>[[${product.shortName}]]</h4>
-<!--							<span class="price"><small>Ksh</small>[[${product.Price}]]</span>-->
-							<div>
-								List Price:
-								<span class="price" th:if="${product.discountPercent <= 0}"><div th:replace="product/product_fragment :: price_fragment(${product.price})"></div></span>
-								<del th:if="${product.discountPercent > 0}"><span><div th:replace="product/product_fragment :: price_fragment(${product.price})"></div></span></del>
-							</div>
-							<div th:if="${product.discountPercent > 0}">
-								Price:
-								<span class="price" style="font-size: larger; color: darkred"><div th:replace="product/product_fragment :: price_fragment(${product.discountPrice})"></div></span>
-								([[${#numbers.formatDecimal(product.discountPercent, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]] % off)
-							</div>
-
-							<!-- Sale Tags -->
-							<div class="on-sale">[[${product.discountPercent}]] %<span>OFF</span> </div>
-							<div style="margin-top: 20px">
-								<span th:if="${product.inStock}" class="text-success"><b>In Stock</b></span>
-								<span th:unless="${product.inStock}" class="text-danger"><b>Out of Stock</b></span>
-							</div>
-							<ul class="item-owner">
-								<li>Brand:<span> [[${product.brand.name}]]</span></li>
-							</ul>
-
-							<!-- Item Detail -->
-							<div><p th:utext="${product.shortDescription}"></p></div>
-
-							<!-- Short By -->
-
-							<div class="some-info">
+    <!-- header -->
+    <div th:replace="navigation :: header_menu"></div>
 
 
+    <!--======= SUB BANNER =========-->
+    <section class="sub-bnr" data-stellar-background-ratio="0.5">
+        <div class="position-center-center" >
+            <div class="container">
+                <h4>[[${product.shortName}]]</h4>
+                <div style="color: white"><p th:utext="${product.shortDescription}"></p></div>
 
-								<!-- INFOMATION -->
-								<div class="inner-info">
-									<h6>DELIVERY INFORMATION</h6>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus ligula a scelerisque gravida. Nullam laoreet tortor ac maximus alique met, consectetur adipiscing elit. </p>
-									<h6>SHIPPING & RETURNS</h6>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus ligula a scelerisque gravida. Nullam laoreet tortor ac maximus alique met, consectetur adipiscing elit. </p>
 
-<!--									<h6>SHARE THIS PRODUCT</h6>-->
+                <div th:replace="breadcrumb :: content"></div>
 
-<!--									&lt;!&ndash; Social Icons &ndash;&gt;-->
-<!--									<ul class="social_icons">-->
-<!--										<li><a href="#."><i class="icon-social-facebook"></i></a></li>-->
-<!--										<li><a href="#."><i class="icon-social-twitter"></i></a></li>-->
-<!--										<li><a href="#."><i class="icon-social-tumblr"></i></a></li>-->
-<!--										<li><a href="#."><i class="icon-social-youtube"></i></a></li>-->
-<!--										<li><a href="#."><i class="icon-social-dribbble"></i></a></li>-->
-<!--									</ul>-->
-								</div>
+            </div>
+        </div>
+    </section>
 
-							</div>
-							<th:block th:if="${product.inStock}">
-								<div th:replace="cart/quantity_control :: quantity_control(1, ${product.id})"></div>
-								<div class="mt-3">
-									<!-- ADD TO CART -->
-									<input type="button" value="Add to Cart" id="buttonAdd2Cart" class="btn btn-primary" />
-									<!-- LIKE -->
-									<div style="margin-top: 10px">
-										<li class="col-xs-6"> <a href="#." class="like-us"><i class="icon-heart"></i></a> </li>
-									</div>
-								</div>
-							</th:block>
-						</div>
+
+    <!-- Content -->
+    <div id="content">
+
+        <!-- Popular Products -->
+        <section class="padding-top-100 padding-bottom-100">
+            <div class="container">
+
+                <!-- SHOP DETAIL -->
+                <div class="shop-detail">
+                    <div class="row">
+
+                        <!-- Popular Images Slider -->
+                        <div class="col-md-7">
+
+                            <!-- Place somewhere in the <body> of your page -->
+                            <div id="slider-shop" class="flexslider">
+                                <ul class="slides">
+                                    <li> <img class="img-responsive" th:src="@{${product.mainImagePath}}" alt=""> </li>
+
+                                </ul>
+                            </div>
+                            <th:block th:each="extraImage, status : ${product.images}">
+                                <div id="shop-thumb" class="flexslider">
+                                    <ul class="slides">
+                                        <li> <img class="img-responsive" th:src="@{${extraImage.imagePath}}"  alt=""> </li>
+
+                                    </ul>
+                                </div>
+                            </th:block>
+                        </div>
+
+                        <!-- COntent -->
+                        <div class="col-md-5">
+                            <h4>[[${product.shortName}]]</h4>
+                            <!--							<span class="price"><small>Ksh</small>[[${product.Price}]]</span>-->
+                            <div>
+                                List Price:
+                                <span class="price" th:if="${product.discountPercent <= 0}"><div th:replace="product/product_fragment :: price_fragment(${product.price})"></div></span>
+                                <del th:if="${product.discountPercent > 0}"><span><div th:replace="product/product_fragment :: price_fragment(${product.price})"></div></span></del>
+                            </div>
+                            <div th:if="${product.discountPercent > 0}">
+                                Price:
+                                <span class="price" style="font-size: larger; color: darkred"><div th:replace="product/product_fragment :: price_fragment(${product.discountPrice})"></div></span>
+                                ([[${#numbers.formatDecimal(product.discountPercent, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]] % off)
+                            </div>
+
+                            <!-- Sale Tags -->
+                            <div class="on-sale">[[${product.discountPercent}]] %<span>OFF</span> </div>
+                            <div style="margin-top: 20px">
+                                <span th:if="${product.inStock}" class="text-success"><b>In Stock</b></span>
+                                <span th:unless="${product.inStock}" class="text-danger"><b>Out of Stock</b></span>
+                            </div>
+                            <ul class="item-owner">
+                                <li>Brand:<span> [[${product.brand.name}]]</span></li>
+                            </ul>
+                            <ul class="item-owner">
+                                <li>Available Color:<span> </span></li>
+                            </ul>
+                            <ul class="item-owner">
+                                <li>Bulb type:<span> </span></li>
+                            </ul>
+                            <ul class="item-owner">
+                                <li>Rating :
+                                    <span>
+                                    <input type="text" class="product-detail-rating-star" dir="ltr" data-size="md" th:value="${product.averageRating}" />
+                                        <a th:href="@{${product.URI} + '#reviews'}">[[${product.reviewCount}]] rating(s)</a>
+
+                                    </span>
+                                </li>
+                            </ul>
+
+
+                            <!-- Item Detail -->
+                            <div><p th:utext="${product.shortDescription}"></p></div>
+
+                            <!-- Short By -->
+
+                            <div class="some-info">
 
 
 
+                                <!-- INFOMATION -->
+                                <div class="inner-info">
+                                    <h6>DELIVERY INFORMATION</h6>
+                                    <p>We currently do deliveries</p>
+                                    <h6>SHIPPING & RETURNS</h6>
+                                    <p>In case of any issues items can be returned within 7 days  </p>
+
+                                    <h6>SHARE THIS PRODUCT</h6>
+
+                                    <!-- Social Icons -->
+                                    <ul class="social_icons">
+                                        <li><a href="#."><i class="icon-social-facebook"></i></a></li>
+                                        <li><a href="#."><i class="icon-social-twitter"></i></a></li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <th:block th:if="${product.inStock}">
+                                <div th:replace="cart/quantity_control :: quantity_control(1, ${product.id})"></div>
+                                <div class="mt-3">
+                                    <!-- ADD TO CART -->
+                                    <input type="button" value="Add to Cart" id="buttonAdd2Cart" class="btn btn-primary" />
+                                    <!-- LIKE -->
+                                    <div style="margin-top: 10px">
+                                        <li class="col-xs-6"> <a href="#." class="like-us"><i class="icon-heart"></i></a> </li>
+                                    </div>
+                                </div>
+                            </th:block>
+                        </div>
+                    </div>
+                </div>
+
+                <!--======= PRODUCT DESCRIPTION =========-->
+                <div class="item-decribe">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs animate fadeInUp" data-wow-delay="0.4s" role="tablist">
+                        <li role="presentation" class="active"><a href="#descr" role="tab" data-toggle="tab">DESCRIPTION</a></li>
+                        <li role="presentation"><a href="#review" role="tab" data-toggle="tab">REVIEW ([[${product.reviewCount}]])</a></li>
+                        <!--						<li role="presentation"><a href="#tags" role="tab" data-toggle="tab">INFORMATION</a></li>-->
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content animate fadeInUp" data-wow-delay="0.4s" >
+                        <!-- DESCRIPTION -->
+                        <div role="tabpanel" class="tab-pane fade in active" id="descr">
+                            <p th:utext="${product.fullDescription}">  <br>
+                            </p>
+                            <h6>THE SIMPLE FACTS</h6>
+                            <ul>
+                                <li>
+                                    <p>Praesent faucibus, leo vitae maximus dictum,</p>
+                                </li>
+                                <li>
+                                    <p> Donec porta ut lectus </p>
+                                </li>
+                                <li>
+                                    <p> Phasellus maximus velit id nisl</p>
+                                </li>
+                                <li>
+                                    <p> Quisque a tellus et sapien aliquam sus</p>
+                                </li>
+                                <li>
+                                    <p> Donec porta ut lectus </p>
+                                </li>
+                                <li>
+                                    <p> Phasellus maximus velit id nisl</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- REVIEW -->
+                        <div role="tabpanel" class="tab-pane fade" id="reviews">
+                            <h6>[[${product.reviewCount}]] REVIEWS FOR THIS ITEM</h6>
+
+                            <!-- REVIEW PEOPLE 1 -->
+                            <div class="media">
+                                <div class="media-left">
+                                    <!--  Image -->
+                                    <div class="avatar"> <a href="#"> <img class="media-object" src="images/avatar-1.jpg" alt=""> </a> </div>
+                                </div>
+                                <!--  Details -->
+                                <div class="media-body">
+                                    <p class="font-playfair"> </p>
+                                    <h6>TYRION LANNISTER <span class="pull-right">MAY 10, 2016</span> </h6>
+                                </div>
+                            </div>
+
+                            <!-- REVIEW PEOPLE 1 -->
+
+                            <div class="media">
+                                <div class="media-left">
+                                    <!--  Image -->
+                                    <div class="avatar"> <a href="#"> <img class="media-object" src="images/avatar-2.jpg" alt=""> </a> </div>
+                                </div>
+                                <!--  Details -->
+                                <div class="media-body">
+                                    <p class="font-playfair">“Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                                        labore et dolore magna aliqua.”</p>
+                                    <h6>TYRION LANNISTER <span class="pull-right">MAY 10, 2016</span> </h6>
+                                </div>
+                            </div>
+
+                            <!-- ADD REVIEW -->
+                            <h6 class="margin-t-40">ADD REVIEW</h6>
+                            <form>
+                                <ul class="row">
+                                    <li class="col-sm-6">
+                                        <label> *NAME
+                                            <input type="text" value="" placeholder="">
+                                        </label>
+                                    </li>
+                                    <li class="col-sm-6">
+                                        <label> *EMAIL
+                                            <input type="email" value="" placeholder="">
+                                        </label>
+                                    </li>
+                                    <li class="col-sm-12">
+                                        <label> *YOUR REVIEW
+                                            <textarea></textarea>
+                                        </label>
+                                    </li>
+                                    <li class="col-sm-6">
+                                        <!-- Rating Stars -->
+                                        <div class="stars"> <span>YOUR RATING</span> <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                                    </li>
+                                    <li class="col-sm-6">
+                                        <button type="submit" class="btn btn-dark btn-small pull-right no-margin">POST REVIEW</button>
+                                    </li>
+                                </ul>
+                            </form>
+                        </div>
+
+                        <!-- TAGS -->
+                        <div role="tabpanel" class="tab-pane fade" id="tags"> </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular Products -->
+        <section class="light-gray-bg padding-top-150 padding-bottom-150">
+            <div class="container">
+
+                <!-- Main Heading -->
+                <div class="heading text-center">
+                    <h4>YOU MAY LIKE THESE</h4>
+                    <span>Related products</span> </div>
+
+                <!-- Popular Item Slide -->
+                <div class="papular-block block-slide">
+
+                    <!-- Item -->
+                    <div class="item" th:each="product : ${listProducts}">
+                        <!-- Item img -->
+                        <div class="item-img"> <img class="img-1" th:src="@{${product.mainImagePath}}" alt="" > <img class="img-2" src="images/product-2.jpg" alt="" >
+                            <!-- Overlay -->
+                            <div class="overlay">
+                                <div class="position-center-center">
+                                    <div class="inn"><a href="images/product-1.jpg" data-lighter><i class="icon-magnifier"></i></a> <a href="#."><i class="icon-basket"></i></a> <a href="#." ><i class="icon-heart"></i></a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item Name -->
+                        <div class="item-name"> <a href="#.">stone cup</a>
+                            <p>Lorem ipsum dolor sit amet</p>
+                        </div>
+                        <!-- Price -->
+                        <span class="price"><small>$</small>299</span> </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+        <!-- About -->
 
 
-
-					</div>
-				</div>
-
-				<!--======= PRODUCT DESCRIPTION =========-->
-				<div class="item-decribe">
-					<!-- Nav tabs -->
-					<ul class="nav nav-tabs animate fadeInUp" data-wow-delay="0.4s" role="tablist">
-						<li role="presentation" class="active"><a href="#descr" role="tab" data-toggle="tab">DESCRIPTION</a></li>
-						<li role="presentation"><a href="#review" role="tab" data-toggle="tab">REVIEW (03)</a></li>
-						<li role="presentation"><a href="#tags" role="tab" data-toggle="tab">INFORMATION</a></li>
-					</ul>
-
-					<!-- Tab panes -->
-					<div class="tab-content animate fadeInUp" data-wow-delay="0.4s">
-						<!-- DESCRIPTION -->
-						<div role="tabpanel" class="tab-pane fade in active" id="descr">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed lectus id nisi interdum mollis. Nam congue tellus quis elit mattis congue. Aenean eu massa sed mauris hendrerit ornare sed eget ante.
-								Vestibulum id eros quam. Nunc volutpat at magna gravida eleifend. Phasellus sit amet nisi tempus, tincidunt elit ac, tempor metus. <br>
-							</p>
-							<h6>THE SIMPLE FACTS</h6>
-							<ul>
-								<li>
-									<p>Praesent faucibus, leo vitae maximus dictum,</p>
-								</li>
-								<li>
-									<p> Donec porta ut lectus </p>
-								</li>
-								<li>
-									<p> Phasellus maximus velit id nisl</p>
-								</li>
-								<li>
-									<p> Quisque a tellus et sapien aliquam sus</p>
-								</li>
-								<li>
-									<p> Donec porta ut lectus </p>
-								</li>
-								<li>
-									<p> Phasellus maximus velit id nisl</p>
-								</li>
-							</ul>
-						</div>
-
-						<!-- REVIEW -->
-						<div role="tabpanel" class="tab-pane fade" id="review">
-							<h6>3 REVIEWS FOR SHIP YOUR IDEA</h6>
-
-							<!-- REVIEW PEOPLE 1 -->
-							<div class="media">
-								<div class="media-left">
-									<!--  Image -->
-									<div class="avatar"> <a href="#"> <img class="media-object" src="images/avatar-1.jpg" alt=""> </a> </div>
-								</div>
-								<!--  Details -->
-								<div class="media-body">
-									<p class="font-playfair">“Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-										labore et dolore magna aliqua.”</p>
-									<h6>TYRION LANNISTER <span class="pull-right">MAY 10, 2016</span> </h6>
-								</div>
-							</div>
-
-							<!-- REVIEW PEOPLE 1 -->
-
-							<div class="media">
-								<div class="media-left">
-									<!--  Image -->
-									<div class="avatar"> <a href="#"> <img class="media-object" src="images/avatar-2.jpg" alt=""> </a> </div>
-								</div>
-								<!--  Details -->
-								<div class="media-body">
-									<p class="font-playfair">“Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-										labore et dolore magna aliqua.”</p>
-									<h6>TYRION LANNISTER <span class="pull-right">MAY 10, 2016</span> </h6>
-								</div>
-							</div>
-
-							<!-- ADD REVIEW -->
-							<h6 class="margin-t-40">ADD REVIEW</h6>
-							<form>
-								<ul class="row">
-									<li class="col-sm-6">
-										<label> *NAME
-											<input type="text" value="" placeholder="">
-										</label>
-									</li>
-									<li class="col-sm-6">
-										<label> *EMAIL
-											<input type="email" value="" placeholder="">
-										</label>
-									</li>
-									<li class="col-sm-12">
-										<label> *YOUR REVIEW
-											<textarea></textarea>
-										</label>
-									</li>
-									<li class="col-sm-6">
-										<!-- Rating Stars -->
-										<div class="stars"> <span>YOUR RATING</span> <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-									</li>
-									<li class="col-sm-6">
-										<button type="submit" class="btn btn-dark btn-small pull-right no-margin">POST REVIEW</button>
-									</li>
-								</ul>
-							</form>
-						</div>
-
-						<!-- TAGS -->
-						<div role="tabpanel" class="tab-pane fade" id="tags"> </div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- Popular Products -->
-		<section class="light-gray-bg padding-top-150 padding-bottom-150">
-			<div class="container">
-
-				<!-- Main Heading -->
-				<div class="heading text-center">
-					<h4>YOU MAY LIKE IT</h4>
-					<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
-          Sed feugiat, tellus vel tristique posuere, diam</span> </div>
-
-				<!-- Popular Item Slide -->
-				<div class="papular-block block-slide">
-
-					<!-- Item -->
-					<div class="item">
-						<!-- Item img -->
-						<div class="item-img"> <img class="img-1" src="images/product-1.jpg" alt="" > <img class="img-2" src="images/product-2.jpg" alt="" >
-							<!-- Overlay -->
-							<div class="overlay">
-								<div class="position-center-center">
-									<div class="inn"><a href="images/product-1.jpg" data-lighter><i class="icon-magnifier"></i></a> <a href="#."><i class="icon-basket"></i></a> <a href="#." ><i class="icon-heart"></i></a></div>
-								</div>
-							</div>
-						</div>
-						<!-- Item Name -->
-						<div class="item-name"> <a href="#.">stone cup</a>
-							<p>Lorem ipsum dolor sit amet</p>
-						</div>
-						<!-- Price -->
-						<span class="price"><small>$</small>299</span> </div>
-
-					<!-- Item -->
-					<div class="item">
-						<!-- Item img -->
-						<div class="item-img"> <img class="img-1" src="images/product-2.jpg" alt="" > <img class="img-2" src="images/product-2.jpg" alt="" >
-							<!-- Overlay -->
-							<div class="overlay">
-								<div class="position-center-center">
-									<div class="inn"><a href="images/product-2.jpg" data-lighter><i class="icon-magnifier"></i></a> <a href="#."><i class="icon-basket"></i></a> <a href="#." ><i class="icon-heart"></i></a></div>
-								</div>
-							</div>
-						</div>
-						<!-- Item Name -->
-						<div class="item-name"> <a href="#.">gray bag</a>
-							<p>Lorem ipsum dolor sit amet</p>
-						</div>
-						<!-- Price -->
-						<span class="price"><small>$</small>299</span> </div>
-
-					<!-- Item -->
-					<div class="item">
-						<!-- Item img -->
-						<div class="item-img"> <img class="img-1" src="images/product-3.jpg" alt="" > <img class="img-2" src="images/product-2.jpg" alt="" >
-							<!-- Overlay -->
-							<div class="overlay">
-								<div class="position-center-center">
-									<div class="inn"><a href="images/product-3.jpg" data-lighter><i class="icon-magnifier"></i></a> <a href="#."><i class="icon-basket"></i></a> <a href="#." ><i class="icon-heart"></i></a></div>
-								</div>
-							</div>
-						</div>
-						<!-- Item Name -->
-						<div class="item-name"> <a href="#.">chiar</a>
-							<p>Lorem ipsum dolor sit amet</p>
-						</div>
-						<!-- Price -->
-						<span class="price"><small>$</small>299</span> </div>
-
-					<!-- Item -->
-					<div class="item">
-						<!-- Item img -->
-						<div class="item-img"> <img class="img-1" src="images/product-4.jpg" alt="" > <img class="img-2" src="images/product-2.jpg" alt="" >
-							<!-- Overlay -->
-							<div class="overlay">
-								<div class="position-center-center">
-									<div class="inn"><a href="images/product-4.jpg" data-lighter><i class="icon-magnifier"></i></a> <a href="#."><i class="icon-basket"></i></a> <a href="#." ><i class="icon-heart"></i></a></div>
-								</div>
-							</div>
-						</div>
-						<!-- Item Name -->
-						<div class="item-name"> <a href="#.">STool</a>
-							<p>Lorem ipsum dolor sit amet</p>
-						</div>
-						<!-- Price -->
-						<span class="price"><small>$</small>299</span> </div>
-				</div>
-			</div>
-		</section>
-
-		<!-- About -->
-		<section class="small-about padding-top-150 padding-bottom-150">
-			<div class="container">
-
-				<!-- Main Heading -->
-				<div class="heading text-center">
-					<h4>about PAVSHOP</h4>
-					<p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsumien lacus, eu posuere odio luctus non. Nulla lacinia,
-						eros vel fermentum consectetur, risus purus tempc, et iaculis odio dolor in ex. </p>
-				</div>
-
-				<!-- Social Icons -->
-				<ul class="social_icons">
-					<li><a href="#."><i class="icon-social-facebook"></i></a></li>
-					<li><a href="#."><i class="icon-social-twitter"></i></a></li>
-					<li><a href="#."><i class="icon-social-tumblr"></i></a></li>
-					<li><a href="#."><i class="icon-social-youtube"></i></a></li>
-					<li><a href="#."><i class="icon-social-dribbble"></i></a></li>
-				</ul>
-			</div>
-		</section>
-
-		<!-- News Letter -->
-		<section class="news-letter padding-top-150 padding-bottom-150">
-			<div class="container">
-				<div class="heading light-head text-center margin-bottom-30">
-					<h4>NEWSLETTER</h4>
-					<span>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsumien lacus, eu posuere odi </span> </div>
-				<form>
-					<input type="email" placeholder="Enter your email address" required>
-					<button type="submit">SEND ME</button>
-				</form>
-			</div>
-		</section>
-	</div>
-
-	<!--======= FOOTER =========-->
-	<footer>
-		<div class="container">
-
-			<!-- ABOUT Location -->
-			<div class="col-md-3">
-				<div class="about-footer"> <img class="margin-bottom-30" src="images/logo-foot.png" alt="" >
-					<p><i class="icon-pointer"></i> Street No. 12, Newyork 12, <br>
-						MD - 123, USA.</p>
-					<p><i class="icon-call-end"></i> 1.800.123.456789</p>
-					<p><i class="icon-envelope"></i> info@PAVSHOP.com</p>
-				</div>
-			</div>
-
-			<!-- HELPFUL LINKS -->
-			<div class="col-md-3">
-				<h6>HELPFUL LINKS</h6>
-				<ul class="link">
-					<li><a href="#."> Products</a></li>
-					<li><a href="#."> Find a Store</a></li>
-					<li><a href="#."> Features</a></li>
-					<li><a href="#."> Privacy Policy</a></li>
-					<li><a href="#."> Blog</a></li>
-					<li><a href="#."> Press Kit </a></li>
-				</ul>
-			</div>
-
-			<!-- SHOP -->
-			<div class="col-md-3">
-				<h6>SHOP</h6>
-				<ul class="link">
-					<li><a href="#."> About Us</a></li>
-					<li><a href="#."> Career</a></li>
-					<li><a href="#."> Shipping Methods</a></li>
-					<li><a href="#."> Contact</a></li>
-					<li><a href="#."> Support</a></li>
-					<li><a href="#."> Retailer</a></li>
-				</ul>
-			</div>
-
-			<!-- MY ACCOUNT -->
-			<div class="col-md-3">
-				<h6>MY ACCOUNT</h6>
-				<ul class="link">
-					<li><a href="#."> Login</a></li>
-					<li><a href="#."> My Account</a></li>
-					<li><a href="#."> My Cart</a></li>
-					<li><a href="#."> Wishlist</a></li>
-					<li><a href="#."> Checkout</a></li>
-				</ul>
-			</div>
-
-			<!-- Rights -->
-
-			<div class="rights">
-				<p>©  2016 PAVSHOP All right reserved. </p>
-				<div class="scroll"> <a href="#wrap" class="go-up"><i class="lnr lnr-arrow-up"></i></a> </div>
-			</div>
-		</div>
-	</footer>
-
-	<!--======= RIGHTS =========-->
-	<div th:replace="fragments :: modal_dialog"></div>
+        <!--======= FOOTER =========-->
+        <div th:replace="navigation :: footer_menu"></div>
 
 </div>
-<script th:src="@{/js/jquery-1.11.3.min.js}"></script>
-<script th:src="@{/js/bootstrap.min.js}"></script>
-<script th:src="@{/js/own-menu.js}"></script>
-<script th:src="@{/js/jquery.lighter.js}"></script>
-<script th:src="@{/js/owl.carousel.min.js}"></script>
 
-<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
-<script type="text/javascript" th:src="@{/rs-plugin/js/jquery.tp.t.min.js}"></script>
-<script type="text/javascript" th:src="@{/rs-plugin/js/jquery.tp.min.js}"></script>
-<script th:src="@{/js/main.js}"></script>
-<script type="text/javascript" th:src="@{/js/jquery.number.min.js}"></script>
-<script type="text/javascript" th:src="@{/js/common_rating.js}"></script>
-<script type="text/javascript" th:src="@{/js/common_modal.js}"></script>
-<script type="text/javascript" th:src="@{/js/quantity_control.js}"></script>
-<script type="text/javascript" th:src="@{/js/add_to_cart.js}"></script>
-<script type="text/javascript">
-	contextPath = "[[@{/}]]";
-	productId = "[[${product.id}]]";
-	var csrfHeaderName = "[[${_csrf.headerName}]]";
-	var csrfValue = "[[${_csrf.token}]]";
+        <div th:replace="fragments :: modal_dialog"></div>
 
-	decimalSeparator = "[[${DECIMAL_POINT_TYPE == 'COMMA' ? ',' : '.'}]]";
-	thousandSeparator = "[[${THOUSANDS_POINT_TYPE == 'COMMA' ? ',' : '.'}]]";
+        <!--======= RIGHTS =========-->
 
-	$(document).ready(function() {
-		bigImage = $("#bigImage");
+    <script th:src="@{/js/jquery-1.11.3.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/own-menu.js}"></script>
+    <script th:src="@{/js/jquery.lighter.js}"></script>
+    <script th:src="@{/js/owl.carousel.min.js}"></script>
 
-		$(".image-thumbnail").mouseover(function() {
-			currentImageSource = $(this).attr("src");
-			currentImageIndex = $(this).attr("index");
+    <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+    <script type="text/javascript" th:src="@{/rs-plugin/js/jquery.tp.t.min.js}"></script>
+    <script type="text/javascript" th:src="@{/rs-plugin/js/jquery.tp.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+    <script type="text/javascript" th:src="@{/js/jquery.number.min.js}"></script>
+    <script th:src="@{/star-rating/js/star-rating.js}" type="text/javascript"></script>
+    <script th:src="@{/star-rating/themes/krajee-svg/theme.js}"></script>
 
-			bigImage.attr("src", currentImageSource);
-			bigImage.attr("index", currentImageIndex);
-		});
+    <script type="text/javascript" th:src="@{/js/common_rating.js}"></script>
+    <script type="text/javascript" th:src="@{/js/common_modal.js}"></script>
+    <script type="text/javascript" th:src="@{/js/quantity_control.js}"></script>
+    <script type="text/javascript" th:src="@{/js/add_to_cart.js}"></script>
+    <script type="text/javascript" th:src="@{/js/review_vote.js}"></script>
 
-		bigImage.on("click", function() {
-			$("#carouselModal").modal("show");
-			imageIndex = parseInt(bigImage.attr("index"));
-			$("#carouselExampleIndicators").carousel(imageIndex);
-		});
-	});
+    <script type="text/javascript">
+        contextPath = "[[@{/}]]";
+        productId = "[[${product.id}]]";
+        var csrfHeaderName = "[[${_csrf.headerName}]]";
+        var csrfValue = "[[${_csrf.token}]]";
 
-</script>
+        decimalSeparator = "[[${DECIMAL_POINT_TYPE == 'COMMA' ? ',' : '.'}]]";
+        thousandSeparator = "[[${THOUSANDS_POINT_TYPE == 'COMMA' ? ',' : '.'}]]";
+
+        $(document).ready(function() {
+            bigImage = $("#bigImage");
+
+            $(".image-thumbnail").mouseover(function() {
+                currentImageSource = $(this).attr("src");
+                currentImageIndex = $(this).attr("index");
+
+                bigImage.attr("src", currentImageSource);
+                bigImage.attr("index", currentImageIndex);
+            });
+
+            bigImage.on("click", function() {
+                $("#carouselModal").modal("show");
+                imageIndex = parseInt(bigImage.attr("index"));
+                $("#carouselExampleIndicators").carousel(imageIndex);
+            });
+        });
+
+
+
+    </script>
+
 </body>
 </html>

@@ -17,11 +17,11 @@
 	<div id="content">
 
 		<!-- Popular Products -->
-		<section class="shop-page padding-top-100 padding-bottom-100">
+		<section class="shop-page padding-top-30 padding-bottom-100">
 			<div class="container">
 				<div class="item-display">
 					<div class="row">
-						<div class="col-xs-6"> <span class="product-num">Showing 1 - 10 of 30 products</span> </div>
+                        <div th:replace="fragments :: pagination('/c/' + ${category.alias}, 'product')"></div>
 
 						<!-- Products Select -->
 						<div class="col-xs-6">
@@ -77,34 +77,30 @@
 
 				<!-- Main Heading -->
 				<div class="heading text-center">
-					<h4>about facelift by design</h4>
-					<p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsumien lacus, eu posuere odio luctus non. Nulla lacinia,
-						eros vel fermentum consectetur, risus purus tempc, et iaculis odio dolor in ex. </p>
+                    <h4> Facelift By Design</h4>
+                    <p>Inspired by the love of interior design </p>
 				</div>
 
 				<!-- Social Icons -->
-				<ul class="social_icons">
-					<li><a href="#."><i class="icon-social-facebook"></i></a></li>
-					<li><a href="#."><i class="icon-social-twitter"></i></a></li>
-					<li><a href="#."><i class="icon-social-tumblr"></i></a></li>
-					<li><a href="#."><i class="icon-social-youtube"></i></a></li>
-					<li><a href="#."><i class="icon-social-dribbble"></i></a></li>
-				</ul>
+                <ul class="social_icons">
+                    <li><a th:href="@{https://www.facebook.com/faceliftke-103447424814128/}" target="_blank"><i class="icon-social-facebook"></i></a></li>
+                    <li><a href="#."><i class="icon-social-instagram"></i></a></li>
+                </ul>
 			</div>
 		</section>
 
 		<!-- News Letter -->
-		<section class="news-letter padding-top-150 padding-bottom-150">
-			<div class="container">
-				<div class="heading light-head text-center margin-bottom-30">
-					<h4>NEWSLETTER</h4>
-					<span>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsumien lacus, eu posuere odi </span> </div>
-				<form>
-					<input type="email" placeholder="Enter your email address" required>
-					<button type="submit">SEND</button>
-				</form>
-			</div>
-		</section>
+<!--		<section class="news-letter padding-top-150 padding-bottom-150">-->
+<!--			<div class="container">-->
+<!--				<div class="heading light-head text-center margin-bottom-30">-->
+<!--					<h4>NEWSLETTER</h4>-->
+<!--					<span>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsumien lacus, eu posuere odi </span> </div>-->
+<!--				<form>-->
+<!--					<input type="email" placeholder="Enter your email address" required>-->
+<!--					<button type="submit">SEND</button>-->
+<!--				</form>-->
+<!--			</div>-->
+<!--		</section>-->
 	</div>
 	
 

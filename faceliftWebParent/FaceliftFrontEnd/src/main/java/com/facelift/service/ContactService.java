@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ContactService {
 
-//    void createEmail(Contact contact, String message, String subject, String email, String Name);
+    void createEmail(Contact contact, String message, String subject, String email, String Name);
 
     List<User> findByEmail(User user);
 

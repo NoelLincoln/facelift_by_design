@@ -19,7 +19,7 @@
 						<!-- NAV -->
 						<div class="collapse navbar-collapse" id="nav-open-btn">
 							<ul class="nav">
-								<li class="dropdown active"> <a th:href="@{/}" class="dropdown-toggle" data-toggle="dropdown">Home</a>
+								<li class="dropdown active"> <a th:href="@{/}">Home</a>
 
 
 								</li>
@@ -34,12 +34,12 @@
 <!--								</li>-->
 
 								<!-- Two Link Option -->
-								<li class="dropdown"> <a th:href="@{/gallery}" class="dropdown-toggle" data-toggle="dropdown">Gallery</a>
+<!--								<li class="dropdown"> <a th:href="@{/gallery}" class="dropdown-toggle" data-toggle="dropdown">Gallery</a>-->
 
 								</li>
 
 								<!-- MEGA MENU -->
-								<li class="dropdown megamenu"> <a href="#." class="dropdown-toggle" data-toggle="dropdown">store</a>
+								<li class="dropdown megamenu"> <a href="#." class="dropdown-toggle" data-toggle="dropdown">Store</a>
 									<div class="dropdown-menu">
 										<div class="row">
 
@@ -49,7 +49,7 @@
 												<ul>
 													<li> <a th:href="@{/products}">Products </a> </li>
 
-													<li> <a th:href="@{/checkout}">Checkout</a> </li>
+													<li> <a sec:authorize="isAuthenticated()" th:href="@{/checkout}">Checkout</a> </li>
 												</ul>
 											</div>
 
@@ -58,15 +58,7 @@
 												<h6>TOp Rate Products</h6>
 												<div class="top-rated">
 													<ul>
-														<li>
-															<div class="media-left">
-																<div class="cart-img"> <a href="#"> <img class="media-object img-responsive" src="images/cart-img-1.jpg" alt="..."> </a> </div>
-															</div>
-															<div class="media-body">
-																<h6 class="media-heading">WOOD CHAIR</h6>
-																<div class="stars"> <i class="fa fa-star"></i> <i class="fas fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-																<span class="price">129.00 USD</span> </div>
-														</li>
+
 														<li>
 															<div class="media-left">
 																<div class="cart-img"> <a href="#"> <img class="media-object img-responsive" src="images/shopme/img15.jpg" alt="..."> </a> </div>
@@ -76,22 +68,14 @@
 																<div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
 																<span class="price">129.00 USD</span> </div>
 														</li>
-														<li>
-															<div class="media-left">
-																<div class="cart-img"> <a href="#"> <img class="media-object img-responsive" src="images/cart-img-3.jpg" alt="..."> </a> </div>
-															</div>
-															<div class="media-body">
-																<h6 class="media-heading">WOOD SPOON</h6>
-																<div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-																<span class="price">129.00 USD</span> </div>
-														</li>
+
 													</ul>
 												</div>
 											</div>
 
 											<!-- New Arrival -->
 											<div class="col-md-5">
-												<h5>NEW ARRIVAL 2016 <span>(Best Collection)</span></h5>
+												<h5>NEW ARRIVAL  <span>(Best Collection)</span></h5>
 												<img class="nav-img" src="images/nav-img.png" alt="" >
 												<p>Lorem ipsum dolor sit amet,<br>
 													consectetur adipiscing elit. <br>
@@ -113,7 +97,7 @@
 								<li class="dropdown user-acc"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" ><i class="icon-user "></i> </a>
 									<ul class="dropdown-menu">
 										<li sec:authorize="isAuthenticated()">
-											<h6>HELLO! <span sec:authentication="name" ></span></h6>
+											<h6>HELLO! &nbsp <span sec:authentication="name" ></span></h6>
 										</li>
 										<li ><a  sec:authorize="isAuthenticated()" th:href="@{/cart}">MY CART</a></li>
 										<li ><a sec:authorize="isAuthenticated()" th:href="@{/account_details}">My Account</a></li>
@@ -258,29 +242,72 @@
 </div>
 
 <div th:fragment="footer_menu">
-	<div>
-		<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bottomNavbar">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="bottomNavbar">
-				<ul class="navbar-nav">				
-					<li class="nav-item">
-						<a class="nav-link" href="">About Us</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="">Privacy Notice</a>
-					</li>				
-					<li class="nav-item">
-						<a class="nav-link" href="">Returns &amp; Refunds</a>
-					</li>
-				</ul>
-			</div>		
-		</nav>
-	</div>
-	<div th:fragment="footer" class="text-center m-3">
-		<p>[[${COPYRIGHT}]]</p>
-	</div>	
+    <!--======= FOOTER =========-->
+	<section class="small-about padding-top-150 padding-bottom-150">
+		<div class="container">
+
+			<!-- Main Heading -->
+			<div class="heading text-center">
+				<h4> Facelift By Design</h4>
+				<p>Inspired by the love of interior design </p>
+			</div>
+
+			<!-- Social Icons -->
+			<ul class="social_icons">
+				<li><a th:href="@{https://www.facebook.com/faceliftke-103447424814128/}" target="_blank"><i class="icon-social-facebook"></i></a></li>
+				<li><a href="#."><i class="icon-social-instagram"></i></a></li>
+			</ul>
+		</div>
+	</section>
+    <footer>
+
+
+        <div class="container">
+
+			<!-- About -->
+
+
+            <!-- HELPFUL LINKS -->
+            <div class="col-md-3">
+                <h6>HELPFUL LINKS</h6>
+                <ul class="link">
+                    <li><a th:href="@{/products}"> Products</a></li>
+                    <li><a th:href="@{/privacypolicy}"> Privacy Policy</a></li>
+                    <li><a th:href="@{/mediumblog}"> Blog</a></li>
+                </ul>
+            </div>
+
+            <!-- SHOP -->
+            <div class="col-md-3">
+                <h6>SHOP</h6>
+                <ul class="link">
+                    <li><a href="#."> About Us</a></li>
+                    <li><a href="#."> Shipping Methods</a></li>
+                    <li><a href="#."> Contact</a></li>
+                    <li><a href="#."> Support</a></li>
+                </ul>
+            </div>
+
+            <!-- MY ACCOUNT -->
+            <div class="col-md-3" sec:authorize="isAuthenticated()" >
+                <h6>MY ACCOUNT</h6>
+                <ul class="link">
+                    <li><a th:href="@{/login}"> Login</a></li>
+                    <li><a th:href="@{/account}"> My Account</a></li>
+                    <li><a th:href="@{/cart}"> My Cart</a></li>
+                    <li><a th:href="@{/wishlist}"> Wishlist</a></li>
+                    <li><a th:href="@{/checkout}"> Checkout</a></li>
+                </ul>
+            </div>
+
+            <!-- Rights -->
+
+            <div class="rights">
+                <p>©  [[${COPYRIGHT}]] </p>
+                <div class="scroll"> <a href="#wrap" class="go-up"><i class="lnr lnr-arrow-up"></i></a> </div>
+            </div>
+        </div>
+    </footer>
 </div>
 </body>
 </html>
