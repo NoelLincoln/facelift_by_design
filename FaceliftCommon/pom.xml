@@ -24,9 +24,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.facelift</groupId>
-	<artifactId>faceliftCommon</artifactId>
+	<artifactId>FaceliftCommon</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>faceliftCommon</name>
+	<name>FaceliftCommon</name>
 	<description>common library</description>
 
 	<properties>
