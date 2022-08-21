@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
-<head th:replace="fragments :: page_head('Shopme', 'none')" />
+<head th:replace="fragments :: page_head('Facelift By Design', 'none')" />
 
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
 
@@ -74,11 +74,11 @@
                                     <span th:text="${item.quantity}" class="item-quantity"></span> x <a th:href="@{'/p/' + ${product.alias}}" target="_blank"
                                                                               th:title="${product.name}">
                                 </a>
-                                    <p><strong><b>[[${product.shortName}]]</b></strong></p>
+                                    <a th:href="@{'/p/' + ${product.alias}}" target="_blank"> <p><strong><b>[[${product.shortName}]]</b></strong></p></a>
 <!--                                    <p>Product Code - 232321939</p>-->
                                 </div>
                             </div>
-                            <div  class="price" >
+                            <div class="price">
                                 <th:block th:if="${product.discountPercent &lt;= 0}">
                                     <span th:text="${product.price}"></span>
                                 </th:block>
@@ -87,7 +87,7 @@
                                 </th:block>
 
                             </div>
-                            <div class="quantity">
+                            <div class="">
                                 <div th:replace="cart/quantity_control :: quantity_control(${item.quantity}, ${product.id})"></div>
                             </div>
                             <div class="">
@@ -141,7 +141,7 @@
                                     </select>
                                 </div>
                                 <!-- SUB TOTAL -->
-                                <p class="all-total">TOTAL COST  <span th:if="${CURRENCY_SYMBOL_POSITION == 'Before price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span><span id="total" class="h2">[[${#numbers.formatDecimal(estimatedTotal, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]]</span><span th:if="${CURRENCY_SYMBOL_POSITION == 'After price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
+                                <p class="all-total">TOTAL COST  <span th:if="${CURRENCY_SYMBOL_POSITION == 'Before price'}" th:remove="tag"></span><span id="total" class="h2">Ksh &nbsp [[${#numbers.formatDecimal(estimatedTotal, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]]</span><span th:if="${CURRENCY_SYMBOL_POSITION == 'After price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
                                 </p>
                                 <div class="coupn-btn"> <a th:href="@{/checkout}" class="btn">Checkout</a>  </div>
 

@@ -1,76 +1,187 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments :: page_head('Brands - Shopme Admin', 'none')" />
-<body>
-<div class="container-fluid">
-	<div th:replace="navigation :: menu"></div>
-	<div>
-		<h2>Manage Brands</h2>	
-		
-		<a th:href="@{/brands/new}" class="fas fa-folder-plus fa-2x icon-dark mr-2"></a>
-		<a th:href="@{/brands/export/csv}" class="fas fa-file-csv fa-2x icon-dark mr-2"></a>
-	</div>
-		
-	<div th:replace="fragments :: search_form_and_message" />
-	
-	<div class="full-details">
-		<table class="table table-bordered table-striped table-hover table-responsive-xl">
-			<thead class="thead-dark">
-				<tr>
-					<th class="hideable-column">Brand ID</th>
-					<th>Logo</th>
-					<th th:replace="fragments :: column_link('name', 'Brand Name', 'none')" />
-					<th>Categories</th>
-					<th></th>
-				</tr>								
-			</thead>
-			<tbody>
-				<tr th:each="brand : ${listBrands}">
-					<td class="hideable-column">[[${brand.id}]]</td>
-					<td>
-						<img th:src="@{${brand.logoPath}}" style="width: 100px" class="img-fluid"/>
-					</td>
-					<td>[[${brand.name}]]</td>
-					<td>
-						<th:block th:each="cat : ${brand.categories}">
-						<span class="badge badge-secondary" th:text="${cat.name}"></span>
-						</th:block>
-					</td>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments :: page_head('Brands - Facelift By Design Admin', 'none')" />
 
-					<td>
-						<div th:replace="fragments :: edit('brand', '/brands/edit/' + ${brand.id})" />
-						&nbsp; 
-						<div th:replace="fragments :: delete('brand', ${brand.id}, '/brands/delete/' + ${brand.id}, true)" />						
-					</td>					
-				</tr>
-			</tbody>
-		</table>
+<body class="hold-transition dark-mode sidebar-mini layout-fixed">
+<div class="wrapper">
+
+	<!-- Preloader -->
+	<div class="preloader flex-column justify-content-center align-items-center">
+		<img class="animation__shake" th:src="@{/images/faceliftlogo.png}" alt="AdminLTELogo" height="130px" width="100px">
 	</div>
-	
-	<div class="less-details">
-		<div th:each="brand : ${listBrands}" class="row m-1">
-			<div class="col-6">
-				<img th:src="@{${brand.logoPath}}" style="width: 100px" class="img-fluid"/>			
-			</div>
-			<div class="col-6">
-				<div><b>[[${brand.name}]]</b></div>
-				<div class="mt-2">
-					<div th:replace="fragments :: edit('brand', '/brands/edit/' + ${brand.id})" />
-					&nbsp; 
-					<div th:replace="fragments :: delete('brand', ${brand.id}, '/brands/delete/' + ${brand.id}, true)" />
+
+	<!-- Navbar -->
+	<div th:replace="navigation :: menu"></div>
+
+
+	<!-- Content Wrapper. Contains page content -->
+	<div class="content-wrapper">
+		<div style="margin-left: 20px">
+			<h2>Manage Brands</h2>
+			<a th:href="@{/brands/new}" class="fas fa-folder-plus fa-2x icon-dark mr-2"></a>
+			<a th:href="@{/brands/export/csv}" class="fas fa-file-csv fa-2x icon-dark mr-2"></a>
+		</div>
+		<!-- Content Header (Page header) -->
+		<div class="content-header">
+			<div class="container-fluid">
+				<div class="row mb-2">
+					<div class="col-sm-6">
+						<h1 class="m-0">Brands</h1>
+					</div><!-- /.col -->
+					<div class="col-sm-6">
+						<ol class="breadcrumb float-sm-right">
+							<li class="breadcrumb-item"><a href="#">Home</a></li>
+							<li class="breadcrumb-item active">Brands</li>
+						</ol>
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+			</div><!-- /.container-fluid -->
+		</div>
+		<!-- /.content-header -->
+
+		<!-- Main content -->
+		<!-- Main content -->
+		<section class="content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12 col-sm-6">
+						<div class="card">
+							<div class="card-header">
+								<h3 class="card-title">DataTable with default features</h3>
+							</div>
+							<!-- /.card-header -->
+							<div class="card-body col-sm-6 col-lg-3" >
+								<table id="example1" class="table table-bordered table-striped">
+									<thead>
+									<tr>
+										<th class="hideable-column">Brand ID</th>
+										<th>Logo</th>
+										<th th:replace="fragments :: column_link('name', 'Brand Name', 'none')" />
+										<th>Categories</th>
+										<th></th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr th:each="brand : ${listBrands}">
+										<td class="hideable-column">[[${brand.id}]]</td>
+										<td>
+											<img th:src="@{${brand.logoPath}}" style="width: 100px" class="img-fluid"/>
+										</td>
+										<td>[[${brand.name}]]</td>
+										<td>
+											<th:block th:each="cat : ${brand.categories}">
+												<span class="badge badge-secondary" th:text="${cat.name}"></span>
+											</th:block>
+										</td>
+
+										<td>
+											<div th:replace="fragments :: edit('brand', '/brands/edit/' + ${brand.id})" />
+											&nbsp;
+											<div th:replace="fragments :: delete('brand', ${brand.id}, '/brands/delete/' + ${brand.id}, true)" />
+										</td>
+									</tr>
+									</tbody>
+									<tfoot>
+									<tr>
+										<th class="hideable-column">Brand ID</th>
+										<th>Logo</th>
+										<th th:replace="fragments :: column_link('name', 'Brand Name', 'none')" />
+										<th>Categories</th>
+										<th></th>
+									</tr>
+									</tfoot>
+								</table>
+							</div>
+							<!-- /.card-body -->
+						</div>
+						<!-- /.card -->
+					</div>
+					<!-- /.col -->
 				</div>
+				<!-- /.row -->
 			</div>
-			<div>&nbsp;</div>
-		</div>	
-	</div>	
-	
-	<div th:replace="fragments :: pagination('brands')"></div>
-	
-	<div th:replace="modal_fragments :: confirm_modal" />
-	
-	<div th:replace="fragments :: footer"></div>
-	
+			<!-- /.container-fluid -->
+		</section>
+		<!-- /.content -->
+	</div>
+	<!-- /.content-wrapper -->
+	<footer class="main-footer">
+		<strong>Copyright &copy; 2022-2023 <a href="https://adminlte.io">Facelift By Design</a>.</strong>
+		All rights reserved.
+		<div class="float-right d-none d-sm-inline-block">
+			<b>Version</b> 3.2.0
+		</div>
+	</footer>
+
+	<!-- Control Sidebar -->
+	<aside class="control-sidebar control-sidebar-dark">
+		<!-- Control sidebar content goes here -->
+	</aside>
+	<!-- /.control-sidebar -->
 </div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script th:src="@{/css/plugins/jquery/jquery.min.js}"></script>
+<!-- jQuery UI 1.11.4 -->
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+	$.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script  th:src="@{/js/common.js}" ></script>
+
+<script th:src="@{/css/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+<!-- overlayScrollbars -->
+<!-- AdminLTE App -->
+<!-- DataTables  & Plugins -->
+<script th:src="@{/css/plugins/datatables/jquery.dataTables.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-responsive/js/dataTables.responsive.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-responsive/js/responsive.bootstrap4.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/dataTables.buttons.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.bootstrap4.min.js}"></script>
+<script th:src="@{/css/plugins/jszip/jszip.min.js}"></script>
+<script th:src="@{/css/plugins/pdfmake/pdfmake.min.js}"></script>
+<script th:src="@{/css/plugins/pdfmake/vfs_fonts.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.html5.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.print.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.colVis.min.js}"></script>
+<script th:src="@{/css/dist/js/adminlte.js}"></script>
+
+<script>
+	$(document).ready(function() {
+		$("#logoutLink").on("click", function(e) {
+			e.preventDefault();
+			document.logoutForm.submit();
+		});
+
+		// customizeDropDownMenu();
+		// customizeTabs();
+	});
+
+
+
+
+	$(function () {
+		$("#example1").DataTable({
+			"responsive": true, "lengthChange": false, "autoWidth": false,
+			"buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+		}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+		$('#example2').DataTable({
+			"paging": true,
+			"lengthChange": false,
+			"searching": false,
+			"ordering": true,
+			"info": true,
+			"autoWidth": false,
+			"responsive": true,
+		});
+	});
+
+</script>
 <script th:src="@{/js/common_list.js}"></script>
 <script type="text/javascript">
 	moduleURL = "[[@{/brands}]]";
@@ -82,5 +193,9 @@
 		});
 	});
 </script>
+
+<!-- AdminLTE for demo purposes -->
+<!--<script th:src="@{/css/dist/js/demo.js}"></script>-->
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 </body>
 </html>

@@ -59,7 +59,7 @@ public class MailConstructor {
 
 //		String url = contextPath + "/newUser?token=";
 		String message = contact.getMessage();
-//		String mail = contact.getEmail();
+		String mail = contact.getEmail();
 		SimpleMailMessage email = new SimpleMailMessage();
 		String adminmail ="info@facelift.co.ke";
 		email.setTo(adminmail);

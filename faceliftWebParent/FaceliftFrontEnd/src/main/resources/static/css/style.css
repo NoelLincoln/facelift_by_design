@@ -241,11 +241,11 @@ a:hover, a:focus {
 	border: none;
 	color: #fff;
 	display: inline-block;
-	padding: 5px 50px;
+	padding: 5px 24px;
 	text-transform: uppercase;
 	font-weight: bold;
 	font-size: 18px;
-	border-radius: 0px;
+	border-radius: 10px;
 	font-family: 'Montserrat', sans-serif;
 	line-height: 46px;
 	background: #2d3a4b;
@@ -1668,7 +1668,7 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 .shop-items .item {
 	background: #f7f7f7;
 	position: relative;
-	padding: 80px 0;
+	padding: 20px 0;
 	padding-bottom: 50px;
 }
 .shop-items .item .item-name {
@@ -1679,6 +1679,8 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 .shop-items .item .item-img {
 	position: relative;
 	overflow: hidden;
+	object-fit: contain;
+
 }
 .shop-items .inn {
 	display: inline-block;
@@ -1728,13 +1730,16 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 	display: inline-block;
 	width: 100%;
 	text-align: center;
-	margin-top: 50px;
+	margin-top: 40px;
 	color: #2d3a4b;
 	-webkit-transition: 0.4s ease-in-out;
 	-moz-transition: 0.4s ease-in-out;
 	-ms-transition: 0.4s ease-in-out;
 	-o-transition: 0.4s ease-in-out;
 	transition: 0.4s ease-in-out;
+}
+.deleteprice {
+	text-decoration: line-through;
 }
 .shop-items .price small {
 	font-size: 12px;
@@ -3342,12 +3347,13 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 }
 .small-about .social_icons {
 	text-align: center;
+	margin-top: 20px;
 }
 .small-about .social_icons li {
 	display: inline-block;
 }
 .small-about .social_icons li a {
-	font-size: 16px;
+	font-size: 36px;
 	margin: 0 5px;
 	color: #2d3a4b;
 }
@@ -3357,7 +3363,7 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 .small-about p {
 	font-family: 'Playfair Display', serif;
 	color: #4d4d4d;
-	font-size: 14px;
+	font-size: 18px;
 	line-height: 20px;
 	max-width: 900px;
 	margin: 0 auto;
@@ -3366,7 +3372,7 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
       SUB BANNER
 ========================================================*/
 .sub-bnr {
-	background: url(../images/sub-bnr-bg.jpg) no-repeat;
+	background: url(../images/bg-banner.jpg) no-repeat;
 	background-size: cover !important;
 	min-height: 610px;
 	text-align: center;
@@ -3380,7 +3386,7 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 	margin-top: 0px;
 }
 .sub-bnr p {
-	color: #666666;
+	color: #fff;
 	letter-spacing: 0px;
 	font-family: 'Playfair Display', serif;
 	font-size: 14px;

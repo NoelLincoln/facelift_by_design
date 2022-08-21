@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments :: page_head('Reviews - Facelift By Design Admin', 'none')" />
+
+<body class="hold-transition dark-mode sidebar-mini layout-fixed">
+<div class="wrapper">
+
+	<!-- Preloader -->
+	<div class="preloader flex-column justify-content-center align-items-center">
+		<img class="animation__shake" th:src="@{/images/faceliftlogo.png}" alt="AdminLTELogo" height="130px" width="100px">
+	</div>
+
+	<!-- Navbar -->
+	<div th:replace="navigation :: menu"></div>
+
+
+	<!-- Content Wrapper. Contains page content -->
+	<div class="content-wrapper">
+		<div style="margin-left:20px">
+			<h2>Manage Reviews</h2>
+
+			<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+				<a th:href="@{/products/new}" class="fas fa-folder-plus fa-2x icon-dark mr-2"></a>
+				<a th:href="@{/products/export/csv}" class="fas fa-file-csv fa-2x icon-dark mr-2"></a>
+			</th:block>
+
+		</div>
+		<div>
+			<div th:if="${message != null}" class="alert alert-success text-center">
+				[[${message}]]
+			</div>
+		</div>
+		<!-- Content Header (Page header) -->
+		<div class="content-header">
+			<div class="container-fluid">
+				<div class="row mb-2">
+					<div class="col-sm-6">
+						<h1 class="m-0">Reviews</h1>
+					</div><!-- /.col -->
+					<div class="col-sm-6">
+						<ol class="breadcrumb float-sm-right">
+							<li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+							<li class="breadcrumb-item active">Reviews</li>
+						</ol>
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+			</div><!-- /.container-fluid -->
+		</div>
+		<!-- /.content-header -->
+
+		<!-- Main content -->
+		<!-- Main content -->
+		<section class="content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<div class="card">
+							<div class="card-header">
+								<h3 class="card-title"></h3>
+							</div>
+							<!-- /.card-header -->
+							<div class="card-body">
+								<div th:replace="fragments :: search_form_and_message" />
+
+								<div class="full-details">
+									<table class="table table-bordered table-striped table-hover table-responsive-xl">
+										<thead class="thead-dark">
+										<tr>
+											<th th:replace="fragments :: column_link('id', 'ID', 'none')" />
+											<th th:replace="fragments :: column_link('product', 'Product', 'none')" />
+											<th th:replace="fragments :: column_link('customer', 'Customer', 'none')" />
+											<th th:replace="fragments :: column_link('rating', 'Rating', 'none')" />
+											<th th:replace="fragments :: column_link('reviewTime', 'Review Time', 'none')" />
+											<th></th>
+										</tr>
+										</thead>
+										<tbody>
+										<tr th:each="review : ${listReviews}">
+											<td>[[${review.id}]]</td>
+											<td>
+												<a th:href="@{'/products/detail/' + ${review.product.id}}" class="link-detail-product">
+													[[${review.product.shortName}]]
+												</a>
+											</td>
+											<td>
+												<a th:href="@{'/customers/detail/' + ${review.customer.id}}" class="link-detail-customer">
+													[[${review.customer.fullName}]]
+												</a>
+											</td>
+											<td>[[${review.rating}]] <i class="far fa-star"></i></td>
+											<td>[[${review.reviewTime}]]</td>
+											<td>
+												<a class="fas fa-file-alt fa-2x icon-green link-detail-review"
+												   th:href="@{'/reviews/detail/' + ${review.id}}"
+												   title="View details of this review"
+												></a>
+												&nbsp;
+												<div th:replace="fragments :: edit('review', '/reviews/edit/' + ${review.id})" />
+												&nbsp;
+												<div th:replace="fragments :: delete('review', ${review.id}, '/reviews/delete/' + ${review.id}, true)" />
+											</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="less-details">
+									<div th:each="review : ${listReviews}" class="row m-1">
+										<div class="col-2">
+											<span>[[${review.id}]]</span>
+										</div>
+										<div class="col-10">
+											<div class="mb-1">
+												<span>[[${review.product.shortName}]]</span>
+											</div>
+											<div>
+												&nbsp;
+												<span>[[${review.rating}]] <i class="far fa-star"></i></span>
+												&nbsp;
+												<a class="fas fa-file-alt fa-2x icon-green link-detail-review"
+												   th:href="@{'/reviews/detail/' + ${review.id}}"
+												   title="View details of this review"
+												></a>
+												&nbsp;
+												<div th:replace="fragments :: edit('review', '/reviews/edit/' + ${review.id})" />
+												&nbsp;
+												<div th:replace="fragments :: delete('review', ${review.id}, '/reviews/delete/' + ${review.id}, true)" />
+											</div>
+										</div>
+										<div>&nbsp;</div>
+									</div>
+								</div>
+							</div>
+							<!-- /.card-body -->
+						</div>
+						<!-- /.card -->
+					</div>
+					<!-- /.col -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /.container-fluid -->
+		</section>
+		<!-- /.content -->
+
+		<div th:replace="modal_fragments :: confirm_modal" />
+
+		<div class="modal fade" id="detailModal">
+			<div class="modal-dialog modal-xl">
+				<div class="modal-content">
+				</div>
+			</div>
+		</div>
+		<div th:replace="fragments :: pagination('review')"></div>
+
+	</div>
+	<!-- /.content-wrapper -->
+	<footer class="main-footer">
+		<strong>Copyright &copy; 2022-2023 <a href="https:">Facelift By Design</a>.</strong>
+		All rights reserved.
+		<div class="float-right d-none d-sm-inline-block">
+			<b>Version</b> 3.2.0
+		</div>
+	</footer>
+
+	<!-- Control Sidebar -->
+	<aside class="control-sidebar control-sidebar-dark">
+		<!-- Control sidebar content goes here -->
+	</aside>
+	<!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script th:src="@{/css/plugins/jquery/jquery.min.js}"></script>
+<!-- jQuery UI 1.11.4 -->
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+	$.widget.bridge('uibutton', $.ui.button)
+</script>
+
+
+<script th:src="@{/css/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+<!-- overlayScrollbars -->
+<!-- AdminLTE App -->
+<!-- DataTables  & Plugins -->
+<script th:src="@{/css/plugins/datatables/jquery.dataTables.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-responsive/js/dataTables.responsive.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-responsive/js/responsive.bootstrap4.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/dataTables.buttons.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.bootstrap4.min.js}"></script>
+<script th:src="@{/css/plugins/jszip/jszip.min.js}"></script>
+<script th:src="@{/css/plugins/pdfmake/pdfmake.min.js}"></script>
+<script th:src="@{/css/plugins/pdfmake/vfs_fonts.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.html5.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.print.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.colVis.min.js}"></script>
+<script th:src="@{/css/dist/js/adminlte.js}"></script>
+
+
+
+<script>
+	$(document).ready(function() {
+		$("#logoutLink").on("click", function(e) {
+			e.preventDefault();
+			document.logoutForm.submit();
+		});
+
+		// customizeDropDownMenu();
+		// customizeTabs();
+	});
+
+
+
+
+	$(function () {
+		$("#example1").DataTable({
+			"responsive": true, "lengthChange": false, "autoWidth": false,
+			"paging": false,
+			"info": false,
+			"ordering": true,
+			"buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+		}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+		$('#example2').DataTable({
+
+			"lengthChange": true,
+			"autoWidth": false,
+			"responsive": true,
+		});
+	});
+
+</script>
+<script th:src="@{/js/common_list.js}"></script>
+<script type="text/javascript">
+	moduleURL = "[[@{/reviews}]]";
+
+	$(document).ready(function() {
+		handleDeleteLink();
+		handleProductDetailLink();
+		handleCustomerDetailLink();
+		handleReviewDetailLink();
+	});
+
+	function handleDeleteLink() {
+		$(".link-delete").on("click", function(e) {
+			e.preventDefault();
+			showDeleteConfirmModal($(this), 'review');
+		});
+	}
+
+	function handleDetailLinkClick(cssClass, modalId) {
+		$(cssClass).on("click", function(e) {
+			e.preventDefault();
+			linkDetailURL = $(this).attr("href");
+			$(modalId).modal("show").find(".modal-content").load(linkDetailURL);
+		});
+	}
+
+	function handleProductDetailLink() {
+		handleDetailLinkClick(".link-detail-product", "#xlargeModal");
+	}
+
+	function handleCustomerDetailLink() {
+		handleDetailLinkClick(".link-detail-customer", "#largeModal");
+	}
+
+	function handleReviewDetailLink() {
+		handleDetailLinkClick(".link-detail-review", "#largeModal");
+	}
+</script>
+</body>
+</html>

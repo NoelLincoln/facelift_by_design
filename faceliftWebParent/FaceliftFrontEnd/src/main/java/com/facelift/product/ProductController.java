@@ -81,6 +81,23 @@ public class ProductController {
 			return "error/404";
 		}
 	}
+//	@GetMapping("/products")
+//	public String viewProducts(String alias, Model model) {
+//
+//		try {
+//			Product product = productService.showAll();
+//			Page<Review> listReviews = reviewService.list3MostRecentReviewsByProduct(product);
+//
+//
+//			model.addAttribute("product", product);
+//			model.addAttribute("listReviews", listReviews);
+//			model.addAttribute("pageTitle", product.getShortName());
+//
+//			return "products";
+//		} catch (ProductNotFoundException e) {
+//			return "error/404";
+//		}
+//	}
 
 	@GetMapping("/search")
 	public String searchFirstPage(String keyword, Model model) {
