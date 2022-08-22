@@ -16,7 +16,7 @@
       <module name="FaceliftBackEnd" target="11" />
       <module name="FaceliftCommon" target="11" />
       <module name="FaceliftFrontEnd" target="11" />
-      <module name="FaceliftWebParent" target="11" />
+      <module name="faceliftWebParent" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

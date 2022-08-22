@@ -5,8 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/FaceliftWebParent/FaceliftBackEnd/FaceliftBackEnd.iml" filepath="$PROJECT_DIR$/FaceliftWebParent/FaceliftBackEnd/FaceliftBackEnd.iml" />
       <module fileurl="file://$PROJECT_DIR$/FaceliftCommon/FaceliftCommon.iml" filepath="$PROJECT_DIR$/FaceliftCommon/FaceliftCommon.iml" />
       <module fileurl="file://$PROJECT_DIR$/FaceliftWebParent/FaceliftFrontEnd/FaceliftFrontEnd.iml" filepath="$PROJECT_DIR$/FaceliftWebParent/FaceliftFrontEnd/FaceliftFrontEnd.iml" />
-      <module fileurl="file://$PROJECT_DIR$/FaceliftWebParent/FaceliftWebParent.iml" filepath="$PROJECT_DIR$/FaceliftWebParent/FaceliftWebParent.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/facelift.iml" filepath="$PROJECT_DIR$/.idea/facelift.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FaceliftWebParent/faceliftWebParent.iml" filepath="$PROJECT_DIR$/FaceliftWebParent/faceliftWebParent.iml" />
     </modules>
   </component>
 </project>

@@ -11,7 +11,7 @@
   </properties>
   <modules>
   	<module>FaceliftCommon</module>
-  	<module>FaceliftWebParent</module>
+  	<module>faceliftWebParent</module>
   </modules>
 
 

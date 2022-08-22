@@ -14,7 +14,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	
-	<name>FaceliftWebParent</name>
+	<name>faceliftWebParent</name>
 	<description>parent spring web project</description>
 
 	<properties>
