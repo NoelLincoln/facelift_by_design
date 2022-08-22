@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FaceliftWebParent/FaceliftBackEnd/FaceliftBackEnd.iml" filepath="$PROJECT_DIR$/FaceliftWebParent/FaceliftBackEnd/FaceliftBackEnd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/FaceliftBackEnd.iml" filepath="$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/FaceliftBackEnd.iml" />
       <module fileurl="file://$PROJECT_DIR$/FaceliftCommon/FaceliftCommon.iml" filepath="$PROJECT_DIR$/FaceliftCommon/FaceliftCommon.iml" />
-      <module fileurl="file://$PROJECT_DIR$/FaceliftWebParent/FaceliftFrontEnd/FaceliftFrontEnd.iml" filepath="$PROJECT_DIR$/FaceliftWebParent/FaceliftFrontEnd/FaceliftFrontEnd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/FaceliftFrontEnd.iml" filepath="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/FaceliftFrontEnd.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/facelift.iml" filepath="$PROJECT_DIR$/.idea/facelift.iml" />
-      <module fileurl="file://$PROJECT_DIR$/FaceliftWebParent/faceliftWebParent.iml" filepath="$PROJECT_DIR$/FaceliftWebParent/faceliftWebParent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/faceliftWebParent/faceliftWebParent.iml" filepath="$PROJECT_DIR$/faceliftWebParent/faceliftWebParent.iml" />
     </modules>
   </component>
 </project>

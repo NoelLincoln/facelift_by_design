@@ -4,13 +4,13 @@
     <file url="file://$PROJECT_DIR$/FaceliftCommon" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/FaceliftCommon/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/FaceliftCommon/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/FaceliftWebParent" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/FaceliftWebParent/FaceliftBackEnd" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/FaceliftWebParent/FaceliftBackEnd/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/FaceliftWebParent/FaceliftBackEnd/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/FaceliftWebParent/FaceliftFrontEnd" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/FaceliftWebParent/FaceliftFrontEnd/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/FaceliftWebParent/FaceliftFrontEnd/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/FaceliftWebParent/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/faceliftWebParent" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/faceliftWebParent/src/main/resources" charset="UTF-8" />
   </component>
 </project>
