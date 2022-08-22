@@ -1,7 +1,7 @@
 server:
   port: 82
-  servlet:
-    context-path: /facelift
+#  servlet:
+#    context-path: /facelift
 
 
 spring:
