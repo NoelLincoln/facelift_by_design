@@ -10,10 +10,10 @@
 				<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
 			</li>
 			<li class="nav-item d-none d-sm-inline-block">
-				<a href="index3.html" class="nav-link">Home</a>
+				<a th:href="@{/}" class="nav-link">Home</a>
 			</li>
 			<li class="nav-item d-none d-sm-inline-block">
-				<a href="#" class="nav-link">Contact</a>
+				<a th:href="@{/contact}" class="nav-link">Contact</a>
 			</li>
 		</ul>
 
@@ -144,7 +144,7 @@
 			<!-- Sidebar user panel (optional) -->
 			<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 				<div class="image">
-					<img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+					<img    class="img-circle elevation-2" alt="User Image">
 				</div>
 				<div class="info">
 					<a th:href="@{/account}" class="d-block" sec:authentication="principal.fullname">
@@ -170,8 +170,8 @@
 				<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 					<!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-					<li class="nav-item menu-open">
-						<a th:href="@{/}" class="nav-link active">
+					<li class="nav-item menu-open  ">
+						<a th:href="@{/}" th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'active':''}"  class="nav-link">
 							<i class="nav-icon fas fa-tachometer-alt"></i>
 							<p>
 								Dashboard
@@ -182,9 +182,9 @@
 					</li>
 					<th:block sec:authorize="hasAuthority('Admin')">
 
-					<li class="nav-item menu-open">
-						<a th:href="@{/users}" class="nav-link dropdown-toggle" data-toggle="dropdown" >
-							<i class="nav-icon fas fa-tachometer-alt"></i>
+					<li class="nav-item menu-open" >
+						<a th:href="@{/users}" th:classappend="${#httpServletRequest.getRequestURI().startsWith('/users') ? 'active':''}"  class="nav-link dropdown-toggle" data-toggle="dropdown" >
+							<i class="nav-icon fas fa-user"></i>
 							<p>
 								Users
 								<i class="right fas "></i>
@@ -199,7 +199,7 @@
 					</th:block>
 					<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson')">
 					<li class="nav-item menu-open">
-						<a th:href="@{/customers}" class="nav-link ">
+						<a th:href="@{/customers}" th:classappend="${#httpServletRequest.getRequestURI().startsWith('/customers') ? 'active':''}" class="nav-link ">
 							<i class="nav-icon fas fa-tachometer-alt"></i>
 							<p>
 								Customers
@@ -212,7 +212,7 @@
 
 					<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson', 'Shipper')">
 					<li class="nav-item menu-open">
-						<a th:href="@{/orders}" class="nav-link ">
+						<a th:href="@{/orders}" th:classappend="${#httpServletRequest.getRequestURI().startsWith('/orders') ? 'active':''}"  class="nav-link ">
 							<i class="nav-icon fas fa-tachometer-alt"></i>
 							<p>
 								Orders
@@ -223,7 +223,7 @@
 					</li>
 					</th:block>
 					<li class="nav-item">
-						<a th:href="@{/settings}" class="nav-link">
+						<a th:href="@{/settings}" th:classappend="${#httpServletRequest.getRequestURI().startsWith('/settings') ? 'active':''}"  class="nav-link">
 							<i class="nav-icon fas fa-gears"></i>
 							<p>
 								Settings
@@ -232,8 +232,8 @@
 					</li>
 					<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
 
-					<li class="nav-item">
-						<a th:href="@{/categories}" class="nav-link  dropdown-toggle" data-toggle="dropdown">
+					<li class="nav-item"  >
+						<a th:href="@{/categories}" th:classappend="${#httpServletRequest.getRequestURI().startsWith('/categories') ? 'active':''}"   class="nav-link dropdown-toggle" data-toggle="dropdown">
 							<i class="nav-icon fas fa-gears"></i>
 							<p>
 								Categories
@@ -248,7 +248,7 @@
 					<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson', 'Editor', 'Shipper')">
 
 					<li class="nav-item">
-						<a th:href="@{/products}" class="nav-link dropdown-toggle" data-toggle="dropdown">
+						<a th:href="@{/products}" th:classappend="${#httpServletRequest.getRequestURI().startsWith('/products') ? 'active':''}"  class="nav-link dropdown-toggle" data-toggle="dropdown">
 							<i class="nav-icon fas fa-gears"></i>
 							<p>
 								Products
@@ -270,7 +270,7 @@
 						</li>
 					</th:block>
 					<li class="nav-item">
-						<a th:href="@{/brands}" class="nav-link dropdown-toggle" data-toggle="dropdown">
+						<a th:href="@{/brands}" th:classappend="${#httpServletRequest.getRequestURI().startsWith('/brands') ? 'active':''}"  class="nav-link dropdown-toggle" data-toggle="dropdown">
 							<i class="nav-icon fas fa-gears"></i>
 							<p>
 								Brands
@@ -282,7 +282,7 @@
 						</div>
 					</li>
 					<li class="nav-item">
-						<a th:href="@{/shipping_rates}" class="nav-link">
+						<a th:href="@{/shipping_rates}" th:classappend="${#httpServletRequest.getRequestURI().startsWith('/shipping_rates') ? 'active':''}"  class="nav-link">
 							<i class="nav-icon fas fa-gears"></i>
 							<p>
 								Shipping Rates
@@ -292,7 +292,7 @@
 					<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson')">
 
 					<li class="nav-item">
-						<a th:href="@{/reports}" class="nav-link">
+						<a th:href="@{/reports}" th:classappend="${#httpServletRequest.getRequestURI().startsWith('/reports') ? 'active':''}" class="nav-link">
 							<i class="nav-icon fas fa-gears"></i>
 							<p>
 								Sales Report

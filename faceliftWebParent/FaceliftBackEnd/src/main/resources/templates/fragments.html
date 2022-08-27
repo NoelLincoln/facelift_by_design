@@ -35,37 +35,19 @@
 
 <body>
 
-	<div th:fragment="footer" class="text-center m-3">
-        <footer class="content-footer footer bg-footer-theme">
-            <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-                <div class="mb-2 mb-md-0">
-                    ©
-                    <script>
-                        document.write(new Date().getFullYear());
-                    </script>
-                    , made with ❤️ by
-                    <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
-                </div>
-                <div>
-                    <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-                    <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
+	<div th:fragment="footer">
 
-                    <a
-                            href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                            target="_blank"
-                            class="footer-link me-4"
-                    >Documentation</a
-                    >
 
-                    <a
-                            href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                            target="_blank"
-                            class="footer-link me-4"
-                    >Support</a
-                    >
-                </div>
-            </div>
-        </footer>
+		<footer class="main-footer">
+			<strong>Copyright &copy; <script>
+				document.write(new Date().getFullYear());
+			</script>
+				<a href="">Facelift By Design</a>.</strong>			All rights reserved.
+			<div class="float-right d-none d-sm-inline-block">
+				<b>Version</b> 1.0.0
+			</div>
+		</footer>
+
 	</div>
 	
 	<th th:fragment="column_link(fieldName, columnLabel, removeTag)" th:remove="${removeTag}">
@@ -180,4 +162,29 @@
 	</div>
 				
 </body>
+
+<script th:src="@{/css/plugins/jquery/jquery.min.js}"></script>
+<!-- jQuery UI 1.11.4 -->
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+	$.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script  th:src="@{/js/common.js}" ></script>
+<script  th:src="@{/js/common_list.js}" ></script>
+<script th:src="@{/css/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/css/plugins/datatables/jquery.dataTables.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-responsive/js/dataTables.responsive.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-responsive/js/responsive.bootstrap4.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/dataTables.buttons.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.bootstrap4.min.js}"></script>
+<script th:src="@{/css/plugins/jszip/jszip.min.js}"></script>
+<script th:src="@{/css/plugins/pdfmake/pdfmake.min.js}"></script>
+<script th:src="@{/css/plugins/pdfmake/vfs_fonts.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.html5.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.print.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.colVis.min.js}"></script>
+<script th:src="@{/css/dist/js/adminlte.js}"></script>
+
 </html>

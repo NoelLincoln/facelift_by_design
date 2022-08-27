@@ -1,17 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-<head th:replace="fragments :: page_head('Error - Shopme Admin', 'none')" />
+<head th:replace="fragments :: page_head('Error - Facelift Admin', 'none')" />
 </head>
 <body>
-<div class="container-fluid">
+<div class="wrapper">
 	<div th:replace="navigation :: menu"></div>
-	<div class="m-3">
-		<h2>Sorry, the requested page could not be found</h2>		
+	<div class="content-wrapper" style="text-align: center;">
+		<h2 style="padding-top: 100px">Sorry, the requested page could not be found</h2>
 	</div>
 
 	<div th:replace="fragments :: footer"></div>
-	
+
 </div>
+
+
+<!-- jQuery -->
+<script th:src="@{/css/plugins/jquery/jquery.min.js}"></script>
+<!-- jQuery UI 1.11.4 -->
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+	$.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script  th:src="@{/js/common.js}" ></script>
+
+<script th:src="@{/css/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+<!-- overlayScrollbars -->
+<!-- AdminLTE App -->
+
+<script th:src="@{/css/dist/js/adminlte.js}"></script>
 </body>
 </html>

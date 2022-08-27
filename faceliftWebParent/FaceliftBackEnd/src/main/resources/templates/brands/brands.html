@@ -8,7 +8,7 @@
 
 	<!-- Preloader -->
 	<div class="preloader flex-column justify-content-center align-items-center">
-		<img class="animation__shake" th:src="@{/images/faceliftlogo.png}" alt="AdminLTELogo" height="130px" width="100px">
+		<img class="animation__shake" th:src="@{/images/faceliftlogo.png}" alt="logo" height="130px" width="100px">
 	</div>
 
 	<!-- Navbar -->
@@ -31,7 +31,7 @@
 					</div><!-- /.col -->
 					<div class="col-sm-6">
 						<ol class="breadcrumb float-sm-right">
-							<li class="breadcrumb-item"><a href="#">Home</a></li>
+							<li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
 							<li class="breadcrumb-item active">Brands</li>
 						</ol>
 					</div><!-- /.col -->
@@ -45,13 +45,13 @@
 		<section class="content">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-12 col-sm-6">
+					<div class="col-12 ">
 						<div class="card">
 							<div class="card-header">
 								<h3 class="card-title">DataTable with default features</h3>
 							</div>
 							<!-- /.card-header -->
-							<div class="card-body col-sm-6 col-lg-3" >
+							<div class="card-body" >
 								<table id="example1" class="table table-bordered table-striped">
 									<thead>
 									<tr>
@@ -121,6 +121,13 @@
 	<!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+<div th:replace="modal_fragments :: confirm_modal" />
+<div class="modal fade" id="detailModal">
+	<div class="modal-dialog modal-xl">
+		<div class="modal-content">
+		</div>
+	</div>
+</div>
 
 <!-- jQuery -->
 <script th:src="@{/css/plugins/jquery/jquery.min.js}"></script>
@@ -194,8 +201,6 @@
 	});
 </script>
 
-<!-- AdminLTE for demo purposes -->
-<!--<script th:src="@{/css/dist/js/demo.js}"></script>-->
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+
 </body>
 </html>

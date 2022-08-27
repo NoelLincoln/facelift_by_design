@@ -17,11 +17,7 @@
 
 	<!-- Content Wrapper. Contains page content -->
 	<div class="content-wrapper">
-		<div style="margin-left: 20px">
-			<h2>Manage Customers</h2>
 
-			<a th:href="@{/customers/export/csv}" class="fas fa-file-csv fa-2x icon-dark mr-2"></a>
-		</div>
 		<!-- Content Header (Page header) -->
 		<div class="content-header">
 			<div class="container-fluid">
@@ -39,6 +35,7 @@
 			</div><!-- /.container-fluid -->
 		</div>
 		<!-- /.content-header -->
+		<div th:replace="fragments :: search_form_and_message" />
 
 		<!-- Main content -->
 		<!-- Main content -->
@@ -47,9 +44,7 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="card">
-							<div class="card-header">
-								<h3 class="card-title">DataTable with default features</h3>
-							</div>
+
 							<!-- /.card-header -->
 							<div class="card-body">
 								<table id="example1" class="table table-bordered table-striped">
@@ -83,7 +78,7 @@
 										<td>
 											<div th:replace="fragments :: edit('customer', '/customers/edit/' + ${customer.id})" />
 											&nbsp;&nbsp;
-											<div th:replace="fragments :: delete('customer', ${customer.id}, '/users/delete/' + ${customer.id}, true)" />
+											<div th:replace="fragments :: delete('customer', ${customer.id}, '/customers/delete/' + ${customer.id}, true)" />
 										</td>
 									</tr>
 									</tbody>
@@ -129,6 +124,13 @@
 	<!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+<div th:replace="modal_fragments :: confirm_modal" />
+<div class="modal fade" id="detailModal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+		</div>c
+	</div>
+</div>
 
 <!-- jQuery -->
 <script th:src="@{/css/plugins/jquery/jquery.min.js}"></script>
@@ -139,6 +141,8 @@
 </script>
 <!-- Bootstrap 4 -->
 <script  th:src="@{/js/common.js}" ></script>
+<script th:src="@{/js/common_list.js}"></script>
+
 
 <script th:src="@{/css/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
 
@@ -189,6 +193,22 @@
 		});
 	});
 
+</script>
+<script type="text/javascript">
+	moduleURL = "[[@{/customers}]]";
+
+	$(document).ready(function() {
+		$(".link-delete").on("click", function(e) {
+			e.preventDefault();
+			showDeleteConfirmModal($(this), 'customer');
+		});
+
+		$(".link-detail").on("click", function(e) {
+			e.preventDefault();
+			linkDetailURL = $(this).attr("href");
+			$("#detailModal").modal("show").find(".modal-content").load(linkDetailURL);
+		});
+	});
 </script>
 
 <!-- AdminLTE for demo purposes -->

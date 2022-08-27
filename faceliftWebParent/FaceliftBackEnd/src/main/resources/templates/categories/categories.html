@@ -7,9 +7,9 @@
 <div class="wrapper">
 
 	<!-- Preloader -->
-	<div class="preloader flex-column justify-content-center align-items-center">
-		<img class="animation__shake" th:src="@{/images/faceliftlogo.png}" alt="AdminLTELogo" height="130px" width="100px">
-	</div>
+<!--	<div class="preloader flex-column justify-content-center align-items-center">-->
+<!--		<img class="animation__shake" th:src="@{/images/faceliftlogo.png}" alt="AdminLTELogo" height="130px" width="100px">-->
+<!--	</div>-->
 
 	<!-- Navbar -->
 	<div th:replace="navigation :: menu"></div>
@@ -119,6 +119,15 @@
 		<!-- /.content -->
 	</div>
 	<!-- /.content-wrapper -->
+
+	<div th:replace="modal_fragments :: confirm_modal" />
+	<div class="modal fade" id="detailModal">
+		<div class="modal-dialog modal-xl">
+			<div class="modal-content">
+			</div>
+		</div>
+	</div>
+
 	<footer class="main-footer">
 		<strong>Copyright &copy; 2022-2023 <a href="https://adminlte.io">Facelift By Design</a>.</strong>
 		All rights reserved.
@@ -145,22 +154,7 @@
 <!-- Bootstrap 4 -->
 <script  th:src="@{/js/common.js}" ></script>
 <script  th:src="@{/js/common_list.js}" ></script>
-<script type="text/javascript">
-	moduleURL = "[[@{/categories}]]";
-
-	$(document).ready(function() {
-		$(".link-delete").on("click", function(e) {
-			e.preventDefault();
-			showDeleteConfirmModal($(this), 'category');
-		});
-	});
-</script>
-
 <script th:src="@{/css/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
-
-<!-- overlayScrollbars -->
-<!-- AdminLTE App -->
-<!-- DataTables  & Plugins -->
 <script th:src="@{/css/plugins/datatables/jquery.dataTables.min.js}"></script>
 <script th:src="@{/css/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js}"></script>
 <script th:src="@{/css/plugins/datatables-responsive/js/dataTables.responsive.min.js}"></script>
@@ -175,6 +169,16 @@
 <script th:src="@{/css/plugins/datatables-buttons/js/buttons.colVis.min.js}"></script>
 <script th:src="@{/css/dist/js/adminlte.js}"></script>
 
+<script type="text/javascript">
+	moduleURL = "[[@{/categories}]]";
+
+	$(document).ready(function() {
+		$(".link-delete").on("click", function(e) {
+			e.preventDefault();
+			showDeleteConfirmModal($(this), 'category');
+		});
+	});
+</script>
 <script>
 	$(document).ready(function() {
 		$("#logoutLink").on("click", function(e) {
@@ -210,8 +214,6 @@
 
 </script>
 
-<!-- AdminLTE for demo purposes -->
-<!--<script th:src="@{/css/dist/js/demo.js}"></script>-->
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+
 </body>
 </html>

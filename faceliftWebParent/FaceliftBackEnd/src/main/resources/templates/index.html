@@ -43,13 +43,13 @@
 					<div class="col-lg-3 col-6" >
 						<!-- small box -->
 						<div class="small-box bg-info" >
-							<div class="inner" >
-								<h3>No. of users</h3>
+							<div class="inner">
+								<h3 th:text="${user_count}">No. of users</h3>
 
 								<p>Active Users</p>
 							</div>
 							<div class="icon">
-								<i class="ion ion-bag"></i>
+								<i class="ion ion-person"></i>
 							</div>
 							<a th:href="@{/users}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 						</div>
@@ -59,7 +59,7 @@
 						<!-- small box -->
 						<div class="small-box bg-success">
 							<div class="inner">
-								<h3>53<sup style="font-size: 20px">%</sup></h3>
+								<h3 th:text="${category_count}"></h3>
 
 								<p>Categories</p>
 							</div>
@@ -73,7 +73,7 @@
 						<!-- small box -->
 						<div class="small-box bg-success">
 							<div class="inner">
-								<h3>53<sup style="font-size: 20px">%</sup></h3>
+								<h3 th:text="${product_count}"></h3>
 
 								<p>Products</p>
 							</div>
@@ -87,7 +87,7 @@
 						<!-- small box -->
 						<div class="small-box bg-success">
 							<div class="inner">
-								<h3>53<sup style="font-size: 20px">%</sup></h3>
+								<h3 th:text="${brand_count}"></h3>
 
 								<p>Brands</p>
 							</div>
@@ -102,9 +102,9 @@
 						<!-- small box -->
 						<div class="small-box bg-warning">
 							<div class="inner">
-								<h3>44</h3>
+								<h3 th:text="${customer_count}"></h3>
 
-								<p>Customer Registrations</p>
+								<p>Customers (website users)</p>
 							</div>
 							<div class="icon">
 								<i class="ion ion-person-add"></i>
@@ -116,7 +116,7 @@
 						<!-- small box -->
 						<div class="small-box bg-success">
 							<div class="inner">
-								<h3>53<sup style="font-size: 20px">%</sup></h3>
+								<h3 th:text="${order_count}"></h3>
 
 								<p>Orders</p>
 							</div>
@@ -126,22 +126,7 @@
 							<a th:href="@{/orders}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
-					<!-- ./col -->
-					<div class="col-lg-3 col-6">
-						<!-- small box -->
-						<div class="small-box bg-danger">
-							<div class="inner">
-								<h3>65</h3>
 
-								<p>Unique Visitors</p>
-							</div>
-							<div class="icon">
-								<i class="ion ion-pie-graph"></i>
-							</div>
-							<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-						</div>
-					</div>
-					<!-- ./col -->
 				</div>
 				<!-- /.row -->
 				<!-- Main row -->

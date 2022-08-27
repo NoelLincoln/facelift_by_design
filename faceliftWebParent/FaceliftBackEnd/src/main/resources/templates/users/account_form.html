@@ -101,6 +101,27 @@
 	
 </script>
 <script th:src="@{/js/common_form.js}"></script>
+<!-- jQuery -->
+<script th:src="@{/css/plugins/jquery/jquery.min.js}"></script>
+<!-- jQuery UI 1.11.4 -->
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+	$.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script  th:src="@{/js/common.js}" ></script>
 
+<script th:src="@{/css/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+<!-- overlayScrollbars -->
+<!-- AdminLTE App -->
+
+<script th:src="@{/css/plugins/jszip/jszip.min.js}"></script>
+<script th:src="@{/css/plugins/pdfmake/pdfmake.min.js}"></script>
+<script th:src="@{/css/plugins/pdfmake/vfs_fonts.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.html5.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.print.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.colVis.min.js}"></script>
+<script th:src="@{/css/dist/js/adminlte.js}"></script>
 </body>
 </html>

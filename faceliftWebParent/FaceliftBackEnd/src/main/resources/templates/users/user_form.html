@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: page_head(${pageTitle}, 'none')" />
-<body>
-<div class="container-fluid">
+<body class="hold-transition dark-mode sidebar-mini layout-fixed">
+<div class="wrapper">
 	<div th:replace="navigation :: menu"></div>
-	<div>
-		<h2>Manage Users | [[${pageTitle}]]</h2>	
-	</div>
-	
+
+
+	<div class="content-wrapper">
+		<div style="text-align: center">
+			<h2>Manage Users | [[${pageTitle}]]</h2>
+		</div>
+
+
+
 	<form th:action="@{/users/save}" method="post" style="max-width: 700px; margin: 0 auto"
 		enctype="multipart/form-data"
 		th:object="${user}" onsubmit="return checkEmailUnique(this);">
@@ -84,40 +89,79 @@
 		</div>
 	</div>
 	</form>
-	
-	<div th:replace="modal_fragments :: modal_dialog"></div>
-	
+
+
+
+	</div>
+
 	<div th:replace="fragments :: footer"></div>
+
 	
 </div>
-<script type="text/javascript">
-	MAX_FILE_SIZE = 102400; // 100KB
-	
-	moduleURL = "[[@{/users}]]";
-	
-	function checkEmailUnique(form) {
-		url = "[[@{/users/check_email}]]";
-		userEmail = $("#email").val();
-		userId = $("#id").val();
-		csrfValue = $("input[name='_csrf']").val();
-		
-		params = {id: userId, email: userEmail, _csrf: csrfValue};
-		
-		$.post(url, params, function(response) {
-			if (response == "OK") {
-				form.submit();
-			} else if (response == "Duplicated") {
-				showWarningModal("There is another user having the email " + userEmail);
-			} else {
-				showErrorModal("Unknown response from server");
-			}
-		}).fail(function() {
-			showErrorModal("Could not connect to the server");
-		});
-		
-		return false;
-	}
+
+
+<div th:replace="modal_fragments :: modal_dialog"></div>
+
+
+<!-- jQuery -->
+<script th:src="@{/css/plugins/jquery/jquery.min.js}"></script>
+<!-- jQuery UI 1.11.4 -->
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+	$.widget.bridge('uibutton', $.ui.button)
 </script>
-<script th:src="@{/js/common_form.js}"></script>
+<!-- Bootstrap 4 -->
+<script  th:src="@{/js/common.js}" ></script>
+
+<script th:src="@{/css/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+<!-- overlayScrollbars -->
+<!-- AdminLTE App -->
+<!-- DataTables  & Plugins -->
+<script th:src="@{/css/plugins/datatables/jquery.dataTables.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-responsive/js/dataTables.responsive.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-responsive/js/responsive.bootstrap4.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/dataTables.buttons.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.bootstrap4.min.js}"></script>
+<script th:src="@{/css/plugins/jszip/jszip.min.js}"></script>
+<script th:src="@{/css/plugins/pdfmake/pdfmake.min.js}"></script>
+<script th:src="@{/css/plugins/pdfmake/vfs_fonts.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.html5.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.print.min.js}"></script>
+<script th:src="@{/css/plugins/datatables-buttons/js/buttons.colVis.min.js}"></script>
+<script th:src="@{/css/dist/js/adminlte.js}"></script>
+
+<script>
+	$(document).ready(function() {
+		$("#logoutLink").on("click", function(e) {
+			e.preventDefault();
+			document.logoutForm.submit();
+		});
+
+		// customizeDropDownMenu();
+		// customizeTabs();
+	});
+
+
+
+
+	$(function () {
+		$("#example1").DataTable({
+			"responsive": true, "lengthChange": false, "autoWidth": false,
+			"buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+		}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+		$('#example2').DataTable({
+			"paging": true,
+			"lengthChange": false,
+			"searching": false,
+			"ordering": true,
+			"info": true,
+			"autoWidth": false,
+			"responsive": true,
+		});
+	});
+
+</script>
 </body>
 </html>
