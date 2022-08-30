@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: page_head(${pageTitle}, 'none')" />
-<body>
-<div class="container-fluid">
+
+<body class="hold-transition dark-mode sidebar-mini layout-fixed">
+<div class="wrapper">
 	<div th:replace="navigation :: menu"></div>
-	<div>
+	<div class="content-wrapper">
+
+	<div style="margin-left: 20px">
 		<h2>Manage Brands | [[${pageTitle}]]</h2>	
 	</div>
-			
+
+
+
 	<form th:action="@{/brands/save}" method="post" style="max-width: 500px; margin: 0 auto"
 		enctype="multipart/form-data" onsubmit="return checkUnique(this)"
 		th:object="${brand}">
@@ -62,12 +67,23 @@
 		</div>
 	</div>
 	</form>
+	</div>
 	
 	<div th:replace="modal_fragments :: modal_dialog"></div>
-	
+	<div class="modal fade" id="detailModal">
+		<div class="modal-dialog modal-xl">
+			<div class="modal-content">
+			</div>
+		</div>
+	</div>
+
+
+
 	<div th:replace="fragments :: footer"></div>
 	
 </div>
+<script th:src="@{/css/plugins/jquery/jquery.min.js}"></script>
+
 <script type="text/javascript">
 	MAX_FILE_SIZE = 102400; // 100KB
 	moduleURL = "[[@{/brands}]]";
@@ -122,5 +138,7 @@
 	
 </script>
 <script th:src="@{/js/common_form.js}"></script>
+<script th:src="@{/css/dist/js/adminlte.js}"></script>
+
 </body>
 </html>

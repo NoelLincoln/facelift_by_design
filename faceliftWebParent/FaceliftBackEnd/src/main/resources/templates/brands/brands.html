@@ -39,6 +39,7 @@
 			</div><!-- /.container-fluid -->
 		</div>
 		<!-- /.content-header -->
+		<div th:replace="fragments :: search_form_and_message" />
 
 		<!-- Main content -->
 		<!-- Main content -->
@@ -106,13 +107,8 @@
 		<!-- /.content -->
 	</div>
 	<!-- /.content-wrapper -->
-	<footer class="main-footer">
-		<strong>Copyright &copy; 2022-2023 <a href="https://adminlte.io">Facelift By Design</a>.</strong>
-		All rights reserved.
-		<div class="float-right d-none d-sm-inline-block">
-			<b>Version</b> 3.2.0
-		</div>
-	</footer>
+	<div th:replace="fragments :: footer"></div>
+
 
 	<!-- Control Sidebar -->
 	<aside class="control-sidebar control-sidebar-dark">

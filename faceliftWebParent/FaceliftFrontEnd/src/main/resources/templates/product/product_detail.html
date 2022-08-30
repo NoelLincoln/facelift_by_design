@@ -49,29 +49,20 @@
                 <!-- SHOP DETAIL -->
                 <div class="shop-detail">
                     <div class="row">
+                        <div class="col-md-8">
 
-                        <!-- Popular Images Slider -->
-                        <div class="col-md-7">
+                            <!-- Images -->
+                            <div class="row" >
 
-                            <!-- Place somewhere in the <body> of your page -->
-                            <div id="slider-shop" class="flexslider">
-                                <ul class="slides">
-                                    <li> <img class="img-responsive" th:src="@{${product.mainImagePath}}" alt=""> </li>
+                                <div class="col-sm-6 margin-bottom-30" th:each="extraImage, status : ${product.images}">
+                                    <img class="img-responsive"th:src="@{${extraImage.imagePath}}" th:index="${status.count}" alt=""> </div>
 
-                                </ul>
                             </div>
-                            <th:block th:each="extraImage, status : ${product.images}">
-                                <div id="shop-thumb" class="flexslider">
-                                    <ul class="slides">
-                                        <li> <img class="img-responsive" th:src="@{${extraImage.imagePath}}"  alt=""> </li>
-
-                                    </ul>
-                                </div>
-                            </th:block>
                         </div>
 
+
                         <!-- COntent -->
-                        <div class="col-md-5">
+                        <div class="col-md-4">
                             <h4>[[${product.shortName}]]</h4>
                             <!--							<span class="price"><small>Ksh</small>[[${product.Price}]]</span>-->
                             <div>
@@ -104,7 +95,7 @@
                                 <li>Rating :
                                     <span>
                                     <input type="text" class="product-detail-rating-star" dir="ltr" data-size="md" th:value="${product.averageRating}" />
-                                        <a th:href="@{${product.URI} + '#reviews'}">[[${product.reviewCount}]] rating(s)</a>
+                                        <a th:href="@{${product.URI} + '#reviews'}">[[${product.reviewCount}]] review(s)</a>
 
                                     </span>
                                 </li>
@@ -158,7 +149,7 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs animate fadeInUp" data-wow-delay="0.4s" role="tablist">
                         <li role="presentation" class="active"><a href="#descr" role="tab" data-toggle="tab">DESCRIPTION</a></li>
-                        <li role="presentation"><a href="#review" role="tab" data-toggle="tab">REVIEW ([[${product.reviewCount}]])</a></li>
+                        <li role="presentation"><a href="#reviews" role="tab" data-toggle="tab">REVIEW ([[${product.reviewCount}]])</a></li>
                         <!--						<li role="presentation"><a href="#tags" role="tab" data-toggle="tab">INFORMATION</a></li>-->
                     </ul>
 
@@ -168,27 +159,7 @@
                         <div role="tabpanel" class="tab-pane fade in active" id="descr">
                             <p th:utext="${product.fullDescription}">  <br>
                             </p>
-                            <h6>THE SIMPLE FACTS</h6>
-                            <ul>
-                                <li>
-                                    <p>Praesent faucibus, leo vitae maximus dictum,</p>
-                                </li>
-                                <li>
-                                    <p> Donec porta ut lectus </p>
-                                </li>
-                                <li>
-                                    <p> Phasellus maximus velit id nisl</p>
-                                </li>
-                                <li>
-                                    <p> Quisque a tellus et sapien aliquam sus</p>
-                                </li>
-                                <li>
-                                    <p> Donec porta ut lectus </p>
-                                </li>
-                                <li>
-                                    <p> Phasellus maximus velit id nisl</p>
-                                </li>
-                            </ul>
+
                         </div>
 
                         <!-- REVIEW -->
@@ -326,36 +297,34 @@
     <script type="text/javascript" th:src="@{/js/add_to_cart.js}"></script>
     <script type="text/javascript" th:src="@{/js/review_vote.js}"></script>
 
-    <script type="text/javascript">
-        contextPath = "[[@{/}]]";
-        productId = "[[${product.id}]]";
-        var csrfHeaderName = "[[${_csrf.headerName}]]";
-        var csrfValue = "[[${_csrf.token}]]";
+<script type="text/javascript">
+    contextPath = "[[@{/}]]";
+    productId = "[[${product.id}]]";
+    var csrfHeaderName = "[[${_csrf.headerName}]]";
+    var csrfValue = "[[${_csrf.token}]]";
 
-        decimalSeparator = "[[${DECIMAL_POINT_TYPE == 'COMMA' ? ',' : '.'}]]";
-        thousandSeparator = "[[${THOUSANDS_POINT_TYPE == 'COMMA' ? ',' : '.'}]]";
+    decimalSeparator = "[[${DECIMAL_POINT_TYPE == 'COMMA' ? ',' : '.'}]]";
+    thousandSeparator = "[[${THOUSANDS_POINT_TYPE == 'COMMA' ? ',' : '.'}]]";
 
-        $(document).ready(function() {
-            bigImage = $("#bigImage");
+    $(document).ready(function() {
+        bigImage = $("#bigImage");
 
-            $(".image-thumbnail").mouseover(function() {
-                currentImageSource = $(this).attr("src");
-                currentImageIndex = $(this).attr("index");
+        $(".image-thumbnail").mouseover(function() {
+            currentImageSource = $(this).attr("src");
+            currentImageIndex = $(this).attr("index");
 
-                bigImage.attr("src", currentImageSource);
-                bigImage.attr("index", currentImageIndex);
-            });
-
-            bigImage.on("click", function() {
-                $("#carouselModal").modal("show");
-                imageIndex = parseInt(bigImage.attr("index"));
-                $("#carouselExampleIndicators").carousel(imageIndex);
-            });
+            bigImage.attr("src", currentImageSource);
+            bigImage.attr("index", currentImageIndex);
         });
 
+        bigImage.on("click", function() {
+            $("#carouselModal").modal("show");
+            imageIndex = parseInt(bigImage.attr("index"));
+            $("#carouselExampleIndicators").carousel(imageIndex);
+        });
+    });
 
-
-    </script>
+</script>
 
 </body>
 </html>

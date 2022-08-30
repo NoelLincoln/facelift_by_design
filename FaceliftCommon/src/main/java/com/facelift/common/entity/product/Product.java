@@ -34,7 +34,7 @@ public class Product extends IdBasedEntity {
 	@Column(length = 512, nullable = false, name = "short_description")
 	private String shortDescription;
 
-	@Column(length = 4096, nullable = false, name = "full_description")
+	@Column(columnDefinition = "TEXT", nullable = false, name = "full_description")
 	private String fullDescription;
 
 	@Column(name = "created_time")

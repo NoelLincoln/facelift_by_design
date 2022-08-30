@@ -7,9 +7,9 @@ var promoPrice;
 var fadeTime = 300;
 
 // /* Assign actions */
-// $('.quantity input').change(function() {
-//     updateQuantity(this);
-// });
+$('.quantity input').change(function() {
+    updateQuantity(this);
+});
 
 $('.remove button').click(function() {
     removeItem(this);

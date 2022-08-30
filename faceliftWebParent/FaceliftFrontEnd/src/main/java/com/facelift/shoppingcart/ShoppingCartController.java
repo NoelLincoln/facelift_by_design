@@ -24,7 +24,9 @@ public class ShoppingCartController {
 	@Autowired private ShoppingCartService cartService;
 	@Autowired private AddressService addressService;
 	@Autowired private ShippingRateService shipService;
-	
+	@Autowired private CartItemRepository cartItemRepository;
+
+
 	@GetMapping("/cart")
 	public String viewCart(Model model, HttpServletRequest request) {
 		Customer customer = getAuthenticatedCustomer(request);
@@ -46,7 +48,8 @@ public class ShoppingCartController {
 			usePrimaryAddressAsDefault = true;
 			shippingRate = shipService.getShippingRateForCustomer(customer);
 		}
-		
+		model.addAttribute("cart_items_count", cartItemRepository.count());
+
 		model.addAttribute("usePrimaryAddressAsDefault", usePrimaryAddressAsDefault);
 		model.addAttribute("shippingSupported", shippingRate != null);
 		model.addAttribute("cartItems", cartItems);

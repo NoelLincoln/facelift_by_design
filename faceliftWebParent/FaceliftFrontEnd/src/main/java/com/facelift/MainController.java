@@ -47,6 +47,7 @@ public class MainController {
 		
 		return "redirect:/";
 	}
+
 	@GetMapping("/gallery")
 	public String viewGallery(Model model, HttpServletRequest request) {
 

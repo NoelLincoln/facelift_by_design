@@ -51,6 +51,12 @@
               <div class="col-sm-7">
                 <h6>LOGIN TO YOUR ACCOUNT</h6>
                 <form th:action="@{/login}" method="post" autocomplete="off">
+                  <div th:if="${param.error}">
+                    <p class="text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+                  </div>
+                    <div th:if="${param.logout}">
+                      <p class="text-warning">You have been logged out.</p>
+                    </div>
                   <ul class="row">
 
                     <!-- Name -->
@@ -85,12 +91,17 @@
                         <a th:href="@{/forgot_password}" class="forgot-link">Forgot Your Password?</a>
                       </div>
                     </li>
+                    <li class="col-md-4">
+                      <div class="checkbox margin-0 margin-top-20 text-right">
+                        <a th:href="@{/register}" class="forgot-link">Don't have an account, create one</a>
+                      </div>
+                    </li>
                   </ul>
                 </form>
                 
               </div>
               
-              <div class="col-sm-5">
+              <div class="col-sm-5 margin-top-40">
                 <h6>LOGIN WITH</h6>
                 
                 <ul class="login-with">

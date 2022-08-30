@@ -18,19 +18,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
 	private CategoryRepository categoryRepository;
+	@Autowired
 	private ProductRepository productRepository;
+	@Autowired
 	private BrandRepository brandRepository;
+	@Autowired
 	private OrderRepository orderRepository;
+	@Autowired
 	private CustomerRepository customerRepository;
 
-	public MainController(CategoryRepository categoryRepository, ProductRepository productRepository, BrandRepository brandRepository, OrderRepository orderRepository, CustomerRepository customerRepository) {
-		this.categoryRepository = categoryRepository;
-		this.productRepository = productRepository;
-		this.brandRepository = brandRepository;
-		this.orderRepository = orderRepository;
-		this.customerRepository = customerRepository;
-	}
+
 
 
 	@GetMapping("")

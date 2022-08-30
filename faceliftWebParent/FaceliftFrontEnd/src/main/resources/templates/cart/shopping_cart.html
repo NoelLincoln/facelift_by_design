@@ -31,11 +31,9 @@
         <div class="position-center-center">
             <div class="container">
                 <h4>SHOPPING CART</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
-                    Sed feugiat, tellus vel tristique posuere, diam</p>
+                <p>Your cart items</p>
                 <ol class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">SHOP</a></li>
+                    <li><a th:href="@{/}">Home</a></li>
                     <li class="active">SHOPPING CART</li>
                 </ol>
             </div>
@@ -51,7 +49,7 @@
 
                 <main>
                     <div class="basket">
-                        <div class="summary-total-items"><span class="total-items"></span> Items in your Bag</div>
+                        <div class="summary-total-items "><p th:text="${cart_items_count}"></p><span >Item(s) in your bag</span></div>
 
                         <div class="basket-labels">
                             <ul>
@@ -61,17 +59,16 @@
                                 <li class="subtotal">Subtotal</li>
                             </ul>
                         </div>
-
                         <th:block th:each="item, status : ${cartItems}">
 
                         <div class="basket-product" th:with="product = ${item.product}" th:id="'row' + ${status.count}">
 
                             <div class="item">
                                 <div class="product-image">
-                                    <img id="cart-img" th:src="@{/logo.png}" alt="Placholder Image 2" class="product-frame">
+                                    <img id="cart-img" th:src="@{${product.mainImagePath}}" alt="Placholder Image 2" class="product-frame">
                                 </div>
                                 <div class="product-details">
-                                    <span th:text="${item.quantity}" class="item-quantity"></span> x <a th:href="@{'/p/' + ${product.alias}}" target="_blank"
+                                    <span th:text="${item.quantity}" class="item-quantity quantity"></span> x <a th:href="@{'/p/' + ${product.alias}}" target="_blank"
                                                                               th:title="${product.name}">
                                 </a>
                                     <a th:href="@{'/p/' + ${product.alias}}" target="_blank"> <p><strong><b>[[${product.shortName}]]</b></strong></p></a>
@@ -94,7 +91,7 @@
                                 <span th:id="'subtotal' + ${product.id}" class="h4 subtotal">[[${#numbers.formatDecimal(item.subtotal, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]]</span>
                             </div>
                             <div class="remove">
-                                <p class="icon-trash"></p>
+                              <a th:href="@{'/cart/remove/' + ${product.id}}" th:rowNumber="${status.count}"><p class="icon-trash"></p></a>
                             </div>
                         </div>
                         </th:block>
@@ -150,109 +147,19 @@
                         <!-- DISCOUNT CODE -->
                         <div class="col-sm-7">
 
-                            <div class="coupn-btn"> <a href="#." class="btn">continue shopping</a>  </div>
+                            <div class="coupn-btn"> <a th:href="@{/products}" class="btn">continue shopping</a>  </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- About -->
-        <section class="small-about padding-top-150 padding-bottom-150">
-            <div class="container">
 
-                <!-- Main Heading -->
-                <div class="heading text-center">
-                    <h4>about PAVSHOP</h4>
-                    <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsumien lacus, eu posuere odio luctus non. Nulla lacinia,
-                        eros vel fermentum consectetur, risus purus tempc, et iaculis odio dolor in ex. </p>
-                </div>
-
-                <!-- Social Icons -->
-                <ul class="social_icons">
-                    <li><a href="#."><i class="icon-social-facebook"></i></a></li>
-                    <li><a href="#."><i class="icon-social-twitter"></i></a></li>
-                    <li><a href="#."><i class="icon-social-tumblr"></i></a></li>
-                    <li><a href="#."><i class="icon-social-youtube"></i></a></li>
-                    <li><a href="#."><i class="icon-social-dribbble"></i></a></li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- News Letter -->
-        <section class="news-letter padding-top-150 padding-bottom-150">
-            <div class="container">
-                <div class="heading light-head text-center margin-bottom-30">
-                    <h4>NEWSLETTER</h4>
-                    <span>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsumien lacus, eu posuere odi </span> </div>
-                <form>
-                    <input type="email" placeholder="Enter your email address" required>
-                    <button type="submit">SEND ME</button>
-                </form>
-            </div>
-        </section>
     </div>
 
     <!--======= FOOTER =========-->
-    <footer>
-        <div class="container">
+    <div th:replace="navigation :: footer_menu"></div>
 
-            <!-- ABOUT Location -->
-            <div class="col-md-3">
-                <div class="about-footer"> <img class="margin-bottom-30" src="images/logo-foot.png" alt="" >
-                    <p><i class="icon-pointer"></i> Street No. 12, Newyork 12, <br>
-                        MD - 123, USA.</p>
-                    <p><i class="icon-call-end"></i> 1.800.123.456789</p>
-                    <p><i class="icon-envelope"></i> info@PAVSHOP.com</p>
-                </div>
-            </div>
-
-            <!-- HELPFUL LINKS -->
-            <div class="col-md-3">
-                <h6>HELPFUL LINKS</h6>
-                <ul class="link">
-                    <li><a href="#."> Products</a></li>
-                    <li><a href="#."> Find a Store</a></li>
-                    <li><a href="#."> Features</a></li>
-                    <li><a href="#."> Privacy Policy</a></li>
-                    <li><a href="#."> Blog</a></li>
-                    <li><a href="#."> Press Kit </a></li>
-                </ul>
-            </div>
-
-            <!-- SHOP -->
-            <div class="col-md-3">
-                <h6>SHOP</h6>
-                <ul class="link">
-                    <li><a href="#."> About Us</a></li>
-                    <li><a href="#."> Career</a></li>
-                    <li><a href="#."> Shipping Methods</a></li>
-                    <li><a href="#."> Contact</a></li>
-                    <li><a href="#."> Support</a></li>
-                    <li><a href="#."> Retailer</a></li>
-                </ul>
-            </div>
-
-            <!-- MY ACCOUNT -->
-            <div class="col-md-3">
-                <h6>MY ACCOUNT</h6>
-                <ul class="link">
-                    <li><a href="#."> Login</a></li>
-                    <li><a href="#."> My Account</a></li>
-                    <li><a href="#."> My Cart</a></li>
-                    <li><a href="#."> Wishlist</a></li>
-                    <li><a href="#."> Checkout</a></li>
-                </ul>
-            </div>
-
-            <!-- Rights -->
-
-            <div class="rights">
-                <p>©  2017 PAVSHOP All right reserved. </p>
-                <div class="scroll"> <a href="#wrap" class="go-up"><i class="lnr lnr-arrow-up"></i></a> </div>
-            </div>
-        </div>
-    </footer>
 
     <!--======= RIGHTS =========-->
 

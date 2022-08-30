@@ -123,18 +123,18 @@ $('.item-slide').owlCarousel({
 $(window).load(function() {
   $('#shop-thumb').flexslider({
     animation: "slide",
-    controlNav: false,
-    animationLoop: false,
-    slideshow: false,
+    controlNav: true,
+    animationLoop: true,
+    slideshow: true,
     itemWidth: 210,
     itemMargin: 5,
     asNavFor: '#slider-shop'
   });
 $('#slider-shop').flexslider({
     animation: "slide",
-    controlNav: false,
-    animationLoop: false,
-    slideshow: false,
+    controlNav: true,
+    animationLoop: true,
+    slideshow: true,
     sync: "#shop-thumb"
   });
 });
