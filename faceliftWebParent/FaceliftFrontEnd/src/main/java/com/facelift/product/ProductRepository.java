@@ -31,9 +31,7 @@ public interface ProductRepository extends PagingAndSortingRepository<Product, I
 	public void updateReviewCountAndAverageRating(Integer productId);
 
 
-
-	public List<Product> findAll() ;
-
+	public List<Product> findAll();
 }
 
 

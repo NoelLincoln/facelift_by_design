@@ -193,7 +193,7 @@
       <!-- Item -->
       <div class="item" th:each="cat : ${listCategories}">
         <!-- Images -->
-        <img class="img-1" th:src="@{${cat.imagePath}}" alt=""> <img class="img-2" th:src="@{${cat.imagePath}}" alt="">
+        <img class="img-1" th:src="@{${cat.imagePath}}" alt="" > <img class="img-2" th:src="@{${cat.imagePath}}" alt=""  >
         <!-- Overlay  -->
         <div class="overlay">
           <!-- Price -->
@@ -208,6 +208,7 @@
 
       <!-- Item -->
 
+    </div>
     </div>
   </section>
 
@@ -228,7 +229,7 @@
       <div class="arrival-block" >
 
         <!-- Item -->
-        <div class="item" th:each="product : ${productList}">
+        <div class="item" th:each="product : ${productList}" >
           <!-- Images -->
           <a th:href="@{'/p/' + ${product.alias}}">
             <img class="img-1" th:src="@{${product.mainImagePath}}" alt=""> <img class="img-2" th:src="@{${product.mainImagePath}}" alt="">

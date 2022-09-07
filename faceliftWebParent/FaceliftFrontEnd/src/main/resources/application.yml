@@ -35,6 +35,8 @@ spring:
         format_sql: true
     show-sql: true
 
+  session:
+    store-type=jdbc:
   security:
     oauth2:
       client:
@@ -52,3 +54,5 @@ spring:
               - email
               - public_profile
 
+#flutterwave.public-key:
+#flutterwave.secret-key:

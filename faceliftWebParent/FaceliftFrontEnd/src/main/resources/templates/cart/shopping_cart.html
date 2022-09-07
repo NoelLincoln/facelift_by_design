@@ -49,7 +49,7 @@
 
                 <main>
                     <div class="basket">
-                        <div class="summary-total-items "><p th:text="${cart_items_count}"></p><span >Item(s) in your bag</span></div>
+                        <div class="summary-total-items "><span >Item(s) in your bag</span></div>
 
                         <div class="basket-labels">
                             <ul>
@@ -116,7 +116,7 @@
                         <div class="col-sm-5">
                             <h6>grand total</h6>
                             <div class="grand-total">
-                                <div class="summary-total-items"><span class="total-items"></span> Items in your Bag</div>
+<!--                                <div class="summary-total-items"><span ></span> Items in your Bag</div>-->
 
                                 <th:block th:each="item, status : ${cartItems}">
 
@@ -128,15 +128,15 @@
 
                                 </div>
                                 </th:block>
-                                <div class="summary-delivery">
-                                    <select name="delivery-collection" class="summary-delivery-selection">
-                                        <option value="0" selected="selected">Select Collection or Delivery</option>
-                                        <option value="collection">Collection</option>
-                                        <option value="first-class">Royal Mail 1st Class</option>
-                                        <option value="second-class">Royal Mail 2nd Class</option>
-                                        <option value="signed-for">Royal Mail Special Delivery</option>
-                                    </select>
-                                </div>
+<!--                                <div class="summary-delivery">-->
+<!--                                    <select name="delivery-collection" class="summary-delivery-selection">-->
+<!--                                        <option value="0" selected="selected">Select Collection or Delivery</option>-->
+<!--                                        <option value="collection">Collection</option>-->
+<!--                                        <option value="first-class">Royal Mail 1st Class</option>-->
+<!--                                        <option value="second-class">Royal Mail 2nd Class</option>-->
+<!--                                        <option value="signed-for">Royal Mail Special Delivery</option>-->
+<!--                                    </select>-->
+<!--                                </div>-->
                                 <!-- SUB TOTAL -->
                                 <p class="all-total">TOTAL COST  <span th:if="${CURRENCY_SYMBOL_POSITION == 'Before price'}" th:remove="tag"></span><span id="total" class="h2">Ksh &nbsp [[${#numbers.formatDecimal(estimatedTotal, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]]</span><span th:if="${CURRENCY_SYMBOL_POSITION == 'After price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
                                 </p>

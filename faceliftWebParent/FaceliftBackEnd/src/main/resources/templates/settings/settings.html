@@ -2,7 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
 	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:replace="fragments :: page_head('Settings - Facelift By Design Admin', 'none')"/>
-<head>	<link rel="stylesheet" th:href="@{/css/plugins/richtext/richtext.min.css}" />
+<head>
+	<link rel="stylesheet" th:href="@{/css/plugins/richtext/richtext.min.css}" />
+	<script th:src="@{/richtext/jquery.richtext.min.js}"></script>
+
+
 </head>
 
 <body class="hold-transition dark-mode sidebar-mini layout-fixed">
@@ -189,6 +193,9 @@
 	brandModuleURL = "[[@{/brands}]]";
 	defaultImageThumbnailSrc = "[[@{/images/image-thumbnail.png}]]";
 	checkUniqueUrl = "[[@{/products/check_unique}]]";
+
+
+
 
 </script>
 <script th:src="@{/js/common_form.js}"></script>

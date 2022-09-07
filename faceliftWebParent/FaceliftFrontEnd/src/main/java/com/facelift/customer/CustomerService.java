@@ -26,7 +26,8 @@ public class CustomerService {
 	@Autowired private CountryRepository countryRepo;
 	@Autowired private CustomerRepository customerRepo;
 	@Autowired PasswordEncoder passwordEncoder;
-	
+
+
 	public List<Country> listAllCountries() {
 		return countryRepo.findAllByOrderByNameAsc();
 	}

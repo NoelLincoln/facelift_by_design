@@ -1,12 +1,10 @@
 package com.facelift.common.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 import com.facelift.common.entity.product.Product;
+
+import java.util.Date;
 
 @Entity
 @Table(name = "cart_items")
@@ -16,15 +14,20 @@ public class CartItem extends IdBasedEntity {
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "product_id")	
 	private Product product;
-	
+
+	@Temporal(TemporalType.DATE)
+	private Date date;
 	private int quantity;
 	
 	@Transient
 	private float shippingCost;
-	
+
+	private String sessionToken;
+
+
 	public CartItem() {
 	}
 
@@ -50,6 +53,21 @@ public class CartItem extends IdBasedEntity {
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public String getSessionToken() {
+		return sessionToken;
+	}
+
+
+	public void setSessionToken(String sessionToken) {
+		this.sessionToken = sessionToken;
 	}
 
 	@Override

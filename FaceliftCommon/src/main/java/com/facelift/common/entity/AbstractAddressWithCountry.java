@@ -26,7 +26,7 @@ public class AbstractAddressWithCountry extends AbstractAddress {
 
 		if (!addressLine1.isEmpty()) address += ", " + addressLine1;
 
-		if (addressLine2 != null && !addressLine2.isEmpty()) address += ", " + addressLine2;
+//		if (addressLine2 != null && !addressLine2.isEmpty()) address += ", " + addressLine2;
 
 		if (!city.isEmpty()) address += ", " + city;
 

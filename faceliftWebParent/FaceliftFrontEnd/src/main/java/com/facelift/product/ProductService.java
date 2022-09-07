@@ -19,6 +19,7 @@ public class ProductService {
 
 	@Autowired private ProductRepository repo;
 
+
 	public Page<Product> listByCategory(int pageNum, Integer categoryId) {
 		String categoryIdMatch = "-" + String.valueOf(categoryId) + "-";
 		Pageable pageable = PageRequest.of(pageNum - 1, PRODUCTS_PER_PAGE);
@@ -35,7 +36,7 @@ public class ProductService {
 		return product;
 	}
 
-	public Product getProduct(Integer id) throws ProductNotFoundException {
+	public Product getProductById(Integer id) throws ProductNotFoundException {
 		try {
 			Product product = repo.findById(id).get();
 			return product;
@@ -49,4 +50,6 @@ public class ProductService {
 		return repo.search(keyword, pageable);
 
 	}
+
+
 }

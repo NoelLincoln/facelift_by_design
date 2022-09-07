@@ -14,7 +14,7 @@ public class Address extends AbstractAddressWithCountry {
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 	
-	@Column(name = "default_address")
+	@Column(name = "default_address", nullable = true)
 	private boolean defaultForShipping;
 
 	public Customer getCustomer() {

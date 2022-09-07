@@ -157,13 +157,14 @@
 								</li>
 
 								<!-- SEARCH BAR -->
+
 								<li class="dropdown"> <a href="javascript:void(0);" class="search-open"><i class="icon-magnifier"></i></a>
 									<div class="search-inside animated bounceInUp"> <i class="icon-close search-close"></i>
 										<div class="search-overlay"></div>
 										<div class="position-center-center">
 											<div class="search">
-												<form>
-													<input type="search" placeholder="Search Shop">
+												<form th:action="@{/search}" method="get">
+													<input type="search" name="keyword" th:value="${searchKeyword}" placeholder="Search Shop" required>
 													<button type="submit"><i class="icon-check"></i></button>
 												</form>
 											</div>

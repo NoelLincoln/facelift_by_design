@@ -1,19 +1,23 @@
 package com.facelift.common.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
+
 @Table(name = "customers")
 public class Customer extends AbstractAddressWithCountry {
 	
 	@Column(nullable = false, unique = true, length = 45)
 	private String email;
+
+	@OneToMany(cascade = CascadeType.ALL,
+			mappedBy = "customer", orphanRemoval = true)
+	private List<CartItem> cartItemList = new ArrayList<>();
+
 
 	@Column(nullable = false, length = 64)
 	private String password;
