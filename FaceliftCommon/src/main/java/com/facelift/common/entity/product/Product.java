@@ -278,6 +278,8 @@ public class Product extends IdBasedEntity {
 		this.details.add(new ProductDetail(id, name, value, this));
 	}
 
+
+
 	public boolean containsImageName(String imageName) {
 		Iterator<ProductImage> iterator = images.iterator();
 
@@ -342,6 +344,21 @@ public class Product extends IdBasedEntity {
 
 	public void setReviewedByCustomer(boolean reviewedByCustomer) {
 		this.reviewedByCustomer = reviewedByCustomer;
+	}
+
+
+	public static Product copyFull(Product product) {
+		Product copyProduct = new Product();
+		copyProduct.setId(product.getId());
+		copyProduct.setPrice(product.getPrice());
+		copyProduct.setDiscountPercent(product.getDiscountPercent());
+
+		copyProduct.setName(product.getName());
+		copyProduct.setMainImage(product.getMainImagePath());
+		copyProduct.setAlias(product.getAlias());
+		copyProduct.setEnabled(product.isEnabled());
+
+		return copyProduct;
 	}
 
 

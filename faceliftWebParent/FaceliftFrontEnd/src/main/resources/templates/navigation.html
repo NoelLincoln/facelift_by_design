@@ -9,7 +9,7 @@
 				<div class="container">
 
 					<!-- Logo -->
-					<div class="logo"> <a th:href="@{/}"><img class="img-responsive" th:src="@{/logo.png}" alt="" width="150" height="25"></a> </div>
+					<div class="logo"> <a th:href="@{/}" ><img class="img-responsive" th:src="@{/logo.png}" alt="" width="150" height="25"></a> </div>
 					<nav class="navbar ownmenu">
 					<nav class="navbar ownmenu">
 						<div class="navbar-header">
@@ -19,7 +19,7 @@
 						<!-- NAV -->
 						<div class="collapse navbar-collapse" id="nav-open-btn">
 							<ul class="nav">
-								<li class="dropdown active"> <a th:href="@{/}">Home</a>
+								<li class="dropdown "> <a th:href="@{/}" th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'active':''}">Home</a>
 
 
 								</li>
@@ -39,7 +39,7 @@
 								</li>
 
 								<!-- MEGA MENU -->
-								<li class="dropdown megamenu"> <a href="#." class="dropdown-toggle" data-toggle="dropdown">Store</a>
+								<li class="dropdown megamenu"> <a href="#." class="dropdown-toggle" data-toggle="dropdown" th:classappend="${#httpServletRequest.getRequestURI().startsWith('/products') ? 'active':''}">Store</a>
 									<div class="dropdown-menu">
 										<div class="row">
 
@@ -47,7 +47,7 @@
 											<div class="col-md-3">
 												<h6>Shop Pages</h6>
 												<ul>
-													<li> <a th:href="@{/products}">Products </a> </li>
+													<li> <a th:href="@{/products}" th:classappend="${#httpServletRequest.getRequestURI().startsWith('/products') ? 'active':''}">Products </a> </li>
 
 													<li> <a sec:authorize="isAuthenticated()" th:href="@{/checkout}">Checkout</a> </li>
 												</ul>
@@ -82,7 +82,7 @@
 										</div>
 									</div>
 								</li>
-								<li> <a th:href="@{/contact}"> contact</a> </li>
+								<li> <a th:href="@{/contact}" th:classappend="${#httpServletRequest.getRequestURI().startsWith('/contact') ? 'active':''}"> contact</a> </li>
 							</ul>
 						</div>
 

@@ -3,6 +3,8 @@ package com.facelift.product;
 import java.util.List;
 
 import com.facelift.common.entity.Review;
+import com.facelift.paging.PagingAndSortingHelper;
+import com.facelift.paging.PagingAndSortingParam;
 import com.facelift.review.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,17 +19,21 @@ import com.facelift.common.entity.product.Product;
 import com.facelift.common.exception.CategoryNotFoundException;
 import com.facelift.common.exception.ProductNotFoundException;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class ProductController {
 	@Autowired private ProductService productService;
 	@Autowired private CategoryService categoryService;
 	@Autowired private ReviewService reviewService;
+	private String defaultRedirectURL = "redirect:/products/page/1?sortField=name&sortDir=asc&categoryId=0";
 
 	@GetMapping("/c/{category_alias}")
 	public String viewCategoryFirstPage(@PathVariable("category_alias") String alias,
 										Model model) {
 		return viewCategoryByPage(alias, 1, model);
 	}
+
 
 	@GetMapping("/c/{category_alias}/page/{pageNum}")
 	public String viewCategoryByPage(@PathVariable("category_alias") String alias,
@@ -80,6 +86,49 @@ public class ProductController {
 		} catch (ProductNotFoundException e) {
 			return "error/404";
 		}
+	}
+
+	@GetMapping("/products")
+	public String listFirstPage(String sortDir, Model model) {
+		return listByPage(1, sortDir, null, model);
+	}
+
+	@GetMapping("/products/page/{pageNum}")
+	public String listByPage(@PathVariable(name = "pageNum") int pageNum,
+							 String sortDir,	String keyword,	Model model){
+
+
+		if (sortDir ==  null || sortDir.isEmpty()) {
+			sortDir = "asc";
+		}
+
+		ProductPageInfo pageInfo = new ProductPageInfo();
+
+		List<Product> listProducts = productService.listByPage(pageInfo, pageNum, sortDir, keyword);
+
+
+		long startCount = (pageNum - 1) * ProductService.PRODUCTS_PER_PAGE + 1;
+		long endCount = startCount + ProductService.PRODUCTS_PER_PAGE - 1;
+		if (endCount > pageInfo.getTotalElements()) {
+			endCount = pageInfo.getTotalElements();
+		}
+
+		String reverseSortDir = sortDir.equals("asc") ? "desc" : "asc";
+
+		model.addAttribute("totalPages", pageInfo.getTotalPages());
+		model.addAttribute("totalItems", pageInfo.getTotalElements());
+		model.addAttribute("currentPage", pageNum);
+		model.addAttribute("sortField", "name");
+		model.addAttribute("sortDir", sortDir);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("startCount", startCount);
+		model.addAttribute("endCount", endCount);
+
+		model.addAttribute("listProducts", listProducts);
+		model.addAttribute("reverseSortDir", reverseSortDir);
+		model.addAttribute("moduleURL", "/products");
+
+		return "product/products";
 	}
 //	@GetMapping("/products")
 //	public String viewProducts(String alias, Model model) {

@@ -37,6 +37,7 @@ public class MainController {
 
 			return "index";
 	}
+
 	
 	@GetMapping("/login")
 	public String viewLoginPage() {
@@ -48,17 +49,17 @@ public class MainController {
 		return "redirect:/";
 	}
 
-	@GetMapping("/gallery")
-	public String viewGallery(Model model, HttpServletRequest request) {
-
-
-		List<Product> productList = productRepository.findAll();
-		List<Category> listCategories = categoryService.listNoChildrenCategories();
-		model.addAttribute("listCategories", listCategories);
-		model.addAttribute("productList", productList);
-
-		return "gallery";
-	}
+//	@GetMapping("/gallery")
+//	public String viewGallery(Model model, HttpServletRequest request) {
+//
+//
+//		List<Product> productList = productRepository.findAll();
+//		List<Category> listCategories = categoryService.listNoChildrenCategories();
+//		model.addAttribute("listCategories", listCategories);
+//		model.addAttribute("productList", productList);
+//
+//		return "gallery";
+//	}
 
 
 }

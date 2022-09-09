@@ -51,12 +51,14 @@
                     <!-- Item -->
                     <th:block th:each="product : ${listProducts}">
                         <div th:replace="product/product_fragment :: content"></div>
+
+
                     </th:block>
 
 
                 </div>
 
-                <div th:replace="fragments :: pagination('/c/' + ${category.alias}, 'product')"></div>
+<!--                <div th:replace="fragments :: pagination('/c/' + ${category.alias}, 'product')"></div>-->
 
                 <!-- Pagination -->
                 <ul class="pagination in-center">
