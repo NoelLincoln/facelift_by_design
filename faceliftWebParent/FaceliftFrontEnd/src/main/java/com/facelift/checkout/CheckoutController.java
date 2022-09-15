@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import com.facelift.ControllerHelper;
 import com.facelift.checkout.flutterwave.Payload;
 import com.facelift.checkout.flutterwave.PayloadService;
+import com.facelift.common.entity.*;
+import com.facelift.setting.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -25,18 +27,10 @@ import com.facelift.Utility;
 import com.facelift.address.AddressService;
 import com.facelift.checkout.paypal.PayPalApiException;
 import com.facelift.checkout.paypal.PayPalService;
-import com.facelift.common.entity.Address;
-import com.facelift.common.entity.CartItem;
-import com.facelift.common.entity.Customer;
-import com.facelift.common.entity.ShippingRate;
 import com.facelift.common.entity.order.Order;
 import com.facelift.common.entity.order.PaymentMethod;
 import com.facelift.customer.CustomerService;
 import com.facelift.order.OrderService;
-import com.facelift.setting.CurrencySettingBag;
-import com.facelift.setting.EmailSettingBag;
-import com.facelift.setting.PaymentSettingBag;
-import com.facelift.setting.SettingService;
 import com.facelift.shipping.ShippingRateService;
 import com.facelift.shoppingcart.ShoppingCartService;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,7 +46,8 @@ public class CheckoutController {
 	@Autowired private OrderService orderService;
 	@Autowired private SettingService settingService;
 	@Autowired private PayPalService paypalService;
-
+	@Autowired private CountryRepository countryRepository;
+	@Autowired private CustomerService customerService;
 	@Autowired private PayloadService paymentService;
 
 
@@ -76,6 +71,8 @@ public class CheckoutController {
 		}
 
 		List<CartItem> cartItems = cartService.listCartItems(customer);
+		List<Country> listCountries = customerService.listAllCountries();
+
 		CheckoutInfo checkoutInfo = checkoutService.prepareCheckout(cartItems, shippingRate);
 
 		String currencyCode = settingService.getCurrencyCode();
@@ -87,6 +84,7 @@ public class CheckoutController {
 		model.addAttribute("customer", customer);
 		model.addAttribute("checkoutInfo", checkoutInfo);
 		model.addAttribute("cartItems", cartItems);
+		model.addAttribute("listCountries", listCountries);
 
 		return "checkout/checkout";
 	}

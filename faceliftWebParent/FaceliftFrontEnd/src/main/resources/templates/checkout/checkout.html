@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments :: page_head('Shopping Cart', 'none')" />
+<head th:replace="fragments :: page_head('Checkout', 'none')" />
 <body>
 <div class="container-fluid">
 	<div th:replace="navigation :: header_menu"></div>
-	<div th:replace="navigation :: search_nav"></div>
+<!--	<div th:replace="navigation :: search_nav"></div>-->
 
 	<!--======= SUB BANNER =========-->
 	<section class="sub-bnr" data-stellar-background-ratio="0.5">
@@ -34,84 +34,87 @@
 					<!-- SHOPPING INFORMATION -->
 					<div class="cart-ship-info">
 						<div class="row">
+							<form th:action="@{/place_order}" method="post" >
 
 							<!-- ESTIMATE SHIPPING & TAX -->
 							<div class="col-sm-7">
 								<h6>BILLING DETAILS/SHIPPING DETAILS</h6>
-								<form th:action="@{/place_order}" method="post" >
 									<ul class="row">
 
 										<!-- Name -->
 										<li class="col-md-6">
 											<label> *FIRST NAME
-												<input type="text" name="first-name" value="" placeholder="">
+												<input type="text" th:class="form-control" name="first-name" value="" placeholder="" required="required">
 											</label>
 										</li>
 										<!-- LAST NAME -->
 										<li class="col-md-6">
 											<label> *LAST NAME
-												<input type="text" name="last-name" value="" placeholder="">
+												<input type="text" th:class="form-control" name="last-name" value="" placeholder="" required="required">
 											</label>
 										</li>
 										<li class="col-md-6">
 											<!-- COMPANY NAME -->
 											<label>COMPANY NAME
-												<input type="text" name="company" value="" placeholder="">
+												<input type="text" th:class="form-control" name="company" value="" placeholder="">
 											</label>
 										</li>
 										<li class="col-md-6">
 											<!-- ADDRESS -->
 											<label>*ADDRESS
-												<input type="text" name="address" value="" placeholder="">
+												<input type="text" th:class="form-control" name="address" value="" placeholder="" required="required">
 											</label>
 										</li>
 										<!-- TOWN/CITY -->
-										<li class="col-md-6">
+										<li class="col-md-6 ">
 											<label>*TOWN/CITY
-												<input type="text" name="town" value="" placeholder="">
+												<input  type="text" th:class="form-control" name="town" value="" placeholder="" required="required">
+											</label>
+										</li>
+
+
+
+										<!-- EMAIL ADDRESS -->
+										<li class="col-md-6">
+											<label> *EMAIL ADDRESS
+												<input type="text" th:class="form-control" name="contry-state" value="" placeholder="" required="required">
+											</label>
+										</li>
+										<!-- PHONE -->
+										<li class="col-md-6">
+											<label> *PHONE
+												<input type="text" th:class="form-control" name="postal-code" value="" placeholder="" required="required">
 											</label>
 										</li>
 
 										<!-- COUNTRY -->
 										<li class="col-md-6">
 											<label> COUNTRY
-												<input type="text" name="contry-state" value="" placeholder="">
-											</label>
-										</li>
+												<select class="form-control margin-top-10 " style="height: 44px;">
+													<th:block th:each="country : ${listCountries}">
+														<option th:value="${country.id}">[[${country.name}]]</option>
+													</th:block>
+												</select>
 
-										<!-- EMAIL ADDRESS -->
-										<li class="col-md-6">
-											<label> *EMAIL ADDRESS
-												<input type="text" name="contry-state" value="" placeholder="">
-											</label>
-										</li>
-										<!-- PHONE -->
-										<li class="col-md-6">
-											<label> *PHONE
-												<input type="text" name="postal-code" value="" placeholder="">
 											</label>
 										</li>
 										<li class="col-md-8">
 											<label> *ADDITIONAL INORMATION
-												<textarea type="extrainfo-" name="extrainfo" value="" rows="4" cols="50" placeholder="extra information for your order">
+												<textarea type="extrainfo-" th:class="form-control" name="extrainfo" value="" rows="4" cols="50" placeholder="extra information for your order">
 												</textarea>
 											</label>
 										</li>
 
-										<!-- PHONE -->
-										<li class="col-md-6">
-											<button type="submit" class="btn">continue</button>
-										</li>
+
 
 										<!-- CREATE AN ACCOUNT -->
-										<li class="col-md-6">
-											<div class="checkbox margin-0 margin-top-20">
-												<input id="checkbox1" class="styled" type="checkbox">
-												<label for="checkbox1"> Ship to a different address </label>
-											</div>
-										</li>
+<!--										<li class="col-md-6">-->
+<!--											<div class="checkbox margin-0 margin-top-20">-->
+<!--												<input id="checkbox1" class="styled" type="checkbox">-->
+<!--												<label for="checkbox1"> Ship to a different address </label>-->
+<!--											</div>-->
+<!--										</li>-->
 									</ul>
-								</form>
 
 								<!-- SHIPPING info -->
 
@@ -122,6 +125,7 @@
 								<h6>YOUR ORDER</h6>
 								<div class="order-place">
 									<div class="order-detail">
+
 										<div >
 											<th:block th:each="item : ${cartItems}" th:with="product = ${item.product}">
 
@@ -130,21 +134,22 @@
 												<th:block th:if="${product.discountPercent &lt;= 0}">
                                     			<span th:text="${product.price}"></span>
 												</th:block>
+												</span></br></span> X
 												<th:block th:if="${product.discountPercent > 0}">
-													<span th:text="${product.discountPrice}"></span>
+													<span th:text="${product.discountPrice}"></span>[[${item.getQuantity}]]
 												</th:block> </span></p>
 											</a>
 
+												<p class="all-total">TOTAL COST <span>
+											<div th:replace="fragments :: format_currency(${item.subtotal})"></div>
+															</span></p>
 											</th:block>
 										</div>
 										<!-- SUB TOTAL -->
-										<th:block th:each="item : ${cartItems}" th:with="product = ${item.product}">
 
 
 
-										<p class="all-total">TOTAL COST <span>
-											<div th:replace="fragments :: format_currency(${item.subtotal})"></div>
-															</span></p>
+
 										<p>	<b>Days to deliver: </b>[[${checkoutInfo.deliverDays}]] day(s)</p>
 										<p>	<b>Expected deliver date: </b>[[${#dates.format(checkoutInfo.deliverDate, 'E, dd MMM yyyy')}]]</p>
 
@@ -169,6 +174,7 @@
 
 									</div>
 									<div class="pay-meth">
+
 										<ul>
 											<li>
 												<div class="radio">
@@ -181,17 +187,22 @@
 
 											<li>
 												<div class="radio">
-													<form th:action="@{/place_order}" method="post">
 
 														<input type="radio" name="paymentMethod" id="radioCOD" value="COD" >
 														<label for="radioCOD"> CASH ON DELIVERY</label>
-														<button class="btn btn-primary d-none" type="submit" id="buttonSubmit">Place Order with COD</button>
 
-													</form>
 												</div>
 												<p>PAY FOR THE ITEMS ONCE RECEIVED</p>
 											</li>
+<!--											<li>-->
+<!--												<div class="radio">-->
 
+<!--													<input type="radio" name="paymentMethod" id="" value="COD" >-->
+<!--													<label for="radioCOD"> PAYPAL</label>-->
+
+<!--												</div>-->
+<!--												<p>PAY WITH PAYPAL</p>-->
+<!--											</li>-->
 											<li>
 												<div class="radio" id="paypal-button-container">
 													<form th:action="@{/process_paypal_order}" method="post" id="paypalForm">
@@ -208,7 +219,8 @@
 											</li>
 										</ul>
 
-										<a href="#." class="btn  btn-dark pull-right margin-top-30">PLACE ORDER</a>
+										<a href="#." id="buttonSubmit" class="btn  btn-dark pull-right margin-top-30">PLACE ORDER</a>
+<!--										<button class="btn btn-primary d-none" type="submit" id="buttonSubmit">Place Order with COD</button>-->
 
 									</div>
 								</div>
@@ -216,7 +228,9 @@
 <!--									Processing... <br/> <img style="height: 50px;" src="https://media.giphy.com/media/swhRkVYLJDrCE/giphy.gif"/>-->
 <!--								</div>-->
 							</div>
+							</form>
 						</div>
+
 					</div>
 				</div>
 			</div>

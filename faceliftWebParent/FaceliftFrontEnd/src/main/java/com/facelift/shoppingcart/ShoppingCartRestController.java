@@ -11,75 +11,63 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.UUID;
 
 @RestController
 public class ShoppingCartRestController {
 	@Autowired private ShoppingCartService cartService;
 	@Autowired private CustomerService customerService;
-
+	
 	@PostMapping("/cart/add/{productId}/{quantity}")
 	public String addProductToCart(@PathVariable("productId") Integer productId,
 			@PathVariable("quantity") Integer quantity, HttpServletRequest request) {
-
-		try{
-			String sessionToken = (String) request.getSession(true).getAttribute("sessiontToken");
-
+		
+		try {
 			Customer customer = getAuthenticatedCustomer(request);
-			if (customer == null ) {
-				sessionToken = UUID.randomUUID().toString();
-				request.getSession().setAttribute("sessiontToken", sessionToken);
-			}else{
-				Integer updatedQuantity = cartService.addProduct(productId, quantity, customer, sessionToken);
-				return updatedQuantity + " item(s) of this product were added to your shopping cart.";
-
-			}
-			Integer updatedQuantity = cartService.addProduct(productId, quantity, customer, sessionToken);
+			Integer updatedQuantity = cartService.addProduct(productId, quantity, customer);
+			
 			return updatedQuantity + " item(s) of this product were added to your shopping cart.";
-
-		}catch (ShoppingCartException ex) {
+		} catch (CustomerNotFoundException ex) {
+			return "You must login to add this product to cart.";
+		} catch (ShoppingCartException ex) {
 			return ex.getMessage();
 		}
-
+		
 	}
-
-	private Customer getAuthenticatedCustomer(HttpServletRequest request)
-			 {
-				 String sessionToken = (String) request.getSession(true).getAttribute("sessiontToken");
-
-				 String email = Utility.getEmailOfAuthenticatedCustomer(request);
+	
+	private Customer getAuthenticatedCustomer(HttpServletRequest request) 
+			throws CustomerNotFoundException {
+		String email = Utility.getEmailOfAuthenticatedCustomer(request);
 		if (email == null) {
-			sessionToken = UUID.randomUUID().toString();
-			request.getSession().setAttribute("sessiontToken", sessionToken);		}
-
+			throw new CustomerNotFoundException("No authenticated customer");
+		}
+				
 		return customerService.getCustomerByEmail(email);
 	}
-
+	
 	@PostMapping("/cart/update/{productId}/{quantity}")
 	public String updateQuantity(@PathVariable("productId") Integer productId,
 			@PathVariable("quantity") Integer quantity, HttpServletRequest request) {
-			String sessionToken = (String) request.getSession(true).getAttribute("sessiontToken");
-
+		try {
 			Customer customer = getAuthenticatedCustomer(request);
-
-			request.getSession();
-
-			float subtotal = cartService.updateQuantity(productId, quantity, customer,sessionToken );
-
+			float subtotal = cartService.updateQuantity(productId, quantity, customer);
+			
 			return String.valueOf(subtotal);
-			}
-
-//	@DeleteMapping("/cart/remove/{productId}")
-//	public String removeProduct(@PathVariable("productId") Integer productId,
-//			HttpServletRequest request) {
-//		try {
-//			Customer customer = getAuthenticatedCustomer(request);
-//			cartService.removeProduct(productId, customer);
-//
-//			return "The product has been removed from your shopping cart.";
-//
-//		} catch (CustomerNotFoundException e) {
-//			return "You must login to remove product.";
-//		}
-//	}
+		} catch (CustomerNotFoundException ex) {
+			return "You must login to change quantity of product.";
+		}	
+	}
+	
+	@DeleteMapping("/cart/remove/{productId}")
+	public String removeProduct(@PathVariable("productId") Integer productId,
+			HttpServletRequest request) {
+		try {
+			Customer customer = getAuthenticatedCustomer(request);
+			cartService.removeProduct(productId, customer);
+			
+			return "The product has been removed from your shopping cart.";
+			
+		} catch (CustomerNotFoundException e) {
+			return "You must login to remove product.";
+		}
+	}
 }

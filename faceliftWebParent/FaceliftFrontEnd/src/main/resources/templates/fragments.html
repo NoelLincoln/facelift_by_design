@@ -12,19 +12,13 @@
 	<!-- Bootstrap Core CSS -->
 	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 
-	<!-- Custom CSS -->
 	<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+
 	<link th:href="@{/css/ionicons.min.css}" rel="stylesheet">
 
 	<link th:href="@{/css/main.css}" rel="stylesheet">
 	<link th:href="@{/css/style.css}" rel="stylesheet">
 	<link th:href="@{/css/responsive.css}" rel="stylesheet">
-	<!--	<link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css}" rel="stylesheet" type="text/css" />-->
-
-
-	<!-- JavaScripts -->
-	<!--	<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>-->
-
 	<script th:src="@{/js/modernizr.js}"></script>
 
 
@@ -107,7 +101,7 @@
 			</div>
 			
 			<div class="modal-footer">
-				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal" style="text-align: right">Close</button>
 			</div>
 		</div>
 	</div>
@@ -134,16 +128,16 @@
 </div>
 
 <div th:fragment="format_currency(amount)" th:remove="tag">
-	<span th:if="${CURRENCY_SYMBOL_POSITION == 'Before price'}" th:remove="tag">Ksh &nbsp [[${CURRENCY_SYMBOL}]]</span>[[${#numbers.formatDecimal(amount, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]]<span th:if="${CURRENCY_SYMBOL_POSITION == 'After price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
+	<span th:if="${CURRENCY_SYMBOL_POSITION == 'Before price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>[[${#numbers.formatDecimal(amount, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]]<span th:if="${CURRENCY_SYMBOL_POSITION == 'After price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
 </div>
-		
+
 <div th:fragment="format_time(dateTime)" th:remove="tag">
 	<span th:text="${#dates.format(dateTime, 'yyyy-MM-dd HH:mm:ss')}"></span>
-</div>	
+</div>
 
 <div th:fragment="currency_input(amount)" th:remove="tag">
 	<input type="text" readonly class="form-control" th:value="${(CURRENCY_SYMBOL_POSITION == 'Before price' ? CURRENCY_SYMBOL : '') + #numbers.formatDecimal(amount, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE) + (CURRENCY_SYMBOL_POSITION == 'After price' ? CURRENCY_SYMBOL : '')}">
-</div>	
+</div>
 
 <div th:fragment="search_form()" th:remove="tag">
 	<form th:action="@{${moduleURL} + '/page/1'}" class="form-inline m-3">

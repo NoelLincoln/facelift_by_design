@@ -30,7 +30,6 @@ function decreaseQuantity(link) {
 		showWarningModal('Minimum quantity is 1');
 	}	
 }
-
 function increaseQuantity(link) {
 		productId = link.attr("pid");
 		quantityInput = $("#quantity" + productId);
@@ -43,7 +42,6 @@ function increaseQuantity(link) {
 			showWarningModal('Maximum quantity is 5');
 		}	
 }
-
 function updateQuantity(productId, quantity) {
 	url = contextPath + "cart/update/" + productId + "/" + quantity;
 	
@@ -58,13 +56,13 @@ function updateQuantity(productId, quantity) {
 		updateTotal();
 	}).fail(function() {
 		showErrorModal("Error while updating product quantity.");
-	});	
+	});
 }
-
 function updateSubtotal(updatedSubtotal, productId) {
 	$("#subtotal" + productId).text(formatCurrency(updatedSubtotal));
-}
 
+	// window.alert(updatedSubtotal);
+}
 function updateTotal() {
 	total = 0.0;
 	productCount = 0;
@@ -72,14 +70,15 @@ function updateTotal() {
 	$(".subtotal").each(function(index, element) {
 		productCount++;
 		total += parseFloat(clearCurrencyFormat(element.innerHTML));
+
 	});
 	
 	if (productCount < 1) {
 		showEmptyShoppingCart();
 	} else {
-		$("#total").text(formatCurrency(total));		
+		$("#totalcost").text(formatCurrency(total));
 	}
-	
+
 }
 
 function showEmptyShoppingCart() {

@@ -3,30 +3,26 @@ package com.facelift.shoppingcart;
 import com.facelift.common.entity.CartItem;
 import com.facelift.common.entity.Customer;
 import com.facelift.common.entity.product.Product;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface CartItemRepository extends CrudRepository<CartItem, Integer>  {
+public interface CartItemRepository extends CrudRepository<CartItem, Integer> {
 	public List<CartItem> findByCustomer(Customer customer);
 	
 	public CartItem findByCustomerAndProduct(Customer customer, Product product);
-
-
-	public CartItem findBySessionToken(String sessionToken);
 	
 	@Modifying
 	@Query("UPDATE CartItem c SET c.quantity = ?1 WHERE c.customer.id = ?2 AND c.product.id = ?3")
-	public void updateQuantity(Integer quantity, Integer customerId, Integer productId, String sessionToken);
+	public void updateQuantity(Integer quantity, Integer customerId, Integer productId);
 	
 	@Modifying
 	@Query("DELETE FROM CartItem c WHERE c.customer.id = ?1 AND c.product.id = ?2")
 	public void deleteByCustomerAndProduct(Integer customerId, Integer productId);
 	
 	@Modifying
-	@Query("DELETE FROM CartItem c WHERE c.customer.id = ?1")
+	@Query("DELETE CartItem c WHERE c.customer.id = ?1")
 	public void deleteByCustomer(Integer customerId);
 }

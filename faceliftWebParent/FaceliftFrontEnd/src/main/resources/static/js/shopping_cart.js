@@ -72,12 +72,13 @@ function updateTotal() {
 	$(".subtotal").each(function(index, element) {
 		productCount++;
 		total += parseFloat(clearCurrencyFormat(element.innerHTML));
+
 	});
 	
 	if (productCount < 1) {
 		showEmptyShoppingCart();
 	} else {
-		$("#total").text(formatCurrency(total));		
+		$("#total").text(formatCurrency(total));
 	}
 	
 }

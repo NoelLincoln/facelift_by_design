@@ -95,7 +95,7 @@
                  data-endelementdelay="0.1"
                  data-endspeed="300"
                  data-scrolloffset="0"
-                 style="z-index: 8;"><a th:href="@{'/c/' + 'Flush Mounts'}" class="btn">SHOP NOW</a> </div>
+                 style="z-index: 8;"><a th:href="@{/products}" class="btn">SHOP NOW</a> </div>
           </li>
 
           <!-- SLIDE  -->
@@ -184,10 +184,7 @@
         <h4>Shop by Categories</h4>
 <!--        <span>Our products are classified to categories for easy </span> </div>-->
     </div>
-
-
-
-    <!-- New Arrival -->
+      <!-- New Arrival -->
     <div class="arrival-block">
 
       <!-- Item -->
@@ -222,7 +219,7 @@
         <!-- Main Heading -->
         <div class="heading text-center">
           <h4>Popular Products</h4>
-          <span>lighting fixtures for your home</span> </div>
+          <span>lighting fixtures for home, office and more</span> </div>
       </div>
 
       <!-- New Arrival -->
@@ -237,7 +234,14 @@
           <!-- Overlay  -->
           <div class="overlay">
             <!-- Price -->
-            <span class="price" th:text="Ksh + ${product.price}"></span>
+<!--            <span class="price" th:text="Ksh + ${product.price}"></span>-->
+
+            <div>
+              <span class="price" th:if="${product.discountPercent <= 0}"><div th:replace="product/product_fragment :: price_fragment(${product.price})"></div></span>
+             <span class ="price" th:if="${product.discountPercent > 0}"><div th:replace="product/product_fragment :: price_fragment(${product.discountPrice})"></div></span>
+            </div>
+
+
             <div class="position-center-center"> <a th:href="@{${product.mainImagePath}}" data-lighter><i class="icon-magnifier"></i></a> </div>
           </div>
           <!-- Item Name -->

@@ -10,9 +10,9 @@
 			<div class="item-name"> <a  th:href="@{${product.URI}}">[[${product.shortName}]]</a>
 			</div>
 			<!-- Item img -->
-			<div class="item-img"> <a th:href="@{${product.URI}}"><img class="img-1" th:src="@{${product.mainImage}}" width="570px" height="398px" alt="" ></a>
+			<div class="item-img"> <a th:href="@{${product.URI}}"><img class="img-1" th:src="@{${product.mainImagePath}}" width="570px" height="398px" alt="" ></a>
 				<!-- Overlay -->
-				<div class="inn"><a th:href="@{${product.mainImage}}" data-lighter><i class="icon-magnifier"></i></a> <a th:href="@{${product.mainImagePath}}"><i class="icon-basket"></i></a> <a href="#." ><i class="icon-heart"></i></a></div>
+				<div class="inn"><a th:href="@{${product.mainImagePath}}" data-lighter><i class="icon-magnifier"></i></a> <a th:href="@{${product.mainImagePath}}"><i class="icon-basket"></i></a> <a href="#." ><i class="icon-heart"></i></a></div>
 			</div>
 			<!-- Price -->
 			<div th:fragment="product_price" th:remove="tag">

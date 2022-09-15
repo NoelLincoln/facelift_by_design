@@ -8,7 +8,7 @@
 
 	<!-- Preloader -->
 	<div class="preloader flex-column justify-content-center align-items-center">
-		<img class="animation__shake" th:src="@{/images/faceliftlogo.png}" alt="AdminLTELogo" height="130px" width="100px">
+		<img class="animation__shake" th:src="@{/images/faceliftlogo.png}" alt="logo" height="130px" width="100px">
 	</div>
 
 	<!-- Navbar -->
@@ -21,6 +21,9 @@
 			<h2>Manage Shipping Rates</h2>
 
 			<a th:href="@{/shipping_rates/new}" class="fas fa-folder-plus fa-2x icon-dark mr-2"></a>
+		</div>
+		<div th:if="${message != null}" class="alert alert-success text-center">
+			[[${message}]]
 		</div>
 		<!-- Content Header (Page header) -->
 		<div class="content-header">
@@ -199,8 +202,5 @@
 	});
 </script>
 
-<!-- AdminLTE for demo purposes -->
-<!--<script th:src="@{/css/dist/js/demo.js}"></script>-->
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 </body>
 </html>

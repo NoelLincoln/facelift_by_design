@@ -22,6 +22,7 @@
                 <div class="item-display">
                     <div class="row">
                         <div class="col-xs-6"> <span class="product-num">Showing 1 - 10 of 30 products</span> </div>
+<!--                        <div th:replace="fragments :: pagination('/c/' + ${category.alias}, 'product')"></div>-->
 
                         <!-- Products Select -->
                         <div class="col-xs-6">
@@ -50,8 +51,29 @@
                 <div class="shop-items row">
                     <!-- Item -->
                     <th:block th:each="product : ${listProducts}">
-                        <div th:replace="product/product_fragment :: content"></div>
+                        <div class="col-md-6" >
+                            <div class="item">
+                                <!-- Item Name -->
+                                <div class="item-name"> <a  th:href="@{${product.URI}}">[[${product.shortName}]]</a>
+                                </div>
+                                <!-- Item img -->
+                                <div class="item-img"> <a th:href="@{${product.URI}}"><img class="img-1" th:src="@{${product.mainImage}}" width="570px" height="398px" alt="" ></a>
+                                    <!-- Overlay -->
+                                    <div class="inn"><a th:href="@{${product.mainImage}}" data-lighter><i class="icon-magnifier"></i></a> <a href=""><i class="icon-basket addtocart" id="quantity" th:value="1" th:pid="${productId}"></i> </a> <a th:href="@{/wishlist}" ><i class="icon-heart"></i></a></div>
+                                </div>
+                                <!-- Price -->
+                                <div th:fragment="product_price" th:remove="tag">
+                                    <th:block th:if="${product.discountPercent == 0}">
+                                        <span class="price" style="font-size: larger; color: darkred"><div th:replace="product/product_fragment :: price_fragment(${product.price})"></div></span>
+                                    </th:block>
 
+                                    <th:block th:if="${product.discountPercent > 0}">
+                                        <del><span class="price deleteprice" ><div style="text-align: center" th:replace="product/product_fragment :: price_fragment(${product.price})"></div></span></del>
+                                        <del><span class="price" style="font-size: larger; color: darkred"><div th:replace="product/product_fragment :: price_fragment(${product.discountPrice})"></div></span></del>
+                                    </th:block>
+                                </div>
+                            </div>
+                        </div>
 
                     </th:block>
 
@@ -117,11 +139,43 @@
 <script th:src="@{/js/own-menu.js}"></script>
 <script th:src="@{/js/jquery.lighter.js}"></script>
 <script th:src="@{/js/owl.carousel.min.js}"></script>
+<script type="text/javascript">
+    contextPath = "[[@{/}]]";
+    productId = "[[${product.id}]]";
+    var csrfHeaderName = "[[${_csrf.headerName}]]";
+    var csrfValue = "[[${_csrf.token}]]";
 
+    decimalSeparator = "[[${DECIMAL_POINT_TYPE == 'COMMA' ? ',' : '.'}]]";
+    thousandSeparator = "[[${THOUSANDS_POINT_TYPE == 'COMMA' ? ',' : '.'}]]";
+
+    $(document).ready(function() {
+        bigImage = $("#bigImage");
+
+        $(".image-thumbnail").mouseover(function() {
+            currentImageSource = $(this).attr("src");
+            currentImageIndex = $(this).attr("index");
+
+            bigImage.attr("src", currentImageSource);
+            bigImage.attr("index", currentImageIndex);
+        });
+
+        bigImage.on("click", function() {
+            $("#carouselModal").modal("show");
+            imageIndex = parseInt(bigImage.attr("index"));
+            $("#carouselExampleIndicators").carousel(imageIndex);
+        });
+    });
+
+</script>
 <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
 <script type="text/javascript" th:src="@{/rs-plugin/js/jquery.tp.t.min.js}"></script>
 <script type="text/javascript" th:src="@{/rs-plugin/js/jquery.tp.min.js}"></script>
 <script th:src="@{/js/main.js}"></script>
+<script type="text/javascript" th:src="@{/js/common_modal.js}"></script>
+<script type="text/javascript" th:src="@{/js/quantity_control.js}"></script>
+<script type="text/javascript" th:src="@{/js/add_to_cart.js}"></script>
+
+
 <script type="text/javascript">
     $(".product-detail-rating-star").rating({
         displayOnly: true,
