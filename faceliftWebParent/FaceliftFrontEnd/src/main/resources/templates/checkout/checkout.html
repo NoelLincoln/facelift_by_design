@@ -38,7 +38,7 @@
 
 							<!-- ESTIMATE SHIPPING & TAX -->
 							<div class="col-sm-7">
-								<h6>BILLING DETAILS/SHIPPING DETAILS</h6>
+								<h6>BILLING/SHIPPING DETAILS</h6>
 									<ul class="row">
 
 										<!-- Name -->
@@ -132,13 +132,14 @@
 											<a th:href="@{'/p/' + ${product.alias}}" target="_blank"><p>
 												[[${product.alias}]] <span >
 												<th:block th:if="${product.discountPercent &lt;= 0}">
-                                    			<span th:text="${product.price}"></span>
+                                    			<span th:text="Ksh + ${product.price}"></span>
+													[[${item.getQuantity}]]
 												</th:block>
 												</span></br></span> X
 												<th:block th:if="${product.discountPercent > 0}">
-													<span th:text="${product.discountPrice}"></span>[[${item.getQuantity}]]
+												<span th:text="Ksh + ${product.discountPrice}"></span>[[${item.getQuantity}]]
 												</th:block> </span></p>
-											</a>
+											</a>[[${CURRENCY_SYMBOL}]]
 
 												<p class="all-total">TOTAL COST <span>
 											<div th:replace="fragments :: format_currency(${item.subtotal})"></div>
@@ -186,24 +187,25 @@
 
 
 											<li>
+												<form th:action="@{/place_order}" method="post">
+
 												<div class="radio">
 
-														<input type="radio" name="paymentMethod" id="radioCOD" value="COD" >
+														<input type="radio" name="paymentMethod" id="radioCOD" value="COD" required="required">
 														<label for="radioCOD"> CASH ON DELIVERY</label>
 
 												</div>
 												<p>PAY FOR THE ITEMS ONCE RECEIVED</p>
+													<div >
+
+													<p>
+														<button class="btn btn-primary hidden" type="submit" id="buttonSubmit">Place Order with COD</button>
+													</p>
+													</div>
+												</form>
 											</li>
-<!--											<li>-->
-<!--												<div class="radio">-->
+											<li></li>
 
-<!--													<input type="radio" name="paymentMethod" id="" value="COD" >-->
-<!--													<label for="radioCOD"> PAYPAL</label>-->
-
-<!--												</div>-->
-<!--												<p>PAY WITH PAYPAL</p>-->
-<!--											</li>-->
-											<li>
 												<div class="radio" id="paypal-button-container">
 													<form th:action="@{/process_paypal_order}" method="post" id="paypalForm">
 														<input type="hidden" name="orderId" id="orderId" />
@@ -219,8 +221,6 @@
 											</li>
 										</ul>
 
-										<a href="#." id="buttonSubmit" class="btn  btn-dark pull-right margin-top-30">PLACE ORDER</a>
-<!--										<button class="btn btn-primary d-none" type="submit" id="buttonSubmit">Place Order with COD</button>-->
 
 									</div>
 								</div>
@@ -266,8 +266,9 @@
 	
 	$(document).ready(function() {
 		$("#radioCOD").on("click", function() {
-			$("#buttonSubmit").removeClass("d-none");
+			$("#buttonSubmit").removeClass("hidden");
 		});
+
 	});
 
 	function validateOrder(orderId) {

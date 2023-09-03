@@ -971,6 +971,15 @@ header .user-basket .cart-img {
 header .is-sticky .sticky .user-basket .dropdown-menu {
 	margin-top: 21px;
 }
+
+#searchNavbar{
+	margin-left: 16rem;
+}
+.error500{
+	width: 50%;
+	margin: auto;
+}
+
 .search-inside {
 	position: fixed;
 	left: 0;

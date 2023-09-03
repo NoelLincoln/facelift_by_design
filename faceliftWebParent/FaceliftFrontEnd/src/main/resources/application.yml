@@ -1,5 +1,5 @@
 server:
-  port: 82
+  port: 84
 #  servlet:
 #    context-path: /facelift
 
@@ -21,8 +21,8 @@ spring:
       "mail.smtp.ssl.enable": true
   datasource:
     password: password
-    url: jdbc:mysql://localhost:3306/shopmedb
-    username: shopmedb
+    url: jdbc:mysql://localhost:3306/faceliftdb
+    username: faceliftdb
     hikari:
       minimum-idle: 1
       maximum-pool-size: 2

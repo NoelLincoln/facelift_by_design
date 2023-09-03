@@ -14,7 +14,7 @@ public class Setting {
 	@Column(name = "`key`", nullable = false, length = 128)
 	private String key;
 	
-	@Column(nullable = false, length = 10000)
+	@Column(nullable = false, length = 100000)
 	private String value;
 	
 	@Enumerated(EnumType.STRING)

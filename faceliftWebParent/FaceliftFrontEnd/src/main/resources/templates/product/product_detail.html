@@ -131,16 +131,25 @@
                             </div>
                             <th:block th:if="${product.inStock}">
                                 <div th:replace="cart/quantity_control :: quantity_control(1, ${product.id})"></div>
-                                <div class="mt-3">
+<!--                                sec:authorize="isAuthenticated()-->
+                                <div class="mt-3" >
                                     <!-- ADD TO CART  sec:authorize="isAuthenticated()" -->
                                     <input  type="button" value="Add to Cart" id="buttonAdd2Cart" class="btn btn-primary" />
-<!--                                    <input type="button" value="Add to Cart" id="buttonAdd2Cartnologin" class="btn btn-primary" />-->
 
                                     <!-- LIKE -->
                                     <div style="margin-top: 10px">
                                         <li class="col-xs-6"> <a href="#." class="like-us"><i class="icon-heart"></i></a> </li>
                                     </div>
                                 </div>
+<!--                                <div class="mt-3" >-->
+<!--                                    &lt;!&ndash; ADD TO CART  sec:authorize="isAuthenticated()" &ndash;&gt;-->
+<!--                                    <a th:href="@{/login}"><input  type="button" value="Add to Cart"  class="btn btn-primary" /></a>-->
+
+<!--                                    &lt;!&ndash; LIKE &ndash;&gt;-->
+<!--                                    <div style="margin-top: 10px">-->
+<!--                                        <li class="col-xs-6"> <a href="#." class="like-us"><i class="icon-heart"></i></a> </li>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                             </th:block>
                         </div>
                     </div>

@@ -566,6 +566,7 @@ header .sticky {
 	position: relative !important;
 }
 .nav-right {
+	display: none;
 	position: absolute;
 	right: 65px;
 	margin-top: 0px;
@@ -923,6 +924,7 @@ header .navbar-collapse {
 }
 header .container {
 	padding: 0 15px;
+	display: flex;
 }
 header .navbar .nav .dropdown-menu {
 	position: relative;
@@ -1064,6 +1066,7 @@ footer h6 {
 @media(max-width:540px) {
 header .logo {
 	width: 100%;
+	margin-left: 11rem;
 }
 .top-shop-feature article{
 	margin:0 20px;
@@ -1146,6 +1149,13 @@ header .user-basket .dropdown-menu{
 header .user-basket .dropdown-menu{
 	min-width:300px;
 }
+	#searchNavbar{
+		margin-left: 16rem;
+	}
+	.error500{
+		width: 80%;
+		margin: auto;
+	}
 }
 @media(max-width:320px) {
 }
