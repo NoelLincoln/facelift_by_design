@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-  <head th:replace="fragments :: page_head('Facelift By Design', 'none')" />
+<head th:replace="fragments :: page_head('Facelift By Design', 'none')" />
 
 <body>
 
@@ -182,30 +182,30 @@
       <!-- Main Heading -->
       <div class="heading text-center">
         <h4>Shop by Categories</h4>
-<!--        <span>Our products are classified to categories for easy </span> </div>-->
-    </div>
-      <!-- New Arrival -->
-    <div class="arrival-block">
-
-      <!-- Item -->
-      <div class="item" th:each="cat : ${listCategories}">
-        <!-- Images -->
-        <img class="img-1" th:src="@{${cat.imagePath}}" alt="" > <img class="img-2" th:src="@{${cat.imagePath}}" alt=""  >
-        <!-- Overlay  -->
-        <div class="overlay">
-          <!-- Price -->
-          <!--          <span class="price"><small>$</small>299</span>-->
-          <div class="position-center-center"> <a th:href="@{${cat.imagePath}}" data-lighter><i class="icon-magnifier"></i></a> </div>
-        </div>
-        <!-- Item Name -->
-        <div class="item-name"> <a th:href="@{'/c/' + ${cat.alias}}">
-          <p><span th:text="${cat.alias}"></span></p></a>
-        </div>
+        <!--        <span>Our products are classified to categories for easy </span> </div>-->
       </div>
+      <!-- New Arrival -->
+      <div class="arrival-block">
 
-      <!-- Item -->
+        <!-- Item -->
+        <div class="item" th:each="cat : ${listCategories}">
+          <!-- Images -->
+          <img class="img-1" th:src="@{${cat.imagePath}}" alt="" > <img class="img-2" th:src="@{${cat.imagePath}}" alt=""  >
+          <!-- Overlay  -->
+          <div class="overlay">
+            <!-- Price -->
+            <!--          <span class="price"><small>$</small>299</span>-->
+            <div class="position-center-center"> <a th:href="@{${cat.imagePath}}" data-lighter><i class="icon-magnifier"></i></a> </div>
+          </div>
+          <!-- Item Name -->
+          <div class="item-name"> <a th:href="@{'/c/' + ${cat.alias}}">
+            <p><span th:text="${cat.alias}"></span></p></a>
+          </div>
+        </div>
 
-    </div>
+        <!-- Item -->
+
+      </div>
     </div>
   </section>
 
@@ -234,11 +234,11 @@
           <!-- Overlay  -->
           <div class="overlay">
             <!-- Price -->
-<!--            <span class="price" th:text="Ksh + ${product.price}"></span>-->
+            <!--            <span class="price" th:text="Ksh + ${product.price}"></span>-->
 
             <div>
               <span class="price" th:if="${product.discountPercent <= 0}"><div th:replace="product/product_fragment :: price_fragment(${product.price})"></div></span>
-             <span class ="price" th:if="${product.discountPercent > 0}"><div th:replace="product/product_fragment :: price_fragment(${product.discountPrice})"></div></span>
+              <span class ="price" th:if="${product.discountPercent > 0}"><div th:replace="product/product_fragment :: price_fragment(${product.discountPrice})"></div></span>
             </div>
 
 
@@ -255,40 +255,40 @@
     </section>
 
     <!-- Popular Products -->
-    <section class="padding-top-50 padding-bottom-150">
-      <div class="container">
+<!--    <section class="padding-top-50 padding-bottom-150">-->
+<!--      <div class="container">-->
 
-        <!-- Main Heading -->
-        <div class="heading text-center">
-          <h4>View more products</h4>
-          <span>popular lighting fixtures</span> </div>
+<!--        &lt;!&ndash; Main Heading &ndash;&gt;-->
+<!--        <div class="heading text-center">-->
+<!--          <h4>View more products</h4>-->
+<!--          <span>popular lighting fixtures</span> </div>-->
 
-        <!-- Popular Item Slide -->
-        <div class="papular-block block-slide" >
-          <!-- Item -->
-          <div class="item" th:each="cat : ${listCategories}">
-            <!-- Item img -->
-            <div class="item-img"> <img class="img-1" th:src="@{${cat.imagePath}}" alt="" > <img class="img-2" th:src="@{${cat.imagePath}}" alt="" >
-              <!-- Overlay -->
-              <div class="overlay">
-                <div class="position-center-center">
-                  <div class="inn"><a th:href="@{${cat.imagePath}}" data-lighter><i class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip" data-placement="top" title="Add To WishList"><i class="icon-heart"></i></a></div>
-                </div>
-              </div>
-            </div>
-            <!-- Item Name -->
-            <div class="item-name"> <a th:href="@{'/c/' + ${cat.alias}}"></a>
-              <p th:text="${cat.alias}"></p>
-            </div>
-            <!-- Price -->
-<!--            <span class="price"><small>$</small>299</span>-->
+<!--        &lt;!&ndash; Popular Item Slide &ndash;&gt;-->
+<!--        <div class="papular-block block-slide" >-->
+<!--          &lt;!&ndash; Item &ndash;&gt;-->
+<!--          <div class="item" th:each="cat : ${listCategories}">-->
+<!--            &lt;!&ndash; Item img &ndash;&gt;-->
+<!--            <div class="item-img"> <img class="img-1" th:src="@{${cat.imagePath}}" alt="" > <img class="img-2" th:src="@{${cat.imagePath}}" alt="" >-->
+<!--              &lt;!&ndash; Overlay &ndash;&gt;-->
+<!--              <div class="overlay">-->
+<!--                <div class="position-center-center">-->
+<!--                  <div class="inn"><a th:href="@{${cat.imagePath}}" data-lighter><i class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip" data-placement="top" title="Add To WishList"><i class="icon-heart"></i></a></div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; Item Name &ndash;&gt;-->
+<!--            <div class="item-name"> <a th:href="@{'/c/' + ${cat.alias}}"></a>-->
+<!--              <p th:text="${cat.alias}"></p>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; Price &ndash;&gt;-->
+<!--            &lt;!&ndash;            <span class="price"><small>$</small>299</span>&ndash;&gt;-->
 
-          </div>
+<!--          </div>-->
 
 
-        </div>
-      </div>
-    </section>
+<!--        </div>-->
+<!--      </div>-->
+<!--    </section>-->
 
 
     <!-- About -->
