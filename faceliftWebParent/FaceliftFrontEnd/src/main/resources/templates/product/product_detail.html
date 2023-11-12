@@ -50,12 +50,18 @@
                 <div class="shop-detail">
                     <div class="row">
                         <div class="col-md-8">
-
                             <!-- Images -->
-                            <div class="row" >
+                            <div class="row">
 
-                                <div class="col-sm-6 margin-bottom-30" th:each="extraImage, status : ${product.images}">
-                                    <img class="img-responsive"th:src="@{${extraImage.imagePath}}" th:index="${status.count}" alt=""> </div>
+                                <!-- First Row -->
+                                <div class="col-sm-6 margin-bottom-30" th:each="extraImage, status : ${product.images}" th:if="${status.index < 2}">
+                                    <img class="img-responsive w-50 h-50" th:src="@{${extraImage.imagePath}}" th:index="${status.count}" alt="">
+                                </div>
+
+                                <!-- Second Row -->
+                                <div class="col-sm-6 margin-bottom-30" th:each="extraImage, status : ${product.images}" th:if="${status.index >= 2 and status.index < 4}">
+                                    <img class="img-responsive w-50 h-50" th:src="@{${extraImage.imagePath}}" th:index="${status.count}" alt="">
+                                </div>
 
                             </div>
                         </div>
