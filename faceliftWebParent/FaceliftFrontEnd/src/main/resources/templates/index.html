@@ -255,40 +255,40 @@
     </section>
 
     <!-- Popular Products -->
-<!--    <section class="padding-top-50 padding-bottom-150">-->
-<!--      <div class="container">-->
+    <section class="padding-top-50 padding-bottom-150">
+      <div class="container">
 
-<!--        &lt;!&ndash; Main Heading &ndash;&gt;-->
-<!--        <div class="heading text-center">-->
-<!--          <h4>View more products</h4>-->
-<!--          <span>popular lighting fixtures</span> </div>-->
+        <!-- Main Heading -->
+        <div class="heading text-center">
+          <h4>View more products</h4>
+          <span>popular lighting fixtures</span> </div>
 
-<!--        &lt;!&ndash; Popular Item Slide &ndash;&gt;-->
-<!--        <div class="papular-block block-slide" >-->
-<!--          &lt;!&ndash; Item &ndash;&gt;-->
-<!--          <div class="item" th:each="cat : ${listCategories}">-->
-<!--            &lt;!&ndash; Item img &ndash;&gt;-->
-<!--            <div class="item-img"> <img class="img-1" th:src="@{${cat.imagePath}}" alt="" > <img class="img-2" th:src="@{${cat.imagePath}}" alt="" >-->
-<!--              &lt;!&ndash; Overlay &ndash;&gt;-->
-<!--              <div class="overlay">-->
-<!--                <div class="position-center-center">-->
-<!--                  <div class="inn"><a th:href="@{${cat.imagePath}}" data-lighter><i class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip" data-placement="top" title="Add To WishList"><i class="icon-heart"></i></a></div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            &lt;!&ndash; Item Name &ndash;&gt;-->
-<!--            <div class="item-name"> <a th:href="@{'/c/' + ${cat.alias}}"></a>-->
-<!--              <p th:text="${cat.alias}"></p>-->
-<!--            </div>-->
-<!--            &lt;!&ndash; Price &ndash;&gt;-->
-<!--            &lt;!&ndash;            <span class="price"><small>$</small>299</span>&ndash;&gt;-->
+        <!-- Popular Item Slide -->
+        <div class="papular-block block-slide" >
+          <!-- Item -->
+          <div class="item" th:each="cat : ${listCategories}">
+            <!-- Item img -->
+            <div class="item-img"> <img class="img-1" th:src="@{${cat.imagePath}}" alt="" > <img class="img-2" th:src="@{${cat.imagePath}}" alt="" >
+              <!-- Overlay -->
+              <div class="overlay">
+                <div class="position-center-center">
+                  <div class="inn"><a th:href="@{${cat.imagePath}}" data-lighter><i class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip" data-placement="top" title="Add To WishList"><i class="icon-heart"></i></a></div>
+                </div>
+              </div>
+            </div>
+            <!-- Item Name -->
+            <div class="item-name"> <a th:href="@{'/c/' + ${cat.alias}}"></a>
+              <p th:text="${cat.alias}"></p>
+            </div>
+            <!-- Price -->
+            <!--            <span class="price"><small>$</small>299</span>-->
 
-<!--          </div>-->
+          </div>
 
 
-<!--        </div>-->
-<!--      </div>-->
-<!--    </section>-->
+        </div>
+      </div>
+    </section>
 
 
     <!-- About -->
