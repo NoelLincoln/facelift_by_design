@@ -1634,7 +1634,7 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 }
 .on-sale {
 	background: #ffe115;
-	position: absolute;
+	/*position: absolute;*/
 	height: 50px;
 	width: 50px;
 	top: 0px;
@@ -1645,7 +1645,7 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 	font-weight: bold;
 	line-height: 16px;
 	font-size: 18px;
-	padding-top: 10px;
+	padding: 10px 10px 10px 15px;
 }
 .on-sale span {
 	font-size: 12px;

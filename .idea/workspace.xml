@@ -3,15 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="26a1b526-4e40-4c47-9466-c21ec0f0488b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FaceliftCommon/src/main/java/com/facelift/common/entity/product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/FaceliftCommon/src/main/java/com/facelift/common/entity/product/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/bin/src/main/resources/templates/brands/brand_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/bin/src/main/resources/templates/brands/brand_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/bin/src/main/resources/templates/categories/category_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/bin/src/main/resources/templates/categories/category_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/bin/src/main/resources/templates/settings/settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/bin/src/main/resources/templates/settings/settings.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/bin/src/main/resources/templates/users/user_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/bin/src/main/resources/templates/users/user_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/src/main/resources/templates/brands/brand_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/src/main/resources/templates/brands/brand_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/src/main/resources/templates/categories/category_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/src/main/resources/templates/categories/category_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/src/main/resources/templates/settings/settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/src/main/resources/templates/settings/settings.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/product/product_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/product/product_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/product/products_by_category.html" beforeDir="false" afterPath="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/product/products_by_category.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/target/" />
@@ -30,11 +25,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/breadcrumb.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/product/product_detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="166">
+              <caret line="31" column="41" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="41" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="258" column="29" selection-start-line="258" selection-start-column="29" selection-end-line="258" selection-end-column="29" />
+            <state relative-caret-position="-89">
+              <caret line="220" column="25" selection-start-line="220" selection-start-column="14" selection-end-line="220" selection-end-column="25" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#li#0;n#ul#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -52,10 +68,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/src/main/java/com/facelift/admin/category/CategoryController.java">
+        <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="986">
-              <caret line="79" column="4" selection-start-line="79" selection-start-column="4" selection-end-line="79" selection-end-column="4" />
+            <state relative-caret-position="259">
+              <caret line="1644" column="22" selection-start-line="1644" selection-start-column="22" selection-end-line="1644" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/static/css/main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="55">
+              <caret line="4759" column="13" lean-forward="true" selection-start-line="4759" selection-start-column="13" selection-end-line="4759" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/product/products_by_category.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="9" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -63,26 +97,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/src/main/java/com/facelift/admin/product/ProductController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
+            <state relative-caret-position="1224">
               <caret line="97" selection-start-line="97" selection-end-line="97" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/src/main/java/com/facelift/admin/category/CategoryService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="152" column="34" selection-start-line="152" selection-start-column="34" selection-end-line="152" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/src/main/resources/templates/categories/category_form.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="140" column="23" lean-forward="true" selection-start-line="140" selection-start-column="23" selection-end-line="140" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -92,12 +108,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
               <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#50#1" expanded="true" />
-                <element signature="e#0#50#1" expanded="true" />
-                <element signature="e#0#47#1" expanded="true" />
-                <element signature="e#0#52#1" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -105,38 +115,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FaceliftCommon/src/main/java/com/facelift/common/entity/Category.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1917">
+            <state relative-caret-position="102">
               <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-              <folding>
-                <element signature="e#0#35#1" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FaceliftCommon/src/main/java/com/facelift/common/entity/product/Product.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="36" column="42" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/src/main/java/com/facelift/admin/category/CategoryRestController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/static/js/owl.carousel.min.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="24844" selection-start-column="24833" selection-end-column="24844" />
+            <state relative-caret-position="374">
+              <caret line="41" selection-start-line="41" selection-end-line="41" />
             </state>
           </provider>
         </entry>
@@ -145,7 +134,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>collapse navbar-collapse</find>
       <find>/products</find>
       <find>search_nav</find>
       <find>class=&quot;collapse navbar-collapse&quot;</find>
@@ -169,6 +157,13 @@
       <find>love</find>
       <find>102400</find>
       <find>MAX_FILE_SIZE</find>
+      <find>breadcrumb-item</find>
+      <find>.padding-lef</find>
+      <find>list</find>
+      <find>.padding-left-100</find>
+      <find>sale</find>
+      <find>popular pro</find>
+      <find>breadcrumb</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -180,18 +175,15 @@
       <list>
         <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/error/500.html" />
-        <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/static/css/style.css" />
         <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/checkout/checkout.html" />
         <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/java/com/facelift/checkout/CheckoutController.java" />
         <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/static/css/responsive.css" />
         <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/java/com/facelift/product/ProductController.java" />
         <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/product/products.html" />
-        <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/product/product_detail.html" />
         <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/static/js/owl.carousel.min.js" />
         <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/static/js/main.js" />
         <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/navigation.html" />
-        <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/index.html" />
         <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/src/main/resources/templates/categories/category_form.html" />
         <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/bin/src/main/resources/templates/users/user_form.html" />
         <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/bin/src/main/resources/templates/brands/brand_form.html" />
@@ -200,6 +192,12 @@
         <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/src/main/resources/templates/brands/brand_form.html" />
         <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/src/main/resources/templates/settings/settings.html" />
         <option value="$PROJECT_DIR$/FaceliftCommon/src/main/java/com/facelift/common/entity/product/Product.java" />
+        <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/static/css/main.css" />
+        <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/static/css/style.css" />
+        <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/index.html" />
+        <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/product/product_detail.html" />
+        <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/breadcrumb.html" />
+        <option value="$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/product/products_by_category.html" />
       </list>
     </option>
   </component>
@@ -215,7 +213,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -227,125 +224,85 @@
             <path>
               <item name="FaceliftProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="facelift" type="462c0819:PsiDirectoryNode" />
-              <item name="FaceliftCommon" type="462c0819:PsiDirectoryNode" />
+              <item name="faceliftWebParent" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FaceliftProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="facelift" type="462c0819:PsiDirectoryNode" />
-              <item name="FaceliftCommon" type="462c0819:PsiDirectoryNode" />
+              <item name="faceliftWebParent" type="462c0819:PsiDirectoryNode" />
+              <item name="FaceliftFrontEnd" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FaceliftProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="facelift" type="462c0819:PsiDirectoryNode" />
+              <item name="faceliftWebParent" type="462c0819:PsiDirectoryNode" />
+              <item name="FaceliftFrontEnd" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FaceliftProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="facelift" type="462c0819:PsiDirectoryNode" />
-              <item name="FaceliftCommon" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FaceliftProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="facelift" type="462c0819:PsiDirectoryNode" />
-              <item name="FaceliftCommon" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FaceliftProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="facelift" type="462c0819:PsiDirectoryNode" />
-              <item name="FaceliftCommon" type="462c0819:PsiDirectoryNode" />
+              <item name="faceliftWebParent" type="462c0819:PsiDirectoryNode" />
+              <item name="FaceliftFrontEnd" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FaceliftProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="facelift" type="462c0819:PsiDirectoryNode" />
-              <item name="FaceliftCommon" type="462c0819:PsiDirectoryNode" />
+              <item name="faceliftWebParent" type="462c0819:PsiDirectoryNode" />
+              <item name="FaceliftFrontEnd" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FaceliftProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="facelift" type="462c0819:PsiDirectoryNode" />
-              <item name="FaceliftCommon" type="462c0819:PsiDirectoryNode" />
+              <item name="faceliftWebParent" type="462c0819:PsiDirectoryNode" />
+              <item name="FaceliftFrontEnd" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FaceliftProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="facelift" type="462c0819:PsiDirectoryNode" />
+              <item name="faceliftWebParent" type="462c0819:PsiDirectoryNode" />
+              <item name="FaceliftFrontEnd" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FaceliftProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="facelift" type="462c0819:PsiDirectoryNode" />
+              <item name="faceliftWebParent" type="462c0819:PsiDirectoryNode" />
+              <item name="FaceliftFrontEnd" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FaceliftProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="facelift" type="462c0819:PsiDirectoryNode" />
+              <item name="faceliftWebParent" type="462c0819:PsiDirectoryNode" />
+              <item name="FaceliftFrontEnd" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="product" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FaceliftProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="facelift" type="462c0819:PsiDirectoryNode" />
-              <item name="faceliftWebParent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FaceliftProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="facelift" type="462c0819:PsiDirectoryNode" />
-              <item name="faceliftWebParent" type="462c0819:PsiDirectoryNode" />
-              <item name="FaceliftBackEnd" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FaceliftProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="facelift" type="462c0819:PsiDirectoryNode" />
-              <item name="faceliftWebParent" type="462c0819:PsiDirectoryNode" />
-              <item name="FaceliftFrontEnd" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FaceliftProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="facelift" type="462c0819:PsiDirectoryNode" />
-              <item name="faceliftWebParent" type="462c0819:PsiDirectoryNode" />
-              <item name="FaceliftFrontEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FaceliftProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="facelift" type="462c0819:PsiDirectoryNode" />
-              <item name="faceliftWebParent" type="462c0819:PsiDirectoryNode" />
-              <item name="FaceliftFrontEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FaceliftProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="facelift" type="462c0819:PsiDirectoryNode" />
-              <item name="faceliftWebParent" type="462c0819:PsiDirectoryNode" />
-              <item name="FaceliftFrontEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FaceliftProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="facelift" type="462c0819:PsiDirectoryNode" />
-              <item name="faceliftWebParent" type="462c0819:PsiDirectoryNode" />
-              <item name="FaceliftFrontEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FaceliftProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="facelift" type="462c0819:PsiDirectoryNode" />
-              <item name="faceliftWebParent" type="462c0819:PsiDirectoryNode" />
-              <item name="FaceliftFrontEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="fragments" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -380,7 +337,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.FaceliftBackEndApplication">
+  <component name="RunManager" selected="Spring Boot.FaceliftFrontEndApplication">
     <configuration name="FaceliftBackEndApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="FaceliftBackEnd" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.facelift.admin.FaceliftBackEndApplication" />
@@ -430,17 +387,19 @@
       <workItem from="1699737236518" duration="9736000" />
       <workItem from="1704213618385" duration="261000" />
       <workItem from="1704220713341" duration="1480000" />
-      <workItem from="1704301669967" duration="5398000" />
+      <workItem from="1704301669967" duration="12224000" />
+      <workItem from="1704387665522" duration="3705000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47578000" />
+    <option name="totallyTimeSpent" value="58109000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.32147652" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3261745" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -451,7 +410,7 @@
       <window_info id="Web" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.39660057" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.39660057" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -479,34 +438,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="28" lean-forward="true" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/src/main/resources/templates/categories/categories.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
-          <caret line="84" column="124" selection-start-line="84" selection-start-column="105" selection-end-line="84" selection-end-column="124" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/static/css/responsive.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="1163" selection-start-line="1163" selection-end-line="1163" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/java/com/facelift/checkout/CheckoutController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="99" column="57" selection-start-line="99" selection-start-column="57" selection-end-line="99" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/java/com/facelift/address/AddressService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -697,13 +628,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/product/product_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="57" column="72" selection-start-line="57" selection-start-column="72" selection-end-line="57" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/static/images/facelift/img8.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -711,13 +635,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/fragments.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
@@ -768,25 +685,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="258" column="29" selection-start-line="258" selection-start-column="29" selection-end-line="258" selection-end-column="29" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#li#0;n#ul#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#li#0;n#ul#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#li#0;n#ul#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#li#0;n#ul#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#li#1;n#ul#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#li#1;n#ul#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#li#1;n#ul#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#li#1;n#ul#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/src/main/java/com/facelift/admin/category/CategoryService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -804,7 +702,7 @@
     <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/src/main/resources/templates/categories/category_form.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
-          <caret line="140" column="23" lean-forward="true" selection-start-line="140" selection-start-column="23" selection-end-line="140" selection-end-column="23" />
+          <caret line="140" column="23" selection-start-line="140" selection-start-column="23" selection-end-line="140" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -822,9 +720,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/fragments.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftBackEnd/src/main/java/com/facelift/admin/product/ProductController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
+        <state relative-caret-position="1224">
           <caret line="97" selection-start-line="97" selection-end-line="97" />
         </state>
       </provider>
@@ -833,29 +738,77 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#50#1" expanded="true" />
-            <element signature="e#0#50#1" expanded="true" />
-            <element signature="e#0#47#1" expanded="true" />
-            <element signature="e#0#52#1" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FaceliftCommon/src/main/java/com/facelift/common/entity/Category.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1917">
+        <state relative-caret-position="102">
           <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#35#1" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FaceliftCommon/src/main/java/com/facelift/common/entity/product/Product.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="36" column="42" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
+        <state relative-caret-position="374">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-89">
+          <caret line="220" column="25" selection-start-line="220" selection-start-column="14" selection-end-line="220" selection-end-column="25" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#li#0;n#ul#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#li#0;n#ul#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#li#0;n#ul#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#li#0;n#ul#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#li#1;n#ul#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#li#1;n#ul#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#li#1;n#ul#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#li#1;n#ul#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="1644" column="22" selection-start-line="1644" selection-start-column="22" selection-end-line="1644" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/static/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="55">
+          <caret line="4759" column="13" lean-forward="true" selection-start-line="4759" selection-start-column="13" selection-end-line="4759" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/product/product_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="31" column="41" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="41" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/product/products_by_category.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="9" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faceliftWebParent/FaceliftFrontEnd/src/main/resources/templates/breadcrumb.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
         </state>
       </provider>
     </entry>
